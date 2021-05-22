@@ -1,0 +1,1 @@
+[![ERD](https://lucid.app/publicSegments/view/4f35440d-2ac1-483d-aafa-92c205699451/image.png "ERD")](https://lucid.app/publicSegments/view/4f35440d-2ac1-483d-aafa-92c205699451/image.png "ERD")
