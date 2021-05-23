@@ -1,4 +1,4 @@
-#A&GBusinessesPromotions
+# A&GBusinessesPromotions
 
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/beyond-io/shlifim.svg)](https://github.com/avivz450/A-GBusinessesPromotions/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/beyond-io/shlifim.svg)](https://github.com/avivz450/A-GBusinessesPromotions/issues/)
@@ -36,6 +36,8 @@ server - client interface, and uses in database.
 
 #### Nice to have features
 1. Adding category for each business for filter while user using the seaching bar.
+2. Extanding openning hours for each business.
+ 
 
 ####  Screen Flow :
 https://wireframepro.mockflow.com/view/M220d24c67f3dc91c0ccb63d5989dc20f1614086471339#/page/f9f2b7b7cc384a999e9e3c9cf58fa655
