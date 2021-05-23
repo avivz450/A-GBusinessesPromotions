@@ -45,3 +45,31 @@ class Business(models.Model):
 
     def __str__(self):
         return '{self.name}'.format(self=self)
+
+
+class Sale(models.Model):
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30)
+    picture = models.ImageField(default=None, upload_to="App/images/SalesPictures/")
+    description = models.TextField(null=True, blank=True)  # To Do : limit description length
+
+    def __str__(self):
+        return '{self.title}'.format(self=self)
+
+
+class Notification(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    description = models.TextField(default=None)  # To Do : limit description length
+
+    def __str__(self):
+        return '{self.user.username}'.format(self=self)
+
+
+class Contact(models.Model):
+    full_name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=254)
+    subject = models.CharField(max_length=80)
+    message = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return '{self.name}'.format(self=self)
