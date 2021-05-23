@@ -1,7 +1,7 @@
 # A&GBusinessesPromotions
 
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/beyond-io/shlifim.svg)](https://github.com/avivz450/A-GBusinessesPromotions/pulls)
-[![GitHub issues](https://img.shields.io/github/issues/beyond-io/shlifim.svg)](https://github.com/avivz450/A-GBusinessesPromotions/issues/)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/avivz450/A-GBusinessesPromotions.svg)](https://github.com/avivz450/A-GBusinessesPromotions/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/avivz450/A-GBusinessesPromotions.svg)](https://github.com/avivz450/A-GBusinessesPromotions/issues/)
 
 ## Design File
 #### Product : 
