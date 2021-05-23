@@ -5,9 +5,13 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
+pillow = "*"
+django-phonenumber-field = {extras = ["phonenumbers"],version = "*"}
 
 [packages]
 django = "*"
+pillow = "*"
+django-phonenumber-field = {extras = ["phonenumbers"],version = "*"}
 
 [requires]
 python_version = "3.8"
