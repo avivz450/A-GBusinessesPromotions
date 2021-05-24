@@ -1,50 +1,77 @@
 # A&GBusinessesPromotions
 
+[![Logo](https://i.imgur.com/glNeRC8.png "Logo")](https://i.imgur.com/glNeRC8.png "Logo")
+
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/avivz450/A-GBusinessesPromotions.svg)](https://github.com/avivz450/A-GBusinessesPromotions/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/avivz450/A-GBusinessesPromotions.svg)](https://github.com/avivz450/A-GBusinessesPromotions/issues/)
 
-## Design File
-#### Product : 
-Web application that will connect a banch of other web applications, each with individual topic, and all the webs that will have at least one same charicaristic will have a connection between them.
+## Product :
+A web application whose purpose is to advertise businesses whose type is determined according to the site from which we came to the application
 
-#### Goals :
-1. To give the user easy expirience of viewing relevant web pages 
-2. Helping business owners to marketing their business.
-3. Make profit to the app owners.
+## Goals :
+1. To give the user an easy experience of viewing businesses according to his request.
+2. Helping business owners to market their business.
+3. Make a profit to the app owners by premium packages.
 
-#### Users :
+## Users :
 Site manager - will accept/ignore businesses to his own web,
-will inspect the contect of the business.
-Businesses owners - will open their web on the suitable website to their business needs, and the premium users will have aditional benefits.
-Guests - will be able to watch the contect only.
+will inspect the content of the business.
+Business owners - will open their business on a suitable page.
+Premium users will have additional benefits.
+Guests - will be able to watch the content only.
 
-#### User Interface : 
-Web Application.
-#### Application layer :
-server - client interface, and uses in database.
-
-#### Features :
+## Features :
 1. Adding business.
-2. Editing existing business web
-3. Charging on extras primium servises.
-4. Searching and filter business due to specific criterias. 
+2. Editing an existing business page.
+3. Charging for premium services.
+4. Searching and filter businesses by specific criteria. 
 5. Registration and login.
-6. User notification
+6. User notification.
 7. Adding sales.
-8. View sales for each use/geust
-9. Confirmation page where the admin can review business requests.
-
-#### Nice to have features
-1. Adding category for each business for filter while user using the seaching bar.
-2. Extanding openning hours for each business.
- 
-
-####  Screen Flow :
-https://wireframepro.mockflow.com/view/M220d24c67f3dc91c0ccb63d5989dc20f1614086471339#/page/f9f2b7b7cc384a999e9e3c9cf58fa655
+8. View sales for each use/guest.
 
 
+## Nice to have features
+1. Adding a category for each business for filter while the user using the searching bar.
+2. Extending opening hours for each business.
+3. Adding reviews to the businesses
 
-####  Technologies :
-Client side : Html, CSS, JavaScript .
-Server side :  Django, Python
-Database : SQLite
+##  Technology Stack :
+- Client side : Html, CSS, JavaScript .
+- Server side :  Django, Python
+- Database : SQLite
+- SCM: Git and GitHub
+- Testing: Pytest
+- Virtualization: Vagrant and VirtualBox
+
+## Dependencies
+The dependencies that must be installed for this software to work are:
+* [Vagrant](https://www.vagrantup.com/downloads)
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+## Installation
+
+To install make sure you have Git installed already and all the dependencies mentioned above.
+
+Enter in the Command Line: 
+```
+git clone https://github.com/avivz450/A-GBusinessesPromotions.git
+```
+## Getting Started
+In your local git repository you made, enter the command:
+```
+vagrant up
+```
+Afterwards vagrant will boot up, configure, download and install all the needed additional dependencies.
+A script will launch the app and you can access it in: http://127.0.0.1:8000/
+
+## Instrutor :
+Amir Kirsh
+
+## Team members:
+- Aviv Zafrani
+- Gideon Schachar
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
