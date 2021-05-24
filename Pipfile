@@ -12,6 +12,7 @@ django-phonenumber-field = {extras = ["phonenumbers"],version = "*"}
 django = "*"
 pillow = "*"
 django-phonenumber-field = {extras = ["phonenumbers"],version = "*"}
+channels = "*"
 
 [requires]
 python_version = "3.8"
