@@ -6,5 +6,5 @@ urlpatterns = [
     path('base/', views.base, name='base'),
     path('', views.landingpage, name='landingpage'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('login/', views.login, name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='home/login.html'), name='login'),
 ]

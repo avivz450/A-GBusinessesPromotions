@@ -66,7 +66,7 @@
 			  {% else %}
 			  <p class="nav-item nav-link m-2"><b>Hello visitor</b></p>
 			  {% comment %} "{% url 'login' %}?next={% firstof request.path '/' %}" {% endcomment %}
-				<a class="nav-item nav-link m-2" href=#>Login</a>
+				<a class="nav-item nav-link m-2" href={% url 'login' %}>Login</a>
 				{% comment %} "{% url 'signup' %}" {% endcomment %}
 				<a class="nav-item nav-link m-2" href=#>Sign up</a>
 			  {% endif %}
