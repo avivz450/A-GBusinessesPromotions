@@ -3,7 +3,7 @@ body {
 }
 
 .navbar-light {
-	background-color: #a9d4d9;
+	background-color: rgba(13, 110, 253, 0.3);
 }
 
 .main-bg {
@@ -39,4 +39,12 @@ body {
 .navbar-nav > li {
 	padding-left:5px;
 	padding-right:5px;
+}
+
+#logo {
+	padding-left: 0;
+}
+
+#logoIMG {
+	padding-left: 0;
 }
