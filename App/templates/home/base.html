@@ -24,11 +24,10 @@
 		<link rel="shortcut icon" href="{% static 'home/favicon.ico' %}"/>
 	 </head>
 	<body>
-	<nav class="navbar navbar-expand-lg navbar-light">
+	<nav class="navbar navbar-expand-lg navbar-light" id="baseNavbar">
 	  <div class="container-fluid">
-		<a class="nav-link active" href="{% url 'landingpage' %}">
-			<img  class="m-2" src="{% static 'home/AGLogo.png' %}"
-			alt="shlifim logo" width="150" height="65"></a>
+			<a class="nav-link active" href="/" id="logo">
+			<img class="m-2" src="/static/home/AGLogo.png" alt="shlifim logo" width="120" height="65" id="logoIMG"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -62,8 +61,7 @@
 			  {% if user.is_authenticated %}
 			  <ul class="nav navbar-nav">
 				<li><p class="nav-item m-2"><b>Hello {{user.username}}!</b></p></li>
-				{% comment %} "{% url 'logout' %}?next={% firstof request.path '/' %}" {% endcomment %}
-				<li><a class="nav-item nav-link m-2" href=#>Logout</a></li>
+				<li><a class="nav-item nav-link m-2" href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></li>
 			  </ul>
 			  {% else %}
 			  <p class="nav-item nav-link m-2"><b>Hello visitor</b></p>
