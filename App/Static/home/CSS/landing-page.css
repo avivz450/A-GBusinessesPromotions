@@ -18,7 +18,7 @@ body {
 }
 
 .get_started_btn {
-  background-color: rgb(13 110 253 / 76%);
+  background-color: rgba(243, 194, 105, 0.85);
   color: white;
   padding: 15px 32px;
   text-align: center;
