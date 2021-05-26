@@ -35,24 +35,24 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 pb-3">
 				<li class="nav-item">
 				{% comment %} "{% url 'explore-page' %}" {% endcomment %}
-					<a class="nav-link" href=#>Businesses</a> 
+					<a class="nav-link" id="navlink" href=#>Businesses</a> 
 				</li>
 				<li class="nav-item">
 					{% comment %} "{% url 'new_question' %}" {% endcomment %}
-					<a class="nav-link" href={% url 'sales' %}>Sales</a>
+					<a class="nav-link" id="navlink" href={% url 'sales' %}>Sales</a>
 				</li>
 				{% if user.is_authenticated %}
 				<li class="nav-item">
 				{% comment %} "{% url 'tags' %}" {% endcomment %}
-					<a class="nav-link" href=#>Add Business</a>
+					<a class="nav-link" id="navlink" href=#>Add Business</a>
 				</li>
 				<li class="nav-item">
 				{% comment %} "{% url 'about' %}" {% endcomment %}
-					<a class="nav-link" href=#>Edit Business</a>
+					<a class="nav-link" id="navlink" href=#>Edit Business</a>
 				</li>
 				<li class="nav-item">
 				{% comment %} "{% url 'tags' %}" {% endcomment %}
-					<a class="nav-link" href=#>Upgrade</a>
+					<a class="nav-link" id="navlink" href=#>Upgrade</a>
 				</li>
 				{% endif %}
 			</ul>
@@ -60,14 +60,14 @@
 			<div class="navbar-nav mb-2 mb-lg-0 pb-3">
 			  {% if user.is_authenticated %}
 			  <ul class="nav navbar-nav">
-				<li><p class="nav-item m-2"><b>Hello {{user.username}}!</b></p></li>
-				<li><a class="nav-item nav-link m-2" href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></li>
+				<li><p id="navlink" class="nav-item m-2"><b>Hello {{user.username}}!</b></p></li>
+				<li><a id="navlink" class="nav-item nav-link m-2" href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></li>
 			  </ul>
 			  {% else %}
-			  <p class="nav-item nav-link m-2"><b>Hello visitor</b></p>
+			  <p class="nav-item nav-link m-2" id="navlink"><b>Hello visitor</b></p>
 			  {% comment %} "{% url 'login' %}?next={% firstof request.path '/' %}" {% endcomment %}
-				<a class="nav-item nav-link m-2" href={% url 'login' %}>Login</a>
-				<a class="nav-item nav-link m-2" href={% url 'signup' %}>Sign up</a>
+				<a class="nav-item nav-link m-2" id="navlink" href={% url 'login' %}>Login</a>
+				<a class="nav-item nav-link m-2" id="navlink" href={% url 'signup' %}>Sign up</a>
 			  {% endif %}
 			</div>
 		</div>
