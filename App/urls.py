@@ -16,4 +16,3 @@ urlpatterns = [
     path('sales/', views.sales, name='sales'),
     path('signup/', views.signup, name='signup'),
 ] + static(settings.IMAGES_URL, document_root=settings.IMAGES_ROOT)
-    
