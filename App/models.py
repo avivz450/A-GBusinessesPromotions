@@ -52,6 +52,7 @@ class Sale(models.Model):
     title = models.CharField(max_length=30)
     picture = models.ImageField(default=None, upload_to="App/images/SalesPictures/")
     description = models.TextField(null=True, blank=True)  # To Do : limit description length
+    URL = models.URLField(default = None, max_length=250)
 
     def __str__(self):
         return '{self.title}'.format(self=self)
