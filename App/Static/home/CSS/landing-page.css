@@ -8,6 +8,7 @@ body {
 
 .txt {
   color: #ffffff;
+  font-weight: bold;
 }
 
 .center {
@@ -25,8 +26,13 @@ body {
   font-size: 30px;
   border: none;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .get_started_btn:hover {
   text-decoration: none;
+}
+
+#GetStartedButton {
+  font-weight: bold;
 }
