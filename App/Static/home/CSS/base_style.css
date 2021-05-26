@@ -3,7 +3,7 @@ body {
 }
 
 .navbar-light {
-	background-color: rgba(13, 110, 253, 0.3);
+	background-color: rgba(13, 110, 253, 0.4);
 }
 
 .main-bg {
@@ -15,15 +15,16 @@ body {
 }
 
 .nav-item {
-	color: #000000;
+	color: white;
 	padding-top: 20px;
 	font-weight: bold;
 	font-size: 17px;
 }
 
+
 .shlifim-btn{
 	background-color:#A9D4D9;
-	color: black;
+	color:white;
  	padding: 10px 20px;
 	text-align: center;
 	font-size: 20px;
@@ -50,3 +51,27 @@ body {
 	padding-top: 0;
 	padding-bottom: 0;
 }
+
+/* Place the navbar at the bottom of the page, and make it stick */
+#bottomNavbar {
+	background-color: rgba(13, 110, 253, 0.7);
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding-top: .1rem;
+	padding-bottom: .1rem;
+  }
+  
+  /* Style the links inside the navigation bar */
+  #bottomNavbar a {
+	float: left;
+	display: block;
+	color:  white;
+	text-align: center;
+	padding: 9px 12px;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bold;
+  }
+  
