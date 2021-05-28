@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Sale, Profile
+from .models import Sale, Profile, Business
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate
 
@@ -14,7 +14,11 @@ def base(request):
 
 
 def businesses(request):
-    return render(request, 'home/businesses.html')
+    if request.method == 'GET':
+        context = {
+            "businesses": Business.objects.all()
+        }
+    return render(request, 'home/businesses.html', context)
 
 
 def sales(request):

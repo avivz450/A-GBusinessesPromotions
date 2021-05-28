@@ -1,9 +1,39 @@
 {% extends "home/base.html" %} {% load static %} {% block content %}
 
-<link rel="stylesheet" type="text/css" href="" />
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'home/CSS/businesses_style.css' %}"
+/>
 
 <body>
-  <p>In Businesses</p>
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Answers Part -->
+        <article class="businesses-container">
+          {% for business in businesses %}
+          <div class="card business-container" style="width: 18rem">
+            <img
+              class="card-img-top"
+              src="{{ business.logo.url }}"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ business.name}}</h5>
+              <p class="card-text">{{ business.description }}</p>
+              <a href="#" class="btn btn-primary">Go to site</a>
+            </div>
+          </div>
+          {% endfor %}
+        </article>
+      </div>
+    </div>
+  </main>
 </body>
 
 {% endblock content %}
