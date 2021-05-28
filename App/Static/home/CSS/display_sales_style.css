@@ -19,6 +19,8 @@ a.btn-primary {
   background-color: #a9d4d9;
   color: black;
   border-color: white;
+  margin-bottom: 12px;
+  margin-left: 12px;
 }
 
 img {
