@@ -15,4 +15,4 @@ urlpatterns = [
     path('businesses/', views.businesses, name='businesses'),
     path('sales/', views.sales, name='sales'),
     path('signup/', views.signup, name='signup'),
-] + static(settings.IMAGES_URL, document_root=settings.IMAGES_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
