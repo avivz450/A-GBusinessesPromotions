@@ -10,72 +10,162 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),
+        ("auth", "0012_alter_user_first_name_max_length"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Business',
+            name="Business",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30)),
-                ('logo', models.ImageField(default=None, upload_to='App/images/BusinessesLogos/')),
-                ('URL', models.URLField(blank=True, max_length=250, null=True)),
-                ('description', models.TextField(blank=True, null=True)),
-                ('facebook_link', models.URLField(blank=True, max_length=250, null=True)),
-                ('instagram_link', models.URLField(blank=True, max_length=250, null=True)),
-                ('picture_0', models.ImageField(blank=True, null=True, upload_to='App/images/BusinessesPictures/')),
-                ('picture_1', models.ImageField(blank=True, null=True, upload_to='App/images/BusinessesPictures/')),
-                ('picture_2', models.ImageField(blank=True, null=True, upload_to='App/images/BusinessesPictures/')),
-                ('from_hour', models.TimeField(blank=True, null=True)),
-                ('to_hour', models.TimeField(blank=True, null=True)),
-                ('phone_number', phonenumber_field.modelfields.PhoneNumberField(blank=True,
-                                                                                max_length=128,
-                                                                                null=True, region=None)),
-                ('is_confirmed', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=30)),
+                (
+                    "logo",
+                    models.ImageField(
+                        default=None, upload_to="App/images/BusinessesLogos/"
+                    ),
+                ),
+                ("URL", models.URLField(blank=True, max_length=250, null=True)),
+                ("description", models.TextField(blank=True, null=True)),
+                (
+                    "facebook_link",
+                    models.URLField(blank=True, max_length=250, null=True),
+                ),
+                (
+                    "instagram_link",
+                    models.URLField(blank=True, max_length=250, null=True),
+                ),
+                (
+                    "picture_0",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="App/images/BusinessesPictures/",
+                    ),
+                ),
+                (
+                    "picture_1",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="App/images/BusinessesPictures/",
+                    ),
+                ),
+                (
+                    "picture_2",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="App/images/BusinessesPictures/",
+                    ),
+                ),
+                ("from_hour", models.TimeField(blank=True, null=True)),
+                ("to_hour", models.TimeField(blank=True, null=True)),
+                (
+                    "phone_number",
+                    phonenumber_field.modelfields.PhoneNumberField(
+                        blank=True, max_length=128, null=True, region=None
+                    ),
+                ),
+                ("is_confirmed", models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.BigAutoField(auto_created=True,
-                                           primary_key=True, serialize=False, verbose_name='ID')),
-                ('full_name', models.CharField(max_length=50)),
-                ('email', models.EmailField(max_length=254)),
-                ('subject', models.CharField(max_length=80)),
-                ('message', models.TextField(blank=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("full_name", models.CharField(max_length=50)),
+                ("email", models.EmailField(max_length=254)),
+                ("subject", models.CharField(max_length=80)),
+                ("message", models.TextField(blank=True, null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE,
-                                              primary_key=True, serialize=False, to='auth.user')),
-                ('is_blocked', models.BooleanField(default=False)),
-                ('is_vip', models.BooleanField(default=False)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        primary_key=True,
+                        serialize=False,
+                        to="auth.user",
+                    ),
+                ),
+                ("is_blocked", models.BooleanField(default=False)),
+                ("is_vip", models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
-            name='Sale',
+            name="Sale",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=30)),
-                ('picture', models.ImageField(default=None, upload_to='App/images/SalesPictures/')),
-                ('description', models.TextField(blank=True, null=True)),
-                ('business', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='App.business')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=30)),
+                (
+                    "picture",
+                    models.ImageField(
+                        default=None, upload_to="App/images/SalesPictures/"
+                    ),
+                ),
+                ("description", models.TextField(blank=True, null=True)),
+                (
+                    "business",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="App.business"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Notification',
+            name="Notification",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.TextField(default=None)),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='App.profile')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("description", models.TextField(default=None)),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="App.profile"
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='business',
-            name='profile',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='App.profile'),
+            model_name="business",
+            name="profile",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="App.profile"
+            ),
         ),
     ]

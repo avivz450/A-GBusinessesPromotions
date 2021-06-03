@@ -9,12 +9,17 @@ pillow = "*"
 django-phonenumber-field = {extras = ["phonenumbers"],version = "*"}
 pytest = "*"
 pytest-django = "*"
+black = "*"
 
 [packages]
 django = "*"
 pillow = "*"
 django-phonenumber-field = {extras = ["phonenumbers"],version = "*"}
 channels = "*"
+black = "*"
 
 [requires]
 python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true

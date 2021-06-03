@@ -6,41 +6,37 @@ from django.contrib.auth import login, authenticate
 
 # Create your views here.
 def landingpage(request):
-    return render(request, 'home/landingpage.html', {'title': 'Welcome!'})
+    return render(request, "home/landingpage.html", {"title": "Welcome!"})
 
 
 def base(request):
-    return render(request, 'home/base.html')
+    return render(request, "home/base.html")
 
 
 def businesses(request):
-    if request.method == 'GET':
-        context = {
-            "businesses": Business.objects.all()
-        }
-    return render(request, 'home/businesses.html', context)
+    if request.method == "GET":
+        context = {"businesses": Business.objects.all()}
+    return render(request, "home/businesses.html", context)
 
 
 def sales(request):
-    if request.method == 'GET':
-        context = {
-            "sales": Sale.objects.all()
-        }
-    return render(request, 'home/sales.html', context)
+    if request.method == "GET":
+        context = {"sales": Sale.objects.all()}
+    return render(request, "home/sales.html", context)
 
 
 def signup(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            raw_password = form.cleaned_data.get('password1')
+            raw_password = form.cleaned_data.get("password1")
             user.save()
             profile = Profile(user=user)
             user = authenticate(username=user.username, password=raw_password)
             profile.save()
             login(request, user)
-            return redirect('/')
+            return redirect("/")
     else:
         form = SignUpForm()
-    return render(request, 'home/signup.html', {'form': form, 'title': 'Sign Up'})
+    return render(request, "home/signup.html", {"form": form, "title": "Sign Up"})
