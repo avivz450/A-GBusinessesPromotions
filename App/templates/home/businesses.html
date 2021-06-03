@@ -22,11 +22,13 @@
               class="card-img-top"
               src="{{ business.logo.url }}"
               alt="Card image cap"
+              width="30"
+              height="230"
             />
             <div class="card-body">
               <h5 class="card-title">{{ business.name}}</h5>
               <p class="card-text">{{ business.description }}</p>
-              <a href="#" class="btn btn-primary">Go to site</a>
+              <a href="{{ business.URL }}" class="btn btn-primary">Go to site</a>
             </div>
           </div>
           {% endfor %}

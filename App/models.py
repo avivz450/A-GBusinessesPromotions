@@ -63,7 +63,6 @@ class Sale(models.Model):
     description = models.TextField(
         null=True, blank=True
     )  # To Do : limit description length
-    URL = models.URLField(default=None, max_length=250)
 
     def __str__(self):
         return "{self.title}".format(self=self)
