@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Sale, Profile, Business
-from .forms import SignUpForm
+from .forms import SignUpForm, BusinessForm
 from django.contrib.auth import login, authenticate
 
 
@@ -40,3 +40,16 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, "home/signup.html", {"form": form, "title": "Sign Up"})
+
+
+def new_business(request):
+    form = BusinessForm
+    if request.method == "POST":
+        businessForm = BusinessForm(request.POST)
+        if businessForm.is_valid():
+            businessForm = businessForm.save(commit=False)
+            businessForm.profile = Profile.objects.filter(user=request.user).first()
+            businessForm.save()
+    return render(
+        request, "home/new_business.html", {"form": form, "title": "New Business"}
+    )

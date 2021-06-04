@@ -22,6 +22,8 @@
               class="card-img-top"
               src="{{ sale.picture.url }}"
               alt="Card image cap"
+              width="30"
+              height="230"
             />
             <div class="card-body">
               <h5 class="card-title">{{ sale.title}}</h5>
@@ -29,7 +31,7 @@
               <div class="col-12">
                 <b>by {{ sale.business.name }}</b>
               </div>
-              <a href="#" class="btn btn-primary">Go to site</a>
+              <a href="{{ sale.business.URL }}" class="btn btn-primary">Go to site</a>
             </div>
           </div>
           {% endfor %}
