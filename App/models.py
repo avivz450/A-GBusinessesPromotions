@@ -31,11 +31,13 @@ class Profile(models.Model):
 
 
 class Business(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30)
-    logo = models.ImageField(default=None, upload_to="App/images/BusinessesLogos/")
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
+    name = models.CharField(max_length=30)  # required
+    logo = models.ImageField(
+        default=None, upload_to="App/images/BusinessesLogos/"
+    )  # required
+    description = models.TextField(default=None)  # required
     URL = models.URLField(null=True, blank=True, max_length=250)
-    description = models.TextField(null=True, blank=True)
     facebook_link = models.URLField(null=True, blank=True, max_length=250)
     instagram_link = models.URLField(null=True, blank=True, max_length=250)
     picture_0 = models.ImageField(
@@ -47,8 +49,12 @@ class Business(models.Model):
     picture_2 = models.ImageField(
         null=True, blank=True, upload_to="App/images/BusinessesPictures/"
     )
-    from_hour = models.TimeField(null=True, blank=True)
-    to_hour = models.TimeField(null=True, blank=True)
+    from_hour = models.TimeField(
+        null=True, blank=True, auto_now=False, auto_now_add=False
+    )
+    to_hour = models.TimeField(
+        null=True, blank=True, auto_now=False, auto_now_add=False
+    )
     phone_number = PhoneNumberField(null=True, blank=True)
     is_confirmed = models.BooleanField(default=False)
 
