@@ -1,0 +1,16 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+
+<body class="main-bg">
+    <div class="newfrm">
+        <p class="newmsg">Please add a new sale : </p>
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Post">
+        </form>
+    </div>
+</body>
+
+{% endblock content %}

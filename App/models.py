@@ -65,7 +65,10 @@ class Business(models.Model):
 class Sale(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
-    picture = models.ImageField(default=None, upload_to="App/images/SalesPictures/")
+    picture = models.ImageField(
+        default="App/images/SalesPictures/default.jpg",
+        upload_to="App/images/SalesPictures/",
+    )
     description = models.TextField(
         null=True, blank=True
     )  # To Do : limit description length
