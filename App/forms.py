@@ -39,5 +39,9 @@ class SaleForm(forms.ModelForm):
         fields = ("title", "business", "description", "picture")
 
     def __init__(self, *args, **kwargs):
+        logged_in_user = kwargs.pop("logged_in_user", None)
         super(SaleForm, self).__init__(*args, **kwargs)
         self.fields["picture"].required = True
+        self.fields["business"].queryset = Business.objects.filter(
+            profile=logged_in_user
+        )

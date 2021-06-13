@@ -56,9 +56,9 @@ def new_business(request):
 
 
 def new_sale(request):
-    form = SaleForm()
+    form = SaleForm(logged_in_user=request.user.id)
     if request.method == "POST":
-        saleForm = SaleForm(request.POST, request.FILES)
+        saleForm = SaleForm(request.POST, request.FILES, logged_in_user=request.user.id)
         if saleForm.is_valid():
             saleForm.save()
             return redirect("/")
