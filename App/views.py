@@ -83,9 +83,9 @@ def new_sale(request):
                 saleForm.profile = logged_in_profile
                 saleForm.save()
                 return redirect("/")
-                return render(
-                    request, "home/new_sale.html", {"form": form, "title": "New Sale"}
-                )
+        return render(
+            request, "home/new_sale.html", {"form": form, "title": "New Sale"}
+        )
     else:
         messages.error(
             request,
