@@ -17,20 +17,22 @@
         <!-- Answers Part -->
         <article class="businesses-container">
           {% for business in businesses %}
-          <div class="card business-container" style="width: 18rem">
-            <img
-              class="card-img-top"
-              src="{{ business.logo.url }}"
-              alt="Card image cap"
-              width="30"
-              height="230"
-            />
-            <div class="card-body">
-              <h5 class="card-title">{{ business.name}}</h5>
-              <p class="card-text">{{ business.description }}</p>
-              <a href="{{ business.URL }}" class="btn btn-primary">Go to site</a>
+            {% if business.is_confirmed %}
+            <div class="card business-container" style="width: 18rem">
+              <img
+                class="card-img-top"
+                src="{{ business.logo.url }}"
+                alt="Card image cap"
+                width="30"
+                height="230"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ business.name}}</h5>
+                <p class="card-text">{{ business.description }}</p>
+                <a href="{{ business.URL }}" class="btn btn-primary">Go to site</a>
+              </div>
             </div>
-          </div>
+            {% endif %}
           {% endfor %}
         </article>
       </div>

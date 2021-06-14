@@ -10,7 +10,6 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path("base/", views.base, name="base"),
     path("", views.landingpage, name="landingpage"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path(
