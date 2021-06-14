@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Sale, Profile, Business
 from .forms import SignUpForm, BusinessForm, SaleForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 
@@ -38,6 +39,7 @@ def signup(request):
     return render(request, "home/signup.html", {"form": form, "title": "Sign Up"})
 
 
+@login_required(login_url="/login/")
 def new_business(request):
     logged_in_profile = Profile.objects.filter(user=request.user).first()
     num_of_businesses_of_profile = len(
@@ -67,6 +69,7 @@ def new_business(request):
         return render(request, "home/landingpage.html", {"title": "Welcome!"})
 
 
+@login_required(login_url="/login/")
 def premium(request):
     if request.method == "POST":
         if "vip_user" in request.POST:
@@ -85,6 +88,7 @@ def premium(request):
         return render(request, "home/premium.html", {"title": "AG Premium"})
 
 
+@login_required(login_url="/login/")
 def new_sale(request):
     logged_in_profile = Profile.objects.filter(user=request.user).first()
     num_of_sales_of_profile = len(Sale.objects.filter(profile=logged_in_profile))
