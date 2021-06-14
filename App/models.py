@@ -63,7 +63,8 @@ class Business(models.Model):
 
 
 class Sale(models.Model):
-    business = models.ForeignKey(Business, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)  # required
     title = models.CharField(max_length=30)
     picture = models.ImageField(
         default="App/images/SalesPictures/default.jpg",
@@ -72,6 +73,7 @@ class Sale(models.Model):
     description = models.TextField(
         null=True, blank=True
     )  # To Do : limit description length
+    is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return "{self.title}".format(self=self)
