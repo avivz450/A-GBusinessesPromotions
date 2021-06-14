@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Sale, Profile, Business
 from .forms import SignUpForm, BusinessForm, SaleForm
 from django.contrib.auth import login, authenticate
@@ -53,7 +53,7 @@ def new_business(request):
                 businessForm = businessForm.save(commit=False)
                 businessForm.profile = logged_in_profile
                 businessForm.save()
-                return redirect("/")
+                return redirect("business-page", businessForm.id)
         return render(
             request, "home/new_business.html", {"form": form, "title": "New Business"}
         )
@@ -95,3 +95,11 @@ def new_sale(request):
             },
         )
         return render(request, "home/landingpage.html", {"title": "Welcome!"})
+
+
+def business_page(request, pk):
+    business = get_object_or_404(Business, id=pk)
+    context = {
+        "business": business,
+    }
+    return render(request, "home/business_page.html", context)

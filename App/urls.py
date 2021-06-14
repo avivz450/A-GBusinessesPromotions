@@ -17,6 +17,11 @@ urlpatterns = [
         auth_views.LoginView.as_view(template_name="home/login.html"),
         name="login",
     ),
+    path(
+        "businesses/business_<int:pk>/",
+        views.business_page,
+        name="business-page",
+    ),
     path("businesses/", views.businesses, name="businesses"),
     path("sales/", views.sales, name="sales"),
     path("signup/", views.signup, name="signup"),
