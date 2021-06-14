@@ -5,7 +5,6 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 
 
-# Create your views here.
 def landingpage(request):
     return render(request, "home/landingpage.html", {"title": "Welcome!"})
 
@@ -62,10 +61,28 @@ def new_business(request):
             request,
             {
                 "title": "ERROR: ",
-                "message_content": "You must be a VIP member to submit more than one business.",
+                "message_content": "You must be a Premium member to submit more than one business.",
             },
         )
         return render(request, "home/landingpage.html", {"title": "Welcome!"})
+
+
+def premium(request):
+    if request.method == "POST":
+        if "vip_user" in request.POST:
+            logged_in_profile = Profile.objects.filter(user=request.user).first()
+            logged_in_profile.is_vip = True
+            logged_in_profile.save(update_fields=["is_vip"])
+            messages.success(
+                request,
+                {
+                    "title": "SUCCESS: ",
+                    "message_content": "Congratulations, you are a Premium user now!",
+                },
+            )
+        return render(request, "home/landingpage.html", {"title": "Welcome!"})
+    else:
+        return render(request, "home/premium.html", {"title": "AG Premium"})
 
 
 def new_sale(request):
@@ -91,7 +108,7 @@ def new_sale(request):
             request,
             {
                 "title": "ERROR: ",
-                "message_content": "You must be a VIP member to submit more than one sale.",
+                "message_content": "You must be a Premium member to submit more than one sale.",
             },
         )
         return render(request, "home/landingpage.html", {"title": "Welcome!"})
