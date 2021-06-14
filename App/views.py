@@ -54,7 +54,16 @@ def new_business(request):
                 businessForm = businessForm.save(commit=False)
                 businessForm.profile = logged_in_profile
                 businessForm.save()
-                return redirect("business-page", businessForm.id)
+                msg_content = """The business was successfully inserted.
+            It will be visible once the site administrators will approve it."""
+                messages.info(
+                    request,
+                    {
+                        "title": "INFO: ",
+                        "message_content": msg_content,
+                    },
+                )
+                return render(request, "home/landingpage.html", {"title": "Welcome!"})
         return render(
             request, "home/new_business.html", {"form": form, "title": "New Business"}
         )
@@ -71,9 +80,9 @@ def new_business(request):
 
 @login_required(login_url="/login/")
 def premium(request):
+    logged_in_profile = Profile.objects.filter(user=request.user).first()
     if request.method == "POST":
         if "vip_user" in request.POST:
-            logged_in_profile = Profile.objects.filter(user=request.user).first()
             logged_in_profile.is_vip = True
             logged_in_profile.save(update_fields=["is_vip"])
             messages.success(
@@ -83,6 +92,15 @@ def premium(request):
                     "message_content": "Congratulations, you are a Premium user now!",
                 },
             )
+        return render(request, "home/landingpage.html", {"title": "Welcome!"})
+    elif logged_in_profile.is_vip is True:
+        messages.info(
+            request,
+            {
+                "title": "INFO: ",
+                "message_content": "You are already a Premium user.",
+            },
+        )
         return render(request, "home/landingpage.html", {"title": "Welcome!"})
     else:
         return render(request, "home/premium.html", {"title": "AG Premium"})
@@ -103,7 +121,16 @@ def new_sale(request):
                 saleForm = saleForm.save(commit=False)
                 saleForm.profile = logged_in_profile
                 saleForm.save()
-                return redirect("/")
+                msg_content = """The sale was successfully inserted.
+            It will be visible once the site administrators will approve it."""
+                messages.info(
+                    request,
+                    {
+                        "title": "INFO: ",
+                        "message_content": msg_content,
+                    },
+                )
+                return render(request, "home/landingpage.html", {"title": "Welcome!"})
         return render(
             request, "home/new_sale.html", {"form": form, "title": "New Sale"}
         )

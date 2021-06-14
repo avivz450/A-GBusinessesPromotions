@@ -52,9 +52,11 @@
 				<li class="nav-item">
 					<a class="nav-link" id="navlink" href="{% url 'new_sale' %}">Add Sale</a>
 				</li>
+				{% if user.profile.is_vip is False %}
 				<li class="nav-item">
 					<a class="nav-link" id="navlink" href="{% url 'premium' %}">Upgrade</a>
 				</li>
+				{% endif %}
 				{% endif %}
 			</ul>
 			<!-- Navbar Right Side -->
