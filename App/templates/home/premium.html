@@ -1,0 +1,15 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+
+<body class="main-bg">
+    <div class="newfrm">
+        <p class="newmsg">PREMIUM TEST </p>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="submit" name="vip_user" value="VIP" />
+        </form>
+    </div>
+</body>
+
+{% endblock content %}
