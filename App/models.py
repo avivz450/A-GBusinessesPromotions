@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -36,7 +37,7 @@ class Business(models.Model):
     logo = models.ImageField(
         default=None, upload_to="App/images/BusinessesLogos/"
     )  # required
-    description = models.TextField(default=None)  # required
+    description = RichTextField(default=None)  # required
     URL = models.URLField(null=True, blank=True, max_length=250)
     facebook_link = models.URLField(null=True, blank=True, max_length=250)
     instagram_link = models.URLField(null=True, blank=True, max_length=250)
@@ -71,7 +72,7 @@ class Sale(models.Model):
         upload_to="App/images/SalesPictures/",
     )
     description = models.TextField(
-        null=True, blank=True
+        default=None, max_length=50
     )  # To Do : limit description length
     is_confirmed = models.BooleanField(default=False)
 
@@ -91,7 +92,7 @@ class Contact(models.Model):
     full_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
     subject = models.CharField(max_length=80)
-    message = models.TextField(null=True, blank=True)
+    message = RichTextField(null=True, blank=True)
 
     def __str__(self):
         return "{self.name}".format(self=self)
