@@ -26,9 +26,41 @@ class Profile(models.Model):
     )
     is_blocked = models.BooleanField(default=False)
     is_vip = models.BooleanField(default=False)
+    websites = models.ManyToManyField("Website", through="Website_Profile")
 
     def __str__(self):
         return "{self.user.username}".format(self=self)
+
+
+class Website(models.Model):
+    name = models.CharField(max_length=30)  # required
+    logo = models.ImageField(
+        default=None, upload_to="App/images/WebsitesLogos/"
+    )  # required
+    profiles = models.ManyToManyField("Profile", through="Website_Profile")
+    is_confirmed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "{self.name}".format(self=self)
+
+
+class Website_Profile(models.Model):
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name="profile_ID"
+    )
+    website = models.ForeignKey(
+        Website, on_delete=models.CASCADE, related_name="website_ID"
+    )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "website"], name="profile_website"
+            )
+        ]
+
+    def __str__(self):
+        return f"User name : {self.profile}, Website : {self.website}"
 
 
 class Business(models.Model):
