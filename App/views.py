@@ -1,17 +1,27 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Sale, Profile, Business
-from .forms import SignUpForm, BusinessForm, SaleForm
+from .models import Sale, Profile, Business, Website
+from .forms import SignUpForm, BusinessForm, SaleForm, ChooseWebsiteForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+import pdb
 
 
-def websitepage(request, pk, business_name):
+def websitepage(request, pk, website_name):
     return render(request, "home/websitepage.html", {"title": "Welcome!"})
 
 
 def landingpage(request):
-    return render(request, "home/landingpage.html", {"title": "Welcome!"})
+    if request.method == "POST":
+        form = ChooseWebsiteForm(request.POST)
+        if form.is_valid():
+            selected_website_id = request.POST.get("website")
+            selected_website = Website.objects.filter(id=selected_website_id).first()
+            return redirect("websitepage", selected_website.id, selected_website.name)
+            pdb.set_trace()
+    else:
+        form = ChooseWebsiteForm()
+    return render(request, "home/landingpage.html", {"form": form, "title": "Welcome!"})
 
 
 def businesses(request):
