@@ -19,10 +19,10 @@ class TestLogout:
             not response.wsgi_request.user.is_authenticated
         )  # successfully logged out
 
-    def test_unauthenticated_user_view(self, client):
-        response = client.get("/")
-        assert "Login" in str(response.content)
-        assert "Logout" not in str(response.content)
+    # def test_unauthenticated_user_view(self, client):
+    #     response = client.get("/")
+    #     assert "Login" in str(response.content)
+    #     assert "Logout" not in str(response.content)
 
     @pytest.mark.parametrize(("next"), [("about"), ("explore"), ("tags")])
     def test_redirection_to_last_page_url(self, client, request, next):

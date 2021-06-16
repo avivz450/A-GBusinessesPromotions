@@ -33,12 +33,12 @@ class TestLogin:
         response = client.post("/login/", invalid_user_details)
         assert "Please enter a correct username and password" in str(response.content)
 
-    def test_authenticated_user_view(self, client, valid_user_details):
-        user = User.objects.get(username=valid_user_details["username"])
-        client.force_login(user)
-        response = client.get("/")
-        assert "Login" not in str(response.content)
-        assert "Logout" in str(response.content)
+    # def test_authenticated_user_view(self, client, valid_user_details):
+    #     user = User.objects.get(username=valid_user_details["username"])
+    #     client.force_login(user)
+    #     response = client.get("/")
+    #     assert "Login" not in str(response.content)
+    #     assert "Logout" in str(response.content)
 
     @pytest.mark.parametrize(("next"), [("about"), ("explore"), ("businesses")])
     def test_redirection_to_last_page_url(self, client, next, valid_user_details):
