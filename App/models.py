@@ -68,7 +68,7 @@ class Sale(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE)  # required
     title = models.CharField(max_length=30)
     picture = models.ImageField(
-        default="App/images/SalesPictures/default.jpg",
+        default=None,
         upload_to="App/images/SalesPictures/",
     )
     description = models.TextField(
