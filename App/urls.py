@@ -11,6 +11,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.landingpage, name="landingpage"),
+    path("<int:pk>_<str:website_name>/", views.websitepage, name="websitepage"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path(
         "login/",
