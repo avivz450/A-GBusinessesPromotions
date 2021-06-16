@@ -145,7 +145,7 @@ def new_sale(request):
         return render(request, "home/landingpage.html", {"title": "Welcome!"})
 
 
-def business_page(request, pk):
+def business_page(request, pk, business_name):
     business = get_object_or_404(Business, id=pk)
     context = {
         "business": business,
