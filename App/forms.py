@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Business, Sale
+from .models import Business, Sale, Website
 
 
 class SignUpForm(UserCreationForm):
@@ -45,3 +45,7 @@ class SaleForm(forms.ModelForm):
         self.fields["business"].queryset = Business.objects.filter(
             profile=logged_in_user
         )
+
+
+class ChooseWebsiteForm(forms.Form):
+    website = forms.ModelMultipleChoiceField(queryset=Website.objects.all())

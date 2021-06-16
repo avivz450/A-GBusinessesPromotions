@@ -26,6 +26,11 @@
 <body class="main-bg">
     <div class="newfrm">
         <p class="newmsg">Please choose your website : </p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <center><button class="submit-btn" type="submit">Transfer me!</button></center>
+        </form>
     </div>
 </body>
 </html>
