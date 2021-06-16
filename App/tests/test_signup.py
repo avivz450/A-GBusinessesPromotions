@@ -95,9 +95,9 @@ class TestSignUp:
         response = client.get("/")
         assert "Sign up" not in str(response.content)
 
-    def test_unauthenticated_user_view_signup(self, client):
-        response = client.get("/")
-        assert "Sign up" in str(response.content)
+    # def test_unauthenticated_user_view_signup(self, client):
+    #     response = client.get("/")
+    #     assert "Sign up" in str(response.content)
 
     def test_signup_form_and_template_displayed(self, client):
         response = client.get("/signup/")

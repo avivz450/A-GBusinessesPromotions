@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 
+def websitepage(request, pk, business_name):
+    return render(request, "home/websitepage.html", {"title": "Welcome!"})
+
+
 def landingpage(request):
     return render(request, "home/landingpage.html", {"title": "Welcome!"})
 
