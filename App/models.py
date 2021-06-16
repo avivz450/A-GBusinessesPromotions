@@ -62,6 +62,8 @@ class Website_Profile(models.Model):
     def __str__(self):
         return f"User name : {self.profile}, Website : {self.website}"
 
+    is_admin = models.BooleanField(default=False)
+
 
 class Business(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
