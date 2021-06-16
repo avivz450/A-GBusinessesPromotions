@@ -18,7 +18,7 @@ urlpatterns = [
         name="login",
     ),
     path(
-        "businesses/business_<int:pk>/",
+        "businesses/<int:pk>_<str:business_name>/",
         views.business_page,
         name="business-page",
     ),
