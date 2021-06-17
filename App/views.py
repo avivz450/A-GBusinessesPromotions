@@ -1,13 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Sale, Profile, Business, Website
+from .models import Sale, Profile, Business, Website, Website_Profile
 from .forms import SignUpForm, BusinessForm, SaleForm, ChooseWebsiteForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
 
 def websitepage(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
+    if request.user.is_authenticated:
+        logged_in_profile = Profile.objects.filter(user=request.user).first()
+        website_profile_pair = Website_Profile.objects.filter(
+            profile=logged_in_profile, website=website
+        ).first()
+        if website_profile_pair is None:
+            logout(request)
+
     context = {
         "website": website,
     }
@@ -275,8 +283,12 @@ def login_view(request, pk, website_name):
         username = request.POST.get("username", "")
         password = request.POST.get("password", "")
         user = authenticate(request, username=username, password=password)
+        logged_in_profile = Profile.objects.filter(user=user).first()
+        website_profile_pair = Website_Profile.objects.filter(
+            profile=logged_in_profile, website=website
+        ).first()
 
-        if user is not None:
+        if (user is not None) and (website_profile_pair is not None):
             login(request, user)
             return redirect("websitepage", website.id, website.name)
         else:
