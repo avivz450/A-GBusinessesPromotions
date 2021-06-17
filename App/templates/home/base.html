@@ -26,7 +26,7 @@
 	<body>
 	<nav class="navbar navbar-expand-lg navbar-light" id="baseNavbar">
 	  <div class="container-fluid">
-			<a class="nav-link active" href="/" id="logo">
+			<a class="nav-link active" href={% url 'websitepage' website.id website.name%} id="logo">
 			<img class="m-2" src="/static/home/AGLogo.png" alt="shlifim logo" width="140" height="77" id="logoIMG"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -35,26 +35,26 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 pb-3">
 				<li class="nav-item">
 				{% comment %} "{% url 'explore-page' %}" {% endcomment %}
-					<a class="nav-link" id="navlink" href={% url 'businesses' %}>Businesses</a> 
+					<a class="nav-link" id="navlink" href={% url 'businesses' website.id website.name%}>Businesses</a> 
 				</li>
 				<li class="nav-item">
 					{% comment %} "{% url 'new_question' %}" {% endcomment %}
-					<a class="nav-link" id="navlink" href={% url 'sales' %}>Sales</a>
+					<a class="nav-link" id="navlink" href={% url 'sales' website.id website.name%}>Sales</a>
 				</li>
 				{% if user.is_authenticated %}
 				<li class="nav-item">
-					<a class="nav-link" id="navlink" href="{% url 'new_business' %}">Add Business</a>
+					<a class="nav-link" id="navlink" href="{% url 'new_business' website.id website.name%}">Add Business</a>
 				</li>
 				<li class="nav-item">
 				{% comment %} "{% url 'about' %}" {% endcomment %}
 					<a class="nav-link" id="navlink" href=#>Edit Business</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="navlink" href="{% url 'new_sale' %}">Add Sale</a>
+					<a class="nav-link" id="navlink" href="{% url 'new_sale' website.id website.name%}">Add Sale</a>
 				</li>
 				{% if user.profile.is_vip is False %}
 				<li class="nav-item">
-					<a class="nav-link" id="navlink" href="{% url 'premium' %}">Upgrade</a>
+					<a class="nav-link" id="navlink" href="{% url 'premium' website.id website.name %}">Upgrade</a>
 				</li>
 				{% endif %}
 				{% endif %}
@@ -69,8 +69,8 @@
 			  {% else %}
 			  <p class="nav-item nav-link m-2" id="navlink"><b>Hello visitor</b></p>
 			  {% comment %} "{% url 'login' %}?next={% firstof request.path '/' %}" {% endcomment %}
-				<a class="nav-item nav-link m-2" id="navlink" href={% url 'login' %}>Login</a>
-				<a class="nav-item nav-link m-2" id="navlink" href={% url 'signup' %}>Sign up</a>
+				<a class="nav-item nav-link m-2" id="navlink" href={% url 'login' website.id website.name %}>Login</a>
+				<a class="nav-item nav-link m-2" id="navlink" href={% url 'signup' website.id website.name %}>Sign up</a>
 			  {% endif %}
 			</div>
 		</div>

@@ -14,8 +14,8 @@ urlpatterns = [
     path("<int:pk>_<str:website_name>/", views.websitepage, name="websitepage"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path(
-        "login/",
-        auth_views.LoginView.as_view(template_name="home/login.html"),
+        "<int:pk>_<str:website_name>/login/",
+        views.login_view,
         name="login",
     ),
     path(
@@ -23,10 +23,16 @@ urlpatterns = [
         views.business_page,
         name="business-page",
     ),
-    path("businesses/", views.businesses, name="businesses"),
-    path("sales/", views.sales, name="sales"),
-    path("signup/", views.signup, name="signup"),
-    path("new_business/", views.new_business, name="new_business"),
-    path("new_sale/", views.new_sale, name="new_sale"),
-    path("premium/", views.premium, name="premium"),
+    path(
+        "<int:pk>_<str:website_name>/businesses/", views.businesses, name="businesses"
+    ),
+    path("<int:pk>_<str:website_name>/sales/", views.sales, name="sales"),
+    path("<int:pk>_<str:website_name>/signup/", views.signup, name="signup"),
+    path(
+        "<int:pk>_<str:website_name>/new_business/",
+        views.new_business,
+        name="new_business",
+    ),
+    path("<int:pk>_<str:website_name>/new_sale/", views.new_sale, name="new_sale"),
+    path("<int:pk>_<str:website_name>/premium/", views.premium, name="premium"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
