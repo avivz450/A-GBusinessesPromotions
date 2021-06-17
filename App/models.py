@@ -31,6 +31,13 @@ class Profile(models.Model):
     def __str__(self):
         return "{self.user.username}".format(self=self)
 
+    def match_website_to_profile(self, website):
+        website_profile_pair = Website_Profile()
+        website_profile_pair.profile = self
+        website_profile_pair.website = website
+        website_profile_pair.is_admin = False
+        website_profile_pair.save()
+
 
 class Website(models.Model):
     name = models.CharField(max_length=30)  # required
@@ -51,6 +58,7 @@ class Website_Profile(models.Model):
     website = models.ForeignKey(
         Website, on_delete=models.CASCADE, related_name="website_ID"
     )
+    is_admin = models.BooleanField(default=False)
 
     class Meta:
         constraints = [
@@ -61,8 +69,6 @@ class Website_Profile(models.Model):
 
     def __str__(self):
         return f"User name : {self.profile}, Website : {self.website}"
-
-    is_admin = models.BooleanField(default=False)
 
 
 class Business(models.Model):
