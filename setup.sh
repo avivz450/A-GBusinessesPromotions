@@ -8,7 +8,7 @@ sudo -n dnf install -y pipenv
 
 cd /vagrant
 # Install dependencies with Pipenv
-pipenv sync
+pipenv sync --dev
 
 # Run database migrations
 pipenv run python manage.py migrate

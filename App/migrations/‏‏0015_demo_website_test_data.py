@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
         from django.shortcuts import get_object_or_404
 
         website_test_data = [
-            ("Demo"),
+            ("Website_Demo"),
         ]
 
         with transaction.atomic():
