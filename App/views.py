@@ -258,10 +258,12 @@ def new_sale(request, pk, website_name):
             )
 
 
-def business_page(request, pk, business_name):
-    business = get_object_or_404(Business, id=pk)
+def business_page(request, webpage_pk, website_name, business_pk, business_name):
+    website = get_object_or_404(Website, id=webpage_pk)
+    business = get_object_or_404(Business, id=business_pk)
     context = {
         "business": business,
+        "website": website,
     }
     return render(request, "home/business_page.html", context)
 
