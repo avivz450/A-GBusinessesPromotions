@@ -42,7 +42,8 @@ class Profile(models.Model):
 class Website(models.Model):
     name = models.CharField(max_length=30)  # required
     logo = models.ImageField(
-        default=None, upload_to="App/images/WebsitesLogos/"
+        default="App/images/SalesPictures/default.jpg",
+        upload_to="App/images/WebsitesLogos/",
     )  # required
     profiles = models.ManyToManyField("Profile", through="Website_Profile")
     is_confirmed = models.BooleanField(default=False)
