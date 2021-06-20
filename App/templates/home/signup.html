@@ -1,6 +1,8 @@
 {% extends "home/base.html" %}
 {% load static %}
 {% block content %}
+{% load crispy_forms_tags %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'home/CSS/new_question_style.css' %}">
 <body class="main-bg">
   <div class="row pb-3">
@@ -11,7 +13,7 @@
             <br><br>
             <form method="post">
               {% csrf_token %}
-              {{ form.as_p }}
+              {{ form|crispy }}
               <center><button class="submit-btn" type="submit">Sign up</button></center>
             </form>
         </div>

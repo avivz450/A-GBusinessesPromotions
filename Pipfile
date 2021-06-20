@@ -12,6 +12,7 @@ black = "*"
 django-ckeditor = "*"
 django-pytest = "*"
 pytest = "*"
+django-crispy-forms = "*"
 
 [packages]
 django = "*"
