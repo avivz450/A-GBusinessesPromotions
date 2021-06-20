@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "App.apps.AppConfig",
     "phonenumber_field",
     "ckeditor",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,5 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 MESSAGE_TAGS = {messages.ERROR: "danger", messages.INFO: "warning"}
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
