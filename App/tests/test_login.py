@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 @pytest.mark.django_db
 class TestLogin:
-    demo_webpage_login_url = reverse("login", args=[1, "Demo"])
-    demo_webpage_url = reverse("websitepage", args=[1, "Demo"])
+    demo_webpage_login_url = reverse("login", args=[1, "Website_Demo"])
+    demo_webpage_url = reverse("websitepage", args=[1, "Website_Demo"])
 
     @pytest.fixture
     def invalid_user_details(self):

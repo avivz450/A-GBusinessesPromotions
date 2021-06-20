@@ -11,28 +11,38 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.landingpage, name="landingpage"),
-    path("<int:pk>_<str:website_name>/", views.websitepage, name="websitepage"),
+    path(
+        "websites/<int:pk>_<str:website_name>/", views.websitepage, name="websitepage"
+    ),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path(
-        "<int:pk>_<str:website_name>/login/",
+        "websites/<int:pk>_<str:website_name>/login/",
         views.login_view,
         name="login",
     ),
     path(
-        "<int:webpage_pk>_<str:website_name>/businesses/<int:business_pk>_<str:business_name>/",
+        "websites/<int:webpage_pk>_<str:website_name>/businesses/<int:business_pk>_<str:business_name>/",
         views.business_page,
         name="business-page",
     ),
     path(
-        "<int:pk>_<str:website_name>/businesses/", views.businesses, name="businesses"
+        "websites/<int:pk>_<str:website_name>/businesses/",
+        views.businesses,
+        name="businesses",
     ),
-    path("<int:pk>_<str:website_name>/sales/", views.sales, name="sales"),
-    path("<int:pk>_<str:website_name>/signup/", views.signup, name="signup"),
+    path("websites/<int:pk>_<str:website_name>/sales/", views.sales, name="sales"),
+    path("websites/<int:pk>_<str:website_name>/signup/", views.signup, name="signup"),
     path(
-        "<int:pk>_<str:website_name>/new_business/",
+        "websites/<int:pk>_<str:website_name>/new_business/",
         views.new_business,
         name="new_business",
     ),
-    path("<int:pk>_<str:website_name>/new_sale/", views.new_sale, name="new_sale"),
-    path("<int:pk>_<str:website_name>/premium/", views.premium, name="premium"),
+    path(
+        "websites/<int:pk>_<str:website_name>/new_sale/",
+        views.new_sale,
+        name="new_sale",
+    ),
+    path(
+        "websites/<int:pk>_<str:website_name>/premium/", views.premium, name="premium"
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
