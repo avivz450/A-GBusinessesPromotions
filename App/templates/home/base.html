@@ -57,6 +57,11 @@
 					<a class="nav-link" id="navlink" href="{% url 'premium' website.id website.name %}">Upgrade</a>
 				</li>
 				{% endif %}
+				{% if website_profile_pair.is_admin is True %}
+				<li class="nav-item">
+					<a class="nav-link" id="navlink" href="#">Admin Section</a>
+				</li>
+				{% endif %}
 				{% endif %}
 			</ul>
 			<!-- Navbar Right Side -->

@@ -28,7 +28,7 @@
               />
               <div class="card-body">
                 <h5 class="card-title">{{ business.name}}</h5>
-                <p class="card-text">{{ business.description }}</p>
+                <p class="card-text">{{ business.description|safe }}</p>
                 <a href="{% url 'business-page' website.id website.name business.id business.name %}" class="btn btn-primary">Go to site</a>
               </div>
             </div>
