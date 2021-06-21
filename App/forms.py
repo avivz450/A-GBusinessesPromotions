@@ -42,7 +42,7 @@ class SaleForm(forms.ModelForm):
         logged_in_user = kwargs.pop("logged_in_user", None)
         super(SaleForm, self).__init__(*args, **kwargs)
         self.fields["business"].queryset = Business.objects.filter(
-            profile=logged_in_user
+            profile=logged_in_user, is_confirmed=True
         )
 
 
@@ -50,12 +50,23 @@ class ChooseWebsiteForm(forms.Form):
     website = forms.ModelMultipleChoiceField(queryset=Website.objects.all())
 
 
-class ChooseUserBusinessesForm(forms.Form):
+class UserBusinessesForm(forms.Form):
     business = forms.ModelMultipleChoiceField(queryset=Business.objects.all())
 
     def __init__(self, *args, **kwargs):
         logged_in_user = kwargs.pop("logged_in_user", None)
-        super(ChooseUserBusinessesForm, self).__init__(*args, **kwargs)
+        super(UserBusinessesForm, self).__init__(*args, **kwargs)
         self.fields["business"].queryset = Business.objects.filter(
-            profile=logged_in_user
+            profile=logged_in_user, is_confirmed=True
+        )
+
+
+class UserSalesForm(forms.Form):
+    sale = forms.ModelMultipleChoiceField(queryset=Sale.objects.all())
+
+    def __init__(self, *args, **kwargs):
+        logged_in_user = kwargs.pop("logged_in_user", None)
+        super(UserSalesForm, self).__init__(*args, **kwargs)
+        self.fields["sale"].queryset = Sale.objects.filter(
+            profile=logged_in_user, is_confirmed=True
         )

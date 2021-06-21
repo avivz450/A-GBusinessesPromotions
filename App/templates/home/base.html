@@ -34,11 +34,9 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 pb-3">
 				<li class="nav-item">
-				{% comment %} "{% url 'explore-page' %}" {% endcomment %}
 					<a class="nav-link" id="navlink" href={% url 'businesses' website.id website.name%}>Businesses</a> 
 				</li>
 				<li class="nav-item">
-					{% comment %} "{% url 'new_question' %}" {% endcomment %}
 					<a class="nav-link" id="navlink" href={% url 'sales' website.id website.name%}>Sales</a>
 				</li>
 				{% if user.is_authenticated %}
@@ -46,11 +44,13 @@
 					<a class="nav-link" id="navlink" href={% url 'new_business' website.id website.name%}>Add Business</a>
 				</li>
 				<li class="nav-item">
-				{% comment %} "{% url 'about' %}" {% endcomment %}
 					<a class="nav-link" id="navlink" href={% url 'choose_business_to_edit' website.id website.name%}>Edit Business</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" id="navlink" href="{% url 'new_sale' website.id website.name%}">Add Sale</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="navlink" href={% url 'choose_sale_to_edit' website.id website.name%}>Edit Sale</a>
 				</li>
 				{% if user.profile.is_vip is False %}
 				<li class="nav-item">
@@ -73,8 +73,7 @@
 			  </ul>
 			  {% else %}
 			  <p class="nav-item nav-link m-2" id="navlink"><b>Hello visitor</b></p>
-			  {% comment %} "{% url 'login' %}?next={% firstof request.path '/' %}" {% endcomment %}
-				<a class="nav-item nav-link m-2" id="navlink" href={% url 'login' website.id website.name %}>Login</a>
+				<a class="nav-item nav-link m-2" id="navlink" href="{% url 'login' website.id website.name %}?next={% firstof request.path '/' %}">Login</a>
 				<a class="nav-item nav-link m-2" id="navlink" href={% url 'signup' website.id website.name %}>Sign up</a>
 			  {% endif %}
 			</div>

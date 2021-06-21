@@ -53,6 +53,16 @@ urlpatterns = [
         name="new_sale",
     ),
     path(
+        "websites/<int:website_pk>_<str:website_name>/edit_sale/<int:sale_pk>/",
+        views.edit_sale,
+        name="edit_sale",
+    ),
+    path(
+        "websites/<int:pk>_<str:website_name>/edit_sale/",
+        views.choose_sale_to_edit,
+        name="choose_sale_to_edit",
+    ),
+    path(
         "websites/<int:pk>_<str:website_name>/premium/", views.premium, name="premium"
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
