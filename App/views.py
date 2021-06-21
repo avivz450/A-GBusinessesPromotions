@@ -1,6 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Sale, Profile, Business, Website, Website_Profile
-from .forms import SignUpForm, BusinessForm, SaleForm, ChooseWebsiteForm
+from .forms import (
+    SignUpForm,
+    BusinessForm,
+    SaleForm,
+    ChooseWebsiteForm,
+    ChooseUserBusinessesForm,
+)
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -173,6 +179,81 @@ def new_business(request, pk, website_name):
         )
 
 
+def choose_business_to_edit(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        if request.method == "POST":
+            chosen_business = Business.objects.get(id=request.POST.get("business", ""))
+            return redirect(
+                "edit_business", website.id, website.name, chosen_business.id
+            )
+        else:
+            form = ChooseUserBusinessesForm(logged_in_user=request.user.id)
+            return render(
+                request,
+                "home/choose_object_to_edit.html",
+                {
+                    "title": "Edit business",
+                    "form": form,
+                    "object": "business",
+                    "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
+                },
+            )
+
+
+def edit_business(request, website_pk, website_name, business_pk):
+    website = get_object_or_404(Website, id=website_pk)
+    business = get_object_or_404(Business, id=business_pk)
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    elif business.profile.user.id != request.user.id:
+        messages.error(
+            request,
+            {
+                "title": "ERROR: ",
+                "message_content": "You don't have permission to edit this business",
+            },
+        )
+        return render(
+            request,
+            "home/websitepage.html",
+            {
+                "title": "Welcome!",
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+            },
+        )
+    else:
+        if request.method == "GET":
+            form = BusinessForm(instance=business)
+        else:
+            form = BusinessForm(request.POST, request.FILES, instance=business)
+            if form.is_valid():
+                form.save()
+        return render(
+            request,
+            "home/edit_object.html",
+            {
+                "title": "Edit " + business.name,
+                "business_name": business.name,
+                "form": form,
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+            },
+        )
+
+
 def premium(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     if not request.user.is_authenticated:
@@ -327,20 +408,21 @@ def login_view(request, pk, website_name):
         username = request.POST.get("username", "")
         password = request.POST.get("password", "")
         user = authenticate(request, username=username, password=password)
-        logged_in_profile = Profile.objects.filter(user=user).first()
-        website_profile_pair = Website_Profile.objects.filter(
-            profile=logged_in_profile, website=website
-        ).first()
+        website_profile_pair = Website_Profile.get_website_profile_pair(user, website)
 
         if (user is not None) and (website_profile_pair is not None):
             login(request, user)
             return redirect("websitepage", website.id, website.name)
         else:
+            if user is None:
+                message_content = "Invalid username/password."
+            else:
+                message_content = "This user is not connected to this website."
             messages.error(
                 request,
                 {
                     "title": "ERROR: ",
-                    "message_content": "Invalid username/password.",
+                    "message_content": message_content,
                 },
             )
     return render(

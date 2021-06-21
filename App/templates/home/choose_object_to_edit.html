@@ -1,0 +1,17 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+
+<body class="main-bg">
+    <div class="newfrm">
+            <p class="newmsg">Please choose your {{ object }} : </p>
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <input type="submit"  name="choose_business_to_edit" value="Choose {{ object }}">
+        </form>
+    </div>
+</body>
+
+{% endblock content %}

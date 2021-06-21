@@ -10,7 +10,7 @@ class TestLogin:
 
     @pytest.fixture
     def invalid_user_details(self):
-        return {"username": "Aviv12", "password": "LiorLior"}
+        return {"username": "Aviv12", "password": "Aviv12Aviv12"}
 
     def test_get_login_page(self, client):
         response = client.get(self.demo_webpage_login_url)

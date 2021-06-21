@@ -26,6 +26,16 @@ urlpatterns = [
         name="business-page",
     ),
     path(
+        "websites/<int:website_pk>_<str:website_name>/edit_business/<int:business_pk>/",
+        views.edit_business,
+        name="edit_business",
+    ),
+    path(
+        "websites/<int:pk>_<str:website_name>/edit_business/",
+        views.choose_business_to_edit,
+        name="choose_business_to_edit",
+    ),
+    path(
         "websites/<int:pk>_<str:website_name>/businesses/",
         views.businesses,
         name="businesses",
