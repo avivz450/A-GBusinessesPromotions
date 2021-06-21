@@ -1,0 +1,17 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+
+<body class="main-bg">
+    <div class="newfrm">
+            <h2 class="newmsg">Edit {{business_name}} </h2>
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <input type="submit"  name="choose_business_to_edit" value="Confirm">
+        </form>
+    </div>
+</body>
+
+{% endblock content %}
