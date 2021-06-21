@@ -5,7 +5,8 @@ from .forms import (
     BusinessForm,
     SaleForm,
     ChooseWebsiteForm,
-    ChooseUserBusinessesForm,
+    UserBusinessesForm,
+    UserSalesForm,
 )
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -191,7 +192,7 @@ def choose_business_to_edit(request, pk, website_name):
                 "edit_business", website.id, website.name, chosen_business.id
             )
         else:
-            form = ChooseUserBusinessesForm(logged_in_user=request.user.id)
+            form = UserBusinessesForm(logged_in_user=request.user.id)
             return render(
                 request,
                 "home/choose_object_to_edit.html",
@@ -384,6 +385,84 @@ def new_sale(request, pk, website_name):
                     ),
                 },
             )
+
+
+def choose_sale_to_edit(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        if request.method == "POST":
+            chosen_sale = Sale.objects.get(id=request.POST.get("sale", ""))
+            return redirect("edit_sale", website.id, website.name, chosen_sale.id)
+        else:
+            form = UserSalesForm(logged_in_user=request.user.id)
+            return render(
+                request,
+                "home/choose_object_to_edit.html",
+                {
+                    "title": "Edit sale",
+                    "form": form,
+                    "object": "sale",
+                    "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
+                },
+            )
+
+
+def edit_sale(request, website_pk, website_name, sale_pk):
+    website = get_object_or_404(Website, id=website_pk)
+    sale = get_object_or_404(Sale, id=sale_pk)
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    elif sale.profile.user.id != request.user.id:
+        messages.error(
+            request,
+            {
+                "title": "ERROR: ",
+                "message_content": "You don't have permission to edit this sale",
+            },
+        )
+        return render(
+            request,
+            "home/websitepage.html",
+            {
+                "title": "Welcome!",
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+            },
+        )
+    else:
+        if request.method == "GET":
+            form = SaleForm(instance=sale, logged_in_user=request.user.id)
+        else:
+            form = SaleForm(
+                request.POST,
+                request.FILES,
+                instance=sale,
+                logged_in_user=request.user.id,
+            )
+            if form.is_valid():
+                form.save()
+        return render(
+            request,
+            "home/edit_object.html",
+            {
+                "title": "Edit " + sale.title,
+                "business_name": sale.title,
+                "form": form,
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+            },
+        )
 
 
 def business_page(request, webpage_pk, website_name, business_pk, business_name):
