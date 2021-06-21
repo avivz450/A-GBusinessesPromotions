@@ -8,17 +8,18 @@ from django.contrib.auth.forms import AuthenticationForm
 
 def websitepage(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
-    if request.user.is_authenticated:
-        logged_in_profile = Profile.objects.filter(user=request.user).first()
-        website_profile_pair = Website_Profile.objects.filter(
-            profile=logged_in_profile, website=website
-        ).first()
-        if website_profile_pair is None:
-            logout(request)
-
     context = {
         "website": website,
     }
+    if request.user.is_authenticated:
+        website_profile_pair = Website_Profile.get_website_profile_pair(
+            request.user, website
+        )
+        if website_profile_pair is None:
+            logout(request)
+        else:
+            context["website_profile_pair"] = website_profile_pair
+
     return render(request, "home/websitepage.html", context)
 
 
@@ -35,20 +36,30 @@ def landingpage(request):
 
 
 def businesses(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+    context = {
+        "businesses": Business.objects.all(),
+        "website": website,
+    }
     if request.method == "GET":
-        context = {
-            "businesses": Business.objects.all(),
-            "website": get_object_or_404(Website, id=pk),
-        }
+        if request.user.is_authenticated:
+            context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
+                request.user, website
+            )
     return render(request, "home/businesses.html", context)
 
 
 def sales(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+    context = {
+        "sales": Sale.objects.all(),
+        "website": website,
+    }
     if request.method == "GET":
-        context = {
-            "sales": Sale.objects.all(),
-            "website": get_object_or_404(Website, id=pk),
-        }
+        if request.user.is_authenticated:
+            context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
+                request.user, website
+            )
     return render(request, "home/sales.html", context)
 
 
@@ -67,7 +78,27 @@ def signup(request, pk, website_name):
             login(request, user)
             return redirect("websitepage", website.id, website.name)
     else:
-        form = SignUpForm()
+        if request.user.is_authenticated:
+            messages.info(
+                request,
+                {
+                    "title": "INFO: ",
+                    "message_content": "You are already logged-in.",
+                },
+            )
+            return render(
+                request,
+                "home/websitepage.html",
+                {
+                    "title": "Welcome!",
+                    "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
+                },
+            )
+        else:
+            form = SignUpForm()
     return render(
         request,
         "home/signup.html",
@@ -106,14 +137,6 @@ def new_business(request, pk, website_name):
                             "message_content": msg_content,
                         },
                     )
-                    return render(
-                        request,
-                        "home/websitepage.html",
-                        {
-                            "title": "Welcome!",
-                            "website": website,
-                        },
-                    )
             else:
                 form = BusinessForm()
                 return render(
@@ -123,6 +146,9 @@ def new_business(request, pk, website_name):
                         "form": form,
                         "title": "New Business",
                         "website": website,
+                        "website_profile_pair": Website_Profile.get_website_profile_pair(
+                            request.user, website
+                        ),
                     },
                 )
         else:
@@ -140,6 +166,9 @@ def new_business(request, pk, website_name):
             {
                 "title": "Welcome!",
                 "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
             },
         )
 
@@ -167,6 +196,9 @@ def premium(request, pk, website_name):
                 {
                     "title": "Welcome!",
                     "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
                 },
             )
         elif logged_in_profile.is_vip is True:
@@ -183,6 +215,9 @@ def premium(request, pk, website_name):
                 {
                     "title": "Welcome!",
                     "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
                 },
             )
         else:
@@ -192,6 +227,9 @@ def premium(request, pk, website_name):
                 {
                     "title": "AG Premium",
                     "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
                 },
             )
 
@@ -229,6 +267,9 @@ def new_sale(request, pk, website_name):
                         {
                             "title": "Welcome!",
                             "website": website,
+                            "website_profile_pair": Website_Profile.get_website_profile_pair(
+                                request.user, website
+                            ),
                         },
                     )
             return render(
@@ -238,6 +279,9 @@ def new_sale(request, pk, website_name):
                     "form": form,
                     "title": "New Sale",
                     "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
                 },
             )
         else:
@@ -254,6 +298,9 @@ def new_sale(request, pk, website_name):
                 {
                     "title": "Welcome!",
                     "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
                 },
             )
 
@@ -265,6 +312,10 @@ def business_page(request, webpage_pk, website_name, business_pk, business_name)
         "business": business,
         "website": website,
     }
+    if request.user.is_authenticated:
+        context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
+            request.user, website
+        )
     return render(request, "home/business_page.html", context)
 
 
@@ -272,16 +323,7 @@ def login_view(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     form = AuthenticationForm()
 
-    if request.method == "GET":
-        return render(
-            request,
-            "home/login.html",
-            {
-                "website": website,
-                "form": form,
-            },
-        )
-    else:
+    if request.method == "POST":
         username = request.POST.get("username", "")
         password = request.POST.get("password", "")
         user = authenticate(request, username=username, password=password)
@@ -301,11 +343,11 @@ def login_view(request, pk, website_name):
                     "message_content": "Invalid username/password.",
                 },
             )
-            return render(
-                request,
-                "home/login.html",
-                {
-                    "website": website,
-                    "form": form,
-                },
-            )
+    return render(
+        request,
+        "home/login.html",
+        {
+            "website": website,
+            "form": form,
+        },
+    )

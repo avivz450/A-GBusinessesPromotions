@@ -71,6 +71,14 @@ class Website_Profile(models.Model):
     def __str__(self):
         return f"User name : {self.profile}, Website : {self.website}"
 
+    @classmethod
+    def get_website_profile_pair(cls, user, website):
+        logged_in_profile = Profile.objects.filter(user=user).first()
+        website_profile_pair = Website_Profile.objects.filter(
+            profile=logged_in_profile, website=website
+        ).first()
+        return website_profile_pair
+
 
 class Business(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
