@@ -21,6 +21,11 @@ urlpatterns = [
         name="login",
     ),
     path(
+        "websites/<int:website_pk>_<str:website_name>/edit_profile/<int:profile_pk>/",
+        views.edit_profile,
+        name="edit_profile",
+    ),
+    path(
         "websites/<int:webpage_pk>_<str:website_name>/businesses/<int:business_pk>_<str:business_name>/",
         views.business_page,
         name="business-page",

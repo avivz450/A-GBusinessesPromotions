@@ -8,10 +8,50 @@ class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False)
     last_name = forms.CharField(max_length=30, required=False)
     email = forms.EmailField(max_length=254)
+    username = forms.CharField(required=True)
 
     class Meta:
         model = User
-        fields = ("username", "first_name", "last_name", "password1", "password2")
+        fields = (
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "password1",
+            "password2",
+        )
+
+    def __init__(self, *args, **kwargs):
+        logged_in_user = kwargs.pop("logged_in_user", None)
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        self.logged_in_user = None
+        if logged_in_user:
+            self.logged_in_user = logged_in_user
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+
+        if self.logged_in_user:
+            num_of_users_with_inserted_email = (
+                User.objects.filter(email=email).exclude(id=self.logged_in_user).count()
+            )
+        else:
+            num_of_users_with_inserted_email = User.objects.filter(email=email).count()
+
+        if email and num_of_users_with_inserted_email > 0:
+            raise forms.ValidationError(
+                "This email address is already in use. Please supply a different email address."
+            )
+        return email
+
+    def save(self, commit=True):
+        user = super(SignUpForm, self).save(commit=False)
+        user.email = self.cleaned_data["email"]
+
+        if commit:
+            user.save()
+
+        return user
 
 
 class BusinessForm(forms.ModelForm):

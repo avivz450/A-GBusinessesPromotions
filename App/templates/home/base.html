@@ -69,6 +69,7 @@
 			  {% if user.is_authenticated %}
 			  <ul class="nav navbar-nav">
 				<li><p id="navlink" class="nav-item m-2"><b>Hello {{user.username}}!</b></p></li>
+				<li><a id="navlink" class="nav-item nav-link m-2" href={% url 'edit_profile' website.id website.name user.id %}>Edit profile</a></li>
 				<li><a id="navlink" class="nav-item nav-link m-2" href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></li>
 			  </ul>
 			  {% else %}
