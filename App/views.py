@@ -73,7 +73,7 @@ def sales(request, pk, website_name):
 def signup(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     if request.method == "POST":
-        form = SignUpForm(request.POST)
+        form = SignUpForm(request.POST, logged_in_user=None)
         if form.is_valid():
             user = form.save()
             raw_password = form.cleaned_data.get("password1")
@@ -105,7 +105,7 @@ def signup(request, pk, website_name):
                 },
             )
         else:
-            form = SignUpForm()
+            form = SignUpForm(logged_in_user=None)
     return render(
         request,
         "home/signup.html",
@@ -115,6 +115,67 @@ def signup(request, pk, website_name):
             "website": website,
         },
     )
+
+
+def edit_profile(request, website_pk, website_name, profile_pk):
+    website = get_object_or_404(Website, id=website_pk)
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    elif profile_pk != request.user.id:
+        messages.error(
+            request,
+            {
+                "title": "ERROR: ",
+                "message_content": "You don't have permission to edit this user.",
+            },
+        )
+        return render(
+            request,
+            "home/websitepage.html",
+            {
+                "title": "Welcome!",
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+            },
+        )
+    else:
+        if request.method == "GET":
+            form = SignUpForm(instance=request.user, logged_in_user=request.user.id)
+        else:
+            form = SignUpForm(
+                request.POST,
+                request.FILES,
+                instance=request.user,
+                logged_in_user=request.user.id,
+            )
+            if form.is_valid():
+                form.save()
+                raw_password = form.cleaned_data.get("password1")
+                user_name = form.cleaned_data.get("username")
+                user = authenticate(username=user_name, password=raw_password)
+                login(request, user)
+                messages.success(
+                    request,
+                    {
+                        "title": "SUCCESS: ",
+                        "message_content": "Your profile has updated successfuly.",
+                    },
+                )
+        return render(
+            request,
+            "home/edit_profile.html",
+            {
+                "form": form,
+                "title": "Edit " + request.user.username + " Details",
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+            },
+        )
 
 
 def new_business(request, pk, website_name):
