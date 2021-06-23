@@ -16,7 +16,6 @@ class TestSignUp:
         return {
             "username": "username",
             "email": "user@e.com",
-            "gender": "U",
             "password1": "ido123123",
             "password2": "ido123123",
         }
@@ -40,7 +39,6 @@ class TestSignUp:
                 {
                     "username": "",
                     "email": "valid@email.com",
-                    "gender": "U",
                     "password1": "pw123123",
                     "password2": "pw123123",
                 },
@@ -51,7 +49,6 @@ class TestSignUp:
                 {
                     "username": "valid_username",
                     "email": "a",
-                    "gender": "U",
                     "password1": "pw123123",
                     "password2": "pw123123",
                 },
@@ -62,7 +59,6 @@ class TestSignUp:
                 {
                     "username": "valid_username",
                     "email": "valid@email.com",
-                    "gender": "U",
                     "password1": "123",
                     "password2": "123",
                 },
@@ -73,7 +69,6 @@ class TestSignUp:
                 {
                     "username": "valid_username2",
                     "email": "valid@email.com",
-                    "gender": "U",
                     "password1": "000000000",
                     "password2": "123456789",
                 },
