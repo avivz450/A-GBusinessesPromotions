@@ -58,8 +58,10 @@ def businesses(request, pk, website_name):
 
 def sales(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
+    sales = website.get_website_sales()
+
     context = {
-        "sales": Sale.objects.all(),
+        "sales": sales,
         "website": website,
     }
     if request.method == "GET":
@@ -253,7 +255,7 @@ def choose_business_to_edit(request, pk, website_name):
                 "edit_business", website.id, website.name, chosen_business.id
             )
         else:
-            form = UserBusinessesForm(logged_in_user=request.user.id)
+            form = UserBusinessesForm(logged_in_user=request.user.id, website=website)
             return render(
                 request,
                 "home/choose_object_to_edit.html",

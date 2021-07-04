@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Business, Sale, Website
+from .models import Business, Sale, Website, Website_Business, Profile
 
 
 class SignUpForm(UserCreationForm):
@@ -95,10 +95,18 @@ class UserBusinessesForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         logged_in_user = kwargs.pop("logged_in_user", None)
+        logged_in_profile = Profile.objects.filter(user=logged_in_user).first()
+        website = kwargs.pop("website", None)
         super(UserBusinessesForm, self).__init__(*args, **kwargs)
-        self.fields["business"].queryset = Business.objects.filter(
-            profile=logged_in_user, is_confirmed=True
-        )
+        businesses = []
+
+        for website_business_pair in Website_Business.objects.filter(
+            website=website, is_confirmed=True
+        ):
+            if website_business_pair.business.profile == logged_in_profile:
+                businesses.append(website_business_pair.business.id)
+
+        self.fields["business"].queryset = Business.objects.filter(id__in=businesses)
 
 
 class UserSalesForm(forms.Form):
