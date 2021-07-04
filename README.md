@@ -38,6 +38,7 @@ Guests - will be able to watch the content only.
 2. Extending opening hours for each business.
 3. Adding reviews to the businesses
 4. Adding "ask to connect to my site"
+5. Add block users feature.
 
 ##  Technology Stack :
 - Client side : Html, CSS, JavaScript .
