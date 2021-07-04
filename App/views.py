@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Sale, Profile, Business, Website, Website_Profile
+from .models import Sale, Profile, Business, Website, Website_Profile, Website_Business
 from .forms import (
     SignUpForm,
     BusinessForm,
@@ -45,7 +45,7 @@ def landingpage(request):
 def businesses(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     context = {
-        "businesses": Business.objects.all(),
+        "website_business_pairs": Website_Business.objects.filter(website=website),
         "website": website,
     }
     if request.method == "GET":

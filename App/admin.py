@@ -7,6 +7,7 @@ from .models import (
     Contact,
     Website,
     Website_Profile,
+    Website_Business,
 )
 
 admin.site.register(Profile)
@@ -16,3 +17,4 @@ admin.site.register(Notification)
 admin.site.register(Contact)
 admin.site.register(Website)
 admin.site.register(Website_Profile)
+admin.site.register(Website_Business)

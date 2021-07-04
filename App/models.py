@@ -46,6 +46,7 @@ class Website(models.Model):
         upload_to="App/images/WebsitesLogos/",
     )  # required
     profiles = models.ManyToManyField("Profile", through="Website_Profile")
+    businesses = models.ManyToManyField("Business", through="Website_Business")
     is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
@@ -54,7 +55,7 @@ class Website(models.Model):
 
 class Website_Profile(models.Model):
     profile = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="profile_ID"
+        Profile, on_delete=models.CASCADE, related_name="wp_profile_ID"
     )
     website = models.ForeignKey(
         Website, on_delete=models.CASCADE, related_name="website_ID"
@@ -106,10 +107,31 @@ class Business(models.Model):
         null=True, blank=True, auto_now=False, auto_now_add=False
     )
     phone_number = PhoneNumberField(null=True, blank=True)
-    is_confirmed = models.BooleanField(default=False)
+    websites = models.ManyToManyField("Website", through="Website_Business")
 
     def __str__(self):
         return "{self.name}".format(self=self)
+
+
+class Website_Business(models.Model):
+    website = models.ForeignKey(
+        Website, on_delete=models.CASCADE, related_name="wb_website_ID"
+    )
+    business = models.ForeignKey(
+        Business, on_delete=models.CASCADE, related_name="business_ID"
+    )
+
+    is_confirmed = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["website", "business"], name="website_business"
+            )
+        ]
+
+    def __str__(self):
+        return f"Website : {self.website}, business : {self.business}, "
 
 
 class Sale(models.Model):

@@ -16,20 +16,20 @@
       <div class="col-md-12">
         <!-- Answers Part -->
         <article class="businesses-container">
-          {% for business in businesses %}
-            {% if business.is_confirmed %}
+          {% for website_business_pair in website_business_pairs %}
+            {% if website_business_pair.is_confirmed %}
             <div class="card business-container" style="width: 18rem">
               <img
                 class="card-img-top"
-                src="{{ business.logo.url }}"
+                src="{{ website_business_pair.business.logo.url }}"
                 alt="Card image cap"
                 width="30"
                 height="230"
               />
               <div class="card-body">
-                <h5 class="card-title">{{ business.name}}</h5>
-                <p class="card-text">{{ business.description|safe }}</p>
-                <a href="{% url 'business-page' website.id website.name business.id business.name %}" class="btn btn-primary">Go to site</a>
+                <h5 class="card-title">{{ website_business_pair.business.name}}</h5>
+                <p class="card-text">{{ website_business_pair.business.description|safe }}</p>
+                <a href="{% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %}" class="btn btn-primary">Go to site</a>
               </div>
             </div>
             {% endif %}
