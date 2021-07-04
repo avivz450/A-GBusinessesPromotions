@@ -21,15 +21,17 @@ Premium users will have additional benefits.
 Guests - will be able to watch the content only.
 
 ## Features :
-1. Adding business.
-2. Editing an existing business page.
-3. Charging for premium services.
-4. Searching and filter businesses by specific criteria. 
-5. Registration and login.
-6. User notification.
-7. Adding sales.
-8. View sales for each use/guest.
-
+1. Adding business/sales.
+2. Filter and sort businesses/sales by specific criteria.
+3. Editing an existing business/sale page.
+4. View sales/businesses for each user/guest.
+5. Charging for premium services.
+6. Connect Sale/Business to other website efficiently.
+7. Host out website in AWS + edit our URLs.
+8. Registration and login.
+9. User notification.
+10. Edit admin section.
+11. Add website.
 
 ## Nice to have features
 1. Adding a category for each business for filter while the user using the searching bar.
