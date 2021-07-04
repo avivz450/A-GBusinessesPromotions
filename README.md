@@ -37,6 +37,7 @@ Guests - will be able to watch the content only.
 1. Adding a category for each business for filter while the user using the searching bar.
 2. Extending opening hours for each business.
 3. Adding reviews to the businesses
+4. Adding "ask to connect to my site"
 
 ##  Technology Stack :
 - Client side : Html, CSS, JavaScript .
