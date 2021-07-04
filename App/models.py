@@ -52,6 +52,19 @@ class Website(models.Model):
     def __str__(self):
         return "{self.name}".format(self=self)
 
+    def get_website_sales(self):
+        website_business_pairs = Website_Business.objects.filter(website=self)
+        sales = []
+
+        for website_business_pair in website_business_pairs:
+            if website_business_pair.is_confirmed:
+                for sale in Sale.objects.filter(
+                    business=website_business_pair.business
+                ):
+                    sales.append(sale)
+
+        return sales
+
 
 class Website_Profile(models.Model):
     profile = models.ForeignKey(
