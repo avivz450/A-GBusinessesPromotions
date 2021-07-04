@@ -1,8 +1,7 @@
-name: Flake8
+name: Test with Flake8 and PyTest
 on: pull_request
 jobs:
-  flake8:
-    name: Check code with Flake8
+  Test-PR:
     runs-on: ubuntu-20.04
     container: fedora:32
     steps:
@@ -14,3 +13,5 @@ jobs:
         run: pipenv sync --dev
       - name: Run Flake8
         run: pipenv run flake8 --max-line-length 120
+      - name: Run PyTest
+        run: pipenv run pytest -v
