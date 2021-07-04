@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "ckeditor",
     "crispy_forms",
+    "location_field.apps.DefaultConfig",
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,14 @@ LOGOUT_REDIRECT_URL = "/"
 MESSAGE_TAGS = {messages.ERROR: "danger", messages.INFO: "warning"}
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+GOOGLE_MAPS_API_KEY = "AIzaSyBaT5R28fz7vzjnpSfr3A9VwH9NMHsNU3M"
+
+LOCATION_FIELD = {
+    "map.provider": "google",
+    "map.zoom": 15,
+    "search.provider": "google",
+    "provider.google.api": "//maps.google.com/maps/api/js?sensor=false",
+    "provider.google.api_key": GOOGLE_MAPS_API_KEY,
+    "provider.google.map.type": "ROADMAP",
+}
