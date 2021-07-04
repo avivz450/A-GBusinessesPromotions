@@ -13,6 +13,7 @@ django-ckeditor = "*"
 django-pytest = "*"
 pytest = "*"
 django-crispy-forms = "*"
+django-location-field = "*"
 
 [packages]
 django = "*"

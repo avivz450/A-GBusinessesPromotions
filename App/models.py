@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from ckeditor.fields import RichTextField
+from location_field.models.plain import PlainLocationField
 
 
 # Create your models here.
@@ -120,6 +121,8 @@ class Business(models.Model):
         null=True, blank=True, auto_now=False, auto_now_add=False
     )
     phone_number = PhoneNumberField(null=True, blank=True)
+    city = models.CharField(max_length=255, null=True, blank=True)
+    location = PlainLocationField(based_fields=["city"], zoom=7, null=True, blank=True)
     websites = models.ManyToManyField("Website", through="Website_Business")
 
     def __str__(self):
