@@ -69,6 +69,8 @@ class BusinessForm(forms.ModelForm):
             "picture_2",
             "facebook_link",
             "instagram_link",
+            "city",
+            "location",
             "description",
         )
 

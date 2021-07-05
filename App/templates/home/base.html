@@ -1,87 +1,103 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en">
 
-		<!-- JS scripts-->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="{% static 'home/CSS/base_style.css' %}">
-		
-		{% if title %}
-			<title>{{ title }}</title>
-		{% else %}
-			<title>Welcome!</title>
-		{% endif %}
-		<link rel="shortcut icon" href="{% static 'home/favicon.ico' %}"/>
-	 </head>
-	<body>
-	<nav class="navbar navbar-expand-lg navbar-light" id="baseNavbar">
-	  <div class="container-fluid">
-			<a class="nav-link active" href={% url 'websitepage' website.id website.name%} id="logo">
-			<img class="m-2" src="/static/home/AGLogo.png" alt="shlifim logo" width="140" height="77" id="logoIMG"></a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0 pb-3">
-				<li class="nav-item">
-					<a class="nav-link" id="navlink" href={% url 'businesses' website.id website.name%}>Businesses</a> 
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="navlink" href={% url 'sales' website.id website.name%}>Sales</a>
-				</li>
-				{% if user.is_authenticated %}
-				<li class="nav-item">
-					<a class="nav-link" id="navlink" href={% url 'new_business' website.id website.name%}>Add Business</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="navlink" href={% url 'choose_business_to_edit' website.id website.name%}>Edit Business</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="navlink" href="{% url 'new_sale' website.id website.name%}">Add Sale</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="navlink" href={% url 'choose_sale_to_edit' website.id website.name%}>Edit Sale</a>
-				</li>
-				{% if user.profile.is_vip is False %}
-				<li class="nav-item">
-					<a class="nav-link" id="navlink" href="{% url 'premium' website.id website.name %}">Upgrade</a>
-				</li>
-				{% endif %}
-				{% if website_profile_pair.is_admin is True %}
-				<li class="nav-item">
-					<a class="nav-link" id="navlink" href="#">Admin Section</a>
-				</li>
-				{% endif %}
-				{% endif %}
-			</ul>
-			<!-- Navbar Right Side -->
-			<div class="navbar-nav mb-2 mb-lg-0 pb-3">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="{% static 'home/favicon.ico' %}"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'home/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+
+	{% if title %}
+		<title>{{ title }}</title>
+	{% else %}
+		<title>Welcome!</title>
+	{% endif %}
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo me-auto">
+	  	<a href={% url 'websitepage' website.id website.name%}>
+		<img class="m-2" src="/static/home/AGLogo.png" alt="AGLogo logo" width="105" height="120" id="logoIMG"></a>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li class="dropdown"><a href="#"><span>Businesses</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href={% url 'businesses' website.id website.name%}>Explore</a></li>
 			  {% if user.is_authenticated %}
-			  <ul class="nav navbar-nav">
-				<li><p id="navlink" class="nav-item m-2"><b>Hello {{user.username}}!</b></p></li>
-				<li><a id="navlink" class="nav-item nav-link m-2" href={% url 'edit_profile' website.id website.name user.id %}>Edit profile</a></li>
-				<li><a id="navlink" class="nav-item nav-link m-2" href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></li>
-			  </ul>
-			  {% else %}
-			  <p class="nav-item nav-link m-2" id="navlink"><b>Hello visitor</b></p>
-				<a class="nav-item nav-link m-2" id="navlink" href="{% url 'login' website.id website.name %}?next={% firstof request.path '/' %}">Login</a>
-				<a class="nav-item nav-link m-2" id="navlink" href={% url 'signup' website.id website.name %}>Sign up</a>
+              <li><a href={% url 'new_business' website.id website.name%}>Add business</a></li>
+              <li><a href="#">Edit business</a></li>
+              <li><a href="#">Connect business</a></li>
 			  {% endif %}
-			</div>
-		</div>
-	 </div>
-	</nav>
-	  
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Sales</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href={% url 'sales' website.id website.name%}>Explore</a></li>
+				{% if user.is_authenticated %}
+              <li><a href={% url 'new_sale' website.id website.name%}>Add sale</a></li>
+              <li><a href={% url 'choose_sale_to_edit' website.id website.name%}>Edit sale</a></li>
+				{% endif %}
+            </ul>
+          </li>              
+          <li><a class="nav-link scrollto " href="#portfolio">About us</a></li>
+          <li><a class="nav-link scrollto" id="last_left_nav_item" href="#testimonials">Contact us</a></li>
+			{% if user.is_authenticated %}
+			<li class="dropdown"><a href="#"><span>Hello {{user.username}}!</span> <i class="bi bi-chevron-down"></i></a>
+				<ul>
+				<li><a href={% url 'edit_profile' website.id website.name user.id %}>Edit profile</a></li>
+				{% if user.profile.is_vip is False %}
+				<li><a href={% url 'premium' website.id website.name %}>Upgrade</a></li>
+				{% endif %} 
+				{% if website_profile_pair.is_admin is True %}
+				<li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-right"></i></a>
+					<ul>
+					<li><a href="#">Edit businesses</a></li>
+					<li><a href="#">Edit sales</a></li>
+					<li><a href="#">Edit profiles</a></li>
+					</ul>
+				</li>
+				{% endif %} 
+				</ul>
+			</li>
+            <li><a class="nav-link scrollto" href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></li>
+			{% else %}
+            <li><a class="nav-link scrollto" id="right_nav_item" href="{% url 'login' website.id website.name %}?next={% firstof request.path '/' %}">Login</a></li>
+            <li><a class="nav-link scrollto" href={% url 'signup' website.id website.name %}>Sign up</a></li>
+			{% endif %} 
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
 	{% for message in messages %}
 	<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
 		<strong>{{ message.message.title }} </strong> {{ message.message.message_content }}
@@ -91,15 +107,22 @@
 	  </div>
 	{% endfor %}
 
-<div class="navbar" id="bottomNavbar">
-  <a href="#news">Contact us</a>
-  <a href="#contact">About us</a>
-</div>
-
 	{% block content %}{% endblock %}
-	 </body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-			
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'home/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'home/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'home/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'home/vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static 'home/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'home/vendor/waypoints/noframework.waypoints.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'home/js/main.js' %}"></script>
+
+</body>
+
 </html>
