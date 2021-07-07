@@ -388,10 +388,13 @@ def new_sale(request, pk, website_name):
         num_of_sales_of_profile = len(Sale.objects.filter(profile=logged_in_profile))
 
         if logged_in_profile.is_vip or num_of_sales_of_profile == 0:
-            form = SaleForm(logged_in_user=request.user.id)
+            form = SaleForm(logged_in_user=request.user.id, website=website)
             if request.method == "POST":
                 saleForm = SaleForm(
-                    request.POST, request.FILES, logged_in_user=request.user.id
+                    request.POST,
+                    request.FILES,
+                    logged_in_user=request.user.id,
+                    website=website,
                 )
                 if saleForm.is_valid():
                     saleForm = saleForm.save(commit=False)
@@ -503,13 +506,16 @@ def edit_sale(request, website_pk, website_name, sale_pk):
         )
     else:
         if request.method == "GET":
-            form = SaleForm(instance=sale, logged_in_user=request.user.id)
+            form = SaleForm(
+                instance=sale, logged_in_user=request.user.id, website=website
+            )
         else:
             form = SaleForm(
                 request.POST,
                 request.FILES,
                 instance=sale,
                 logged_in_user=request.user.id,
+                website=website,
             )
             if form.is_valid():
                 form.save()

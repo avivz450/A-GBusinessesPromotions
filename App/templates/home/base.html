@@ -38,7 +38,7 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-      <div class="logo me-auto">
+      <div class="logo me-auto" id="last_left_nav_item">
 	  	<a href={% url 'websitepage' website.id website.name%}>
 		<img class="m-2" src="/static/home/AGLogo.png" alt="AGLogo logo" width="105" height="120" id="logoIMG"></a>
         <!-- Uncomment below if you prefer to use an image logo -->
@@ -47,12 +47,12 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li class="dropdown"><a href="#"><span>Businesses</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#" id="first_left_nav_item"><span>Businesses</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href={% url 'businesses' website.id website.name%}>Explore</a></li>
 			  {% if user.is_authenticated %}
               <li><a href={% url 'new_business' website.id website.name%}>Add business</a></li>
-              <li><a href="#">Edit business</a></li>
+              <li><a href={% url 'choose_business_to_edit' website.id website.name%}>Edit business</a></li>
               <li><a href="#">Connect business</a></li>
 			  {% endif %}
             </ul>
@@ -96,16 +96,17 @@
       </nav><!-- .navbar -->
 
     </div>
+
   </header><!-- End Header -->
 
-	{% for message in messages %}
-	<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-		<strong>{{ message.message.title }} </strong> {{ message.message.message_content }}
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		  <span aria-hidden="true">&times;</span>
-		</button>
-	  </div>
-	{% endfor %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>{{ message.message.title }} </strong> {{ message.message.message_content }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
 
 	{% block content %}{% endblock %}
 
@@ -122,6 +123,7 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'home/js/main.js' %}"></script>
+  <script src="{% static 'home/js/mapform.js' %}"></script>
 
 </body>
 
