@@ -182,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul li {
-  min-width: 175px;
+  min-width: 200px;
 }
 
 .navbar .dropdown ul a {
@@ -229,7 +229,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #last_left_nav_item {
-  margin-right:225px;
+  margin-right:200px;
 }
 
 /**
@@ -339,7 +339,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   background: url("/static/home/background2.jpg") no-repeat center center fixed;
   background-size: cover;
   position: relative;
@@ -1397,4 +1397,8 @@ section {
   font-size: small;
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.alert .close {
+  padding-top: 6px;
 }
