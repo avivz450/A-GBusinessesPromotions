@@ -5,26 +5,13 @@
   type="text/css"
   href="{% static 'home/CSS/landing-page.css' %}"
 />
-<body class="landing-bg">
-  <div class="center">
-    {% comment %}
-    <img
-      src="{% static 'home/animated-logo.gif' %}"
-      alt="Shlifim Logo gif"
-      class="row rounded mx-auto d-block my-5"
-    />
-    {% endcomment %}
-    <div class="text-center">
-      {% comment %} "{% url 'explore-page' %}" {% endcomment %}
-      <a
-        href="#"
-        type="button"
-        class="btn m-4 get_started_btn rounded-pill active"
-        aria-pressed="true"
-        id="GetStartedButton"
-        >Get Started</a
-      >
+<body>
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container text-center text-md-left" data-aos="fade-up">
+      <h1>Welcome to <span>Lumia</span></h1>
+      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a>
     </div>
-  </div>
+  </section>
 </body>
 {% endblock content %}

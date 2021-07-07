@@ -9,6 +9,7 @@
 # General
 --------------------------------------------------------------*/
 body {
+  margin-top: 70px;
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }
@@ -89,6 +90,7 @@ h1, h2, h3, h4, h5, h6 {
 #header .logo img {
   max-height: 60px;
 }
+
 
 /*--------------------------------------------------------------
 # Header Social Links
@@ -180,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul li {
-  min-width: 200px;
+  min-width: 175px;
 }
 
 .navbar .dropdown ul a {
@@ -227,7 +229,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #last_left_nav_item {
-  margin-right:200px;
+  margin-right:225px;
 }
 
 /**
@@ -337,17 +339,16 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 60vh;
-  background: url("../img/hero-bg.jpg") center center;
+  height: 90vh;
+  background: url("/static/home/background2.jpg") no-repeat center center fixed;
   background-size: cover;
   position: relative;
-  margin-top: 70px;
   padding: 0;
 }
 
 #hero:before {
   content: "";
-  background: rgba(56, 64, 70, 0.7);
+  background: rgba(56, 64, 70, 0.3);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -1388,4 +1389,12 @@ section {
   background: #5faee3;
   color: #fff;
   text-decoration: none;
+}
+
+/* Alert */
+.alert {
+  margin-bottom: 0px;
+  font-size: small;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
