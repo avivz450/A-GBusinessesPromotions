@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "ckeditor",
     "crispy_forms",
     "location_field.apps.DefaultConfig",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
