@@ -32,14 +32,17 @@ def websitepage(request, pk, website_name):
 
 def landingpage(request):
     if request.method == "POST":
-        form = ChooseWebsiteForm(request.POST)
-        if form.is_valid():
-            selected_website_id = request.POST.get("website")
-            selected_website = Website.objects.filter(id=selected_website_id).first()
-            return redirect("websitepage", selected_website.id, selected_website.name)
+        choose_website_form = ChooseWebsiteForm(request.POST)
+        selected_website_id = request.POST.get("website")
+        selected_website = Website.objects.filter(id=selected_website_id).first()
+        return redirect("websitepage", selected_website.id, selected_website.name)
     else:
-        form = ChooseWebsiteForm()
-    return render(request, "home/landingpage.html", {"form": form, "title": "Welcome!"})
+        choose_website_form = ChooseWebsiteForm()
+    return render(
+        request,
+        "home/landingpage.html",
+        {"choose_website_form": choose_website_form, "title": "Welcome!"},
+    )
 
 
 def businesses(request, pk, website_name):

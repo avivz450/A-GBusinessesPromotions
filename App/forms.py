@@ -97,7 +97,16 @@ class SaleForm(forms.ModelForm):
 
 
 class ChooseWebsiteForm(forms.Form):
-    website = forms.ModelMultipleChoiceField(queryset=Website.objects.all())
+    website = forms.ModelMultipleChoiceField(
+        queryset=Website.objects.all(),
+        widget=forms.Select(
+            attrs={
+                "class": "selectpicker",
+                "data-live-search": "true",
+                "data-show-subtext": "true",
+            }
+        ),
+    )
 
 
 class UserBusinessesForm(forms.Form):
