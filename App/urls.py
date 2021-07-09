@@ -11,6 +11,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.landingpage, name="landingpage"),
+    path("websites/", views.choose_website, name="choose_website"),
+    path(
+        "login/",
+        auth_views.LoginView.as_view(template_name="home/landingpage_login.html"),
+        name="landingpage_login",
+    ),
+    path("signup/", views.landingpage_signup, name="landingpage_signup"),
+    path("add_website/", views.add_website, name="add_website"),
     path(
         "websites/<int:pk>_<str:website_name>/", views.websitepage, name="websitepage"
     ),

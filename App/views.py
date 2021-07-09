@@ -7,10 +7,12 @@ from .forms import (
     ChooseWebsiteForm,
     UserBusinessesForm,
     UserSalesForm,
+    WebsiteForm,
 )
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 
 def websitepage(request, pk, website_name):
@@ -31,17 +33,88 @@ def websitepage(request, pk, website_name):
 
 
 def landingpage(request):
-    if request.method == "POST":
-        choose_website_form = ChooseWebsiteForm(request.POST)
-        selected_website_id = request.POST.get("website")
-        selected_website = Website.objects.filter(id=selected_website_id).first()
-        return redirect("websitepage", selected_website.id, selected_website.name)
-    else:
-        choose_website_form = ChooseWebsiteForm()
     return render(
         request,
         "home/landingpage.html",
-        {"choose_website_form": choose_website_form, "title": "Welcome!"},
+        {"title": "Welcome!"},
+    )
+
+
+def choose_website(request):
+    choose_website_form = ChooseWebsiteForm()
+
+    if request.method == "POST":
+        if request.POST.get("transfer_to_website_button") == "submitted":
+            choose_website_form = ChooseWebsiteForm(request.POST)
+            selected_website_id = request.POST.get("website")
+            selected_website = Website.objects.filter(id=selected_website_id).first()
+            return redirect("websitepage", selected_website.id, selected_website.name)
+
+    return render(
+        request,
+        "home/choose_website.html",
+        {
+            "title": "Welcome!",
+            "choose_website_form": choose_website_form,
+        },
+    )
+
+
+def landingpage_signup(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST, logged_in_user=None)
+        if form.is_valid():
+            user = form.save()
+            raw_password = form.cleaned_data.get("password1")
+            user.save()
+            profile = Profile(user=user)
+            user = authenticate(username=user.username, password=raw_password)
+            profile.save()
+            login(request, user)
+            return redirect("add_website")
+    else:
+        form = SignUpForm(logged_in_user=None)
+    return render(
+        request,
+        "home/landinpage_signup.html",
+        {
+            "form": form,
+            "title": "Sign Up",
+        },
+    )
+
+
+@login_required(login_url="/login/")
+def add_website(request):
+    if request.method == "POST":
+        form = WebsiteForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_website = form.save()
+            logged_in_profile = Profile.objects.filter(user=request.user).first()
+            messages.success(
+                request,
+                {
+                    "title": "SUCCESS: ",
+                    "message_content": "Your website has been created successfuly!",
+                },
+            )
+            website_profile_pair = Website_Profile.objects.create(
+                profile=logged_in_profile, website=new_website, is_admin=True
+            )
+            return render(
+                request,
+                "home/websitepage.html",
+                {"website": new_website, "website_profile_pair": website_profile_pair},
+            )
+    else:
+        form = WebsiteForm()
+    return render(
+        request,
+        "home/add_website.html",
+        {
+            "form": form,
+            "title": "Add Website",
+        },
     )
 
 
