@@ -14,11 +14,11 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = (
             "username",
-            "email",
-            "first_name",
-            "last_name",
             "password1",
             "password2",
+            "first_name",
+            "last_name",
+            "email",
         )
 
     def __init__(self, *args, **kwargs):
@@ -72,6 +72,15 @@ class BusinessForm(forms.ModelForm):
             "city",
             "location",
             "description",
+        )
+
+
+class WebsiteForm(forms.ModelForm):
+    class Meta:
+        model = Website
+        fields = (
+            "name",
+            "logo",
         )
 
 

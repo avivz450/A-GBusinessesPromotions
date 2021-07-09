@@ -144,7 +144,7 @@ MEDIA_URL = "//"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/add_website/"
 LOGOUT_REDIRECT_URL = "/"
 
 MESSAGE_TAGS = {messages.ERROR: "danger", messages.INFO: "warning"}
@@ -161,3 +161,5 @@ LOCATION_FIELD = {
     "provider.google.api_key": GOOGLE_MAPS_API_KEY,
     "provider.google.map.type": "ROADMAP",
 }
+
+AUTHENTICATION_BACKENDS = ["django.contrib.auth.backends.AllowAllUsersModelBackend"]

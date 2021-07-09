@@ -52,12 +52,16 @@
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
   
     <div class="container text-center text-md-left" data-aos="fade-up">
-      <h1>Welcome to <span>A&GBusinessesPromotions</span></h1>
-      <h2>Let us advertise your business in a dynamic way!</h2>
-      <div class="btn-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-primary" id="choose_website_button" onclick="location.href = {% url 'choose_website'%}">Explore website</button>
-		<button type="button" class="btn btn-primary" id="register_website_button" onclick="location.href = {% url 'landingpage_login'%}">Add a new website</button>
-	  </div>
+	  <div class="container" id="choose_website_div">
+        <h2> Please choose the website you want to explore : </h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ choose_website_form.as_p }}
+            <center><button class="btn btn-primary btn-sm" type="submit" name="transfer_to_website_button" value="submitted">Transfer me!</button></center>
+        </form>
+    	</div>
+
+	</div>
     </div>
   </section>
 </body>

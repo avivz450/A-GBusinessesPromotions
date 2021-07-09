@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero:before {
   content: "";
-  background: rgba(56, 64, 70, 0.3);
+  background: rgba(56, 64, 70, 0.4);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -120,4 +120,17 @@ form p{
 .disabledbutton {
   pointer-events: none;
   opacity: 0;
+}
+
+@keyframes fade {
+0% { opacity: 0 }
+50% { opacity: 1 }
+}
+
+/* 2 options */
+
+/*Choose website container*/
+#choose_website_div{
+  opacity: 1;
+  animation: fade 1.5s linear;
 }

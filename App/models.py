@@ -43,7 +43,7 @@ class Profile(models.Model):
 class Website(models.Model):
     name = models.CharField(max_length=30)  # required
     logo = models.ImageField(
-        default="App/images/SalesPictures/default.jpg",
+        default="App/images/WebsitesLogos/default.jpg",
         upload_to="App/images/WebsitesLogos/",
     )  # required
     profiles = models.ManyToManyField("Profile", through="Website_Profile")
