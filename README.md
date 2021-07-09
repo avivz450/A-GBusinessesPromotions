@@ -39,6 +39,7 @@ Guests - will be able to watch the content only.
 3. Adding reviews to the businesses
 4. Adding "ask to connect to my site"
 5. Add block users feature.
+6. Edit website to admins only
 
 ##  Technology Stack :
 - Client side : Html, CSS, JavaScript .
