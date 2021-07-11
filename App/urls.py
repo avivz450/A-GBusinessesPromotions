@@ -20,6 +20,11 @@ urlpatterns = [
     path("signup/", views.landingpage_signup, name="landingpage_signup"),
     path("add_website/", views.add_website, name="add_website"),
     path(
+        "add_website/add_slides/<int:new_website_id>/<int:number_of_slides_to_submit>/",
+        views.add_slides,
+        name="add_slides",
+    ),
+    path(
         "websites/<int:pk>_<str:website_name>/", views.websitepage, name="websitepage"
     ),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),

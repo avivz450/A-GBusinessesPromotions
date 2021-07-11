@@ -24,7 +24,7 @@
   <link href="{% static 'home/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
 	<!-- Template Main CSS File -->
-	<!-- debuging <link href="{% static 'home/css/‏‏‏‏add_website.css' %}" rel="stylesheet">  -->
+	<link href="{% static 'home/css/‏‏‏‏add_website.css' %}" rel="stylesheet">
 
 	{% if title %}
 		<title>{{ title }}</title>
@@ -34,11 +34,11 @@
 
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-
 	 </head>
 
 
 <body>
+
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container text-center text-md-left" data-aos="fade-up">
     <div class="wrapper fadeInDown">
@@ -47,16 +47,20 @@
 
         <!-- Icon -->
         <div class="fadeIn first">
-          <img src="/static/home/AGLogo.png" id="icon" alt="User Icon" />
+          <img src="{{website.logo.url}}" id="icon" alt="User Icon" />
         </div>
 
         <!-- Login Form -->
         <form enctype="multipart/form-data" method="post">
-        <h5>Please enter the details of your new website:</h5>
           {% csrf_token %} 
-          {{ form.media }}
-          {{ form | crispy }}
+          <h5>Please enter the details of slide number {{current_slide_to_submit}}</h5>
+            {{ form.media }}
+            {{ form | crispy }}
+          {% if current_slide_to_submit == website.number_of_slides_in_main_page%}
           <input type="submit" class="fadeIn fourth" value="Continue">
+          {% else %}
+          <input type="submit" class="fadeIn fourth" value="Make Website!">
+          {%endif%}
         </form>
       </div>
     </div>

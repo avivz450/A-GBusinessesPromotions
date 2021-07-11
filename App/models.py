@@ -3,6 +3,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from ckeditor.fields import RichTextField
 from location_field.models.plain import PlainLocationField
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 # Create your models here.
@@ -46,6 +47,9 @@ class Website(models.Model):
         default="App/images/WebsitesLogos/default.jpg",
         upload_to="App/images/WebsitesLogos/",
     )  # required
+    number_of_slides_in_main_page = models.IntegerField(
+        default=1, validators=[MinValueValidator(1), MaxValueValidator(3)]
+    )  # field not required
     profiles = models.ManyToManyField("Profile", through="Website_Profile")
     businesses = models.ManyToManyField("Business", through="Website_Business")
     is_confirmed = models.BooleanField(default=False)
@@ -65,6 +69,19 @@ class Website(models.Model):
                     sales.append(sale)
 
         return sales
+
+
+class Slide(models.Model):
+    website = models.ForeignKey(Website, on_delete=models.CASCADE)  # required
+    title = models.CharField(max_length=200)  # required
+    picture = models.ImageField(
+        default=None,
+        upload_to="App/images/SlidePictures/",
+    )  # required
+    description = models.TextField(default=None, max_length=200)  # required
+
+    def __str__(self):
+        return "{self.title}".format(self=self)
 
 
 class Website_Profile(models.Model):

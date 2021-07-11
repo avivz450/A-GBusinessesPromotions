@@ -1,12 +1,50 @@
 {% extends "home/base.html" %} {% load static %} {% block content %}
 
 <body>
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="container text-center text-md-left" data-aos="fade-up">
-      <h1>Welcome to <span>A&GBusinessPromotions</span></h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+ <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+       {% for slide in slideList %}
+          <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+        
+            <div class="carousel-background"><img src="{{slide.picture.url}}" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">{{slide.title}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{slide.description}}</p>
+                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+    {% endfor %}
+
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-double-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-double-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
     </div>
-  </section>
+  </section><!-- End Hero -->
+
+
+
+    <!-- Vendor JS Files -->
+
+
+  <!-- Template Main JS File -->
+
+
 </body>
 {% endblock content %}

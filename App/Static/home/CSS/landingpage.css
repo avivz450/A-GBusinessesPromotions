@@ -134,3 +134,8 @@ form p{
   opacity: 1;
   animation: fade 1.5s linear;
 }
+
+img {
+  max-width:100%;
+  height:auto;
+}
