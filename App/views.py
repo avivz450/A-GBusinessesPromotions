@@ -1,5 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Sale, Profile, Business, Website, Website_Profile, Website_Business
+from .models import (
+    Sale,
+    Profile,
+    Business,
+    Website,
+    Website_Profile,
+    Website_Business,
+    Slide,
+)
 from .forms import (
     SignUpForm,
     BusinessForm,
@@ -8,6 +16,7 @@ from .forms import (
     UserBusinessesForm,
     UserSalesForm,
     WebsiteForm,
+    SlideForm,
 )
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -17,8 +26,10 @@ from django.contrib.auth.decorators import login_required
 
 def websitepage(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
+    slideList = Slide.objects.filter(website=website)
     context = {
         "website": website,
+        "slideList": slideList,
     }
     if request.user.is_authenticated:
         website_profile_pair = Website_Profile.get_website_profile_pair(
@@ -90,21 +101,8 @@ def add_website(request):
         form = WebsiteForm(request.POST, request.FILES)
         if form.is_valid():
             new_website = form.save()
-            logged_in_profile = Profile.objects.filter(user=request.user).first()
-            messages.success(
-                request,
-                {
-                    "title": "SUCCESS: ",
-                    "message_content": "Your website has been created successfuly!",
-                },
-            )
-            website_profile_pair = Website_Profile.objects.create(
-                profile=logged_in_profile, website=new_website, is_admin=True
-            )
-            return render(
-                request,
-                "home/websitepage.html",
-                {"website": new_website, "website_profile_pair": website_profile_pair},
+            return redirect(
+                "add_slides", new_website.id, new_website.number_of_slides_in_main_page
             )
     else:
         form = WebsiteForm()
@@ -114,6 +112,56 @@ def add_website(request):
         {
             "form": form,
             "title": "Add Website",
+        },
+    )
+
+
+@login_required(login_url="/login/")
+def add_slides(request, new_website_id, number_of_slides_to_submit):
+    website = get_object_or_404(Website, id=new_website_id)
+    form = SlideForm()
+    current_slide_number = (
+        website.number_of_slides_in_main_page - number_of_slides_to_submit + 1
+    )
+    if request.method == "POST":
+        form = SlideForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.website = website
+            form.save()
+            if number_of_slides_to_submit == 1:
+                logged_in_profile = Profile.objects.filter(user=request.user).first()
+                website_profile_pair = Website_Profile.objects.create(
+                    profile=logged_in_profile, website=website, is_admin=True
+                )
+                messages.success(
+                    request,
+                    {
+                        "title": "SUCCESS: ",
+                        "message_content": "Your website has been created successfuly!",
+                    },
+                )
+                slideList = Slide.objects.filter(website=website)
+                return render(
+                    request,
+                    "home/websitepage.html",
+                    {
+                        "website": website,
+                        "website_profile_pair": website_profile_pair,
+                        "slideList": slideList,
+                    },
+                )
+            else:
+                return redirect(
+                    "add_slides", new_website_id, number_of_slides_to_submit - 1
+                )
+    return render(
+        request,
+        "home/add_slides.html",
+        {
+            "form": form,
+            "website": website,
+            "current_slide_to_submit": current_slide_number,
+            "title": "Add Slide #" + str(current_slide_number),
         },
     )
 

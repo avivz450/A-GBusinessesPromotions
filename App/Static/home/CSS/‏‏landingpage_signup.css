@@ -364,3 +364,8 @@ input[type=text]:placeholder, input[type=password]:placeholder, input[type=email
 #hint_id_password2{
   display: none;
 }
+
+img {
+  max-width:100%;
+  height:auto;
+}

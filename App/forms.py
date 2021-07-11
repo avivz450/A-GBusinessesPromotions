@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Business, Sale, Website, Website_Business, Profile
+from .models import Business, Sale, Website, Website_Business, Profile, Slide
 
 
 class SignUpForm(UserCreationForm):
@@ -81,6 +81,17 @@ class WebsiteForm(forms.ModelForm):
         fields = (
             "name",
             "logo",
+            "number_of_slides_in_main_page",
+        )
+
+
+class SlideForm(forms.ModelForm):
+    class Meta:
+        model = Slide
+        fields = (
+            "title",
+            "description",
+            "picture",
         )
 
 
