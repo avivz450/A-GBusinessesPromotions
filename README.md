@@ -48,6 +48,8 @@ Guests - will be able to watch the content only.
 - SCM: Git and GitHub
 - Testing: Pytest
 - Virtualization: Vagrant and VirtualBox
+- AWS ec2 instance: host our website on the cloud
+- AWS route 53: adding our DOMAIN to the instance path
 
 ## Dependencies
 The dependencies that must be installed for this software to work are:
@@ -69,6 +71,10 @@ vagrant up
 ```
 Afterwards vagrant will boot up, configure, download and install all the needed additional dependencies.
 A script will launch the app and you can access it in: http://127.0.0.1:8000/
+
+## Hosting the web app on aws cloud
+In the ec2Instructions.txt there is a list of the order to build the environment on ubuntu instance.
+In the route53Instructions.txt there is an explanation how to redirect domain to an instance ip.
 
 ## Instrutor :
 Amir Kirsh
