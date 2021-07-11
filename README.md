@@ -72,9 +72,8 @@ vagrant up
 Afterwards vagrant will boot up, configure, download and install all the needed additional dependencies.
 A script will launch the app and you can access it in: http://127.0.0.1:8000/
 
-## Hosting the web app on aws cloud
-- In the ec2Instructions.txt there is a list of the order to build the environment on ubuntu instance.
-- In the route53Instructions.txt there is an explanation how to redirect domain to an instance ip.
+## The public website url
+- If you want to visit our wesite go to: agbusinessespromotions.com
 
 ## Instrutor :
 Amir Kirsh
