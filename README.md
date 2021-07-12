@@ -31,7 +31,7 @@ Guests - will be able to watch the content only.
 8. Registration and login. (V)
 9. User notification.
 10. Edit admin section.
-11. Add website.
+11. Add website. (V)
 
 ## Nice to have features
 1. Adding a category for each business for filter while the user using the searching bar.
