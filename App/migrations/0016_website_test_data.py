@@ -3,7 +3,7 @@ from django.db import migrations, transaction
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("App", "0015_auto_20210712_1210"),
+        ("App", "0015_auto_20210712_1415"),
     ]
 
     def generate_data(apps, schema_editor):
