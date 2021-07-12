@@ -146,3 +146,7 @@
     }
   }
   
+  #slidePhoto {
+    height: auto;
+    width: 100%;
+  }

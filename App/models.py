@@ -77,7 +77,7 @@ class Slide(models.Model):
         default=None,
         upload_to="App/images/SlidePictures/",
     )  # required
-    description = models.TextField(default=None, max_length=200)  # required
+    description = models.TextField(default=None, max_length=500)  # required
 
     def __str__(self):
         return "{self.title}".format(self=self)
