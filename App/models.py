@@ -49,10 +49,9 @@ class Website(models.Model):
     )  # required
     number_of_slides_in_main_page = models.IntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(3)]
-    )  # field not required
+    )
     profiles = models.ManyToManyField("Profile", through="Website_Profile")
     businesses = models.ManyToManyField("Business", through="Website_Business")
-    is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return "{self.name}".format(self=self)
