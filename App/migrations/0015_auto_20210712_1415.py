@@ -9,74 +9,135 @@ import location_field.models.plain
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('App', '0014_alter_website_logo'),
+        ("App", "0014_alter_website_logo"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='business',
-            name='is_confirmed',
+            model_name="business",
+            name="is_confirmed",
         ),
         migrations.RemoveField(
-            model_name='website',
-            name='is_confirmed',
+            model_name="website",
+            name="is_confirmed",
         ),
         migrations.AddField(
-            model_name='business',
-            name='city',
+            model_name="business",
+            name="city",
             field=models.CharField(blank=True, max_length=255, null=True),
         ),
         migrations.AddField(
-            model_name='business',
-            name='location',
-            field=location_field.models.plain.PlainLocationField(blank=True, max_length=63, null=True),
+            model_name="business",
+            name="location",
+            field=location_field.models.plain.PlainLocationField(
+                blank=True, max_length=63, null=True
+            ),
         ),
         migrations.AddField(
-            model_name='website',
-            name='number_of_slides_in_main_page',
-            field=models.IntegerField(default=1, validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(3)]),
+            model_name="website",
+            name="number_of_slides_in_main_page",
+            field=models.IntegerField(
+                default=1,
+                validators=[
+                    django.core.validators.MinValueValidator(1),
+                    django.core.validators.MaxValueValidator(3),
+                ],
+            ),
         ),
         migrations.AlterField(
-            model_name='website',
-            name='logo',
-            field=models.ImageField(default='App/images/WebsitesLogos/default.jpg', upload_to='App/images/WebsitesLogos/'),
+            model_name="website",
+            name="logo",
+            field=models.ImageField(
+                default="App/images/WebsitesLogos/default.jpg",
+                upload_to="App/images/WebsitesLogos/",
+            ),
         ),
         migrations.AlterField(
-            model_name='website_profile',
-            name='profile',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='wp_profile_ID', to='App.profile'),
+            model_name="website_profile",
+            name="profile",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="wp_profile_ID",
+                to="App.profile",
+            ),
         ),
         migrations.CreateModel(
-            name='Website_Business',
+            name="Website_Business",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_confirmed', models.BooleanField(default=False)),
-                ('business', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='business_ID', to='App.business')),
-                ('website', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='wb_website_ID', to='App.website')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_confirmed", models.BooleanField(default=False)),
+                (
+                    "business",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="business_ID",
+                        to="App.business",
+                    ),
+                ),
+                (
+                    "website",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="wb_website_ID",
+                        to="App.website",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Slide',
+            name="Slide",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('picture', models.ImageField(default=None, upload_to='App/images/SlidePictures/')),
-                ('description', models.TextField(default=None, max_length=500)),
-                ('website', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='App.website')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                (
+                    "picture",
+                    models.ImageField(
+                        default=None, upload_to="App/images/SlidePictures/"
+                    ),
+                ),
+                ("description", models.TextField(default=None, max_length=500)),
+                (
+                    "website",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="App.website"
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='business',
-            name='websites',
-            field=models.ManyToManyField(through='App.Website_Business', to='App.Website'),
+            model_name="business",
+            name="websites",
+            field=models.ManyToManyField(
+                through="App.Website_Business", to="App.Website"
+            ),
         ),
         migrations.AddField(
-            model_name='website',
-            name='businesses',
-            field=models.ManyToManyField(through='App.Website_Business', to='App.Business'),
+            model_name="website",
+            name="businesses",
+            field=models.ManyToManyField(
+                through="App.Website_Business", to="App.Business"
+            ),
         ),
         migrations.AddConstraint(
-            model_name='website_business',
-            constraint=models.UniqueConstraint(fields=('website', 'business'), name='website_business'),
+            model_name="website_business",
+            constraint=models.UniqueConstraint(
+                fields=("website", "business"), name="website_business"
+            ),
         ),
     ]

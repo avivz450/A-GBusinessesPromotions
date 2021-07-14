@@ -44,7 +44,7 @@ class Profile(models.Model):
 class Website(models.Model):
     name = models.CharField(max_length=30)  # required
     logo = models.ImageField(
-        default="App/images/WebsitesLogos/default.jpg",
+        default="App/images/default.jpg",
         upload_to="App/images/WebsitesLogos/",
     )  # required
     number_of_slides_in_main_page = models.IntegerField(
@@ -69,12 +69,19 @@ class Website(models.Model):
 
         return sales
 
+    def match_business_to_website(self, business, is_confirmed=False):
+        website_business_pair = Website_Business()
+        website_business_pair.business = business
+        website_business_pair.website = self
+        website_business_pair.is_confirmed = is_confirmed
+        website_business_pair.save()
+
 
 class Slide(models.Model):
     website = models.ForeignKey(Website, on_delete=models.CASCADE)  # required
     title = models.CharField(max_length=200)  # required
     picture = models.ImageField(
-        default=None,
+        default="App/images/default.jpg",
         upload_to="App/images/SlidePictures/",
     )  # required
     description = models.TextField(default=None, max_length=500)  # required
@@ -115,7 +122,7 @@ class Business(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
     name = models.CharField(max_length=30)  # required
     logo = models.ImageField(
-        default=None, upload_to="App/images/BusinessesLogos/"
+        default="App/images/default.jpg", upload_to="App/images/BusinessesLogos/"
     )  # required
     description = RichTextField(default=None)  # required
     URL = models.URLField(null=True, blank=True, max_length=250)
@@ -171,7 +178,7 @@ class Sale(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE)  # required
     title = models.CharField(max_length=30)
     picture = models.ImageField(
-        default=None,
+        default="App/images/WebsitesLogos/default.jpg",
         upload_to="App/images/SalesPictures/",
     )
     description = models.TextField(
