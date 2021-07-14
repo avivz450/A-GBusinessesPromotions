@@ -32,7 +32,7 @@
                   <div class="col-12">
                     <b>by {{ sale.business.name }}</b>
                   </div>
-                  <a href="{{ sale.business.URL }}" class="btn btn-primary">Go to site</a>
+                  <a href="{% url 'business-page' website.id website.name sale.business.id sale.business.name %}" class="btn btn-primary">Go to site</a>
                 </div>
               </div>
             {% endif %}
