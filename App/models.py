@@ -176,14 +176,12 @@ class Website_Business(models.Model):
 class Sale(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
     business = models.ForeignKey(Business, on_delete=models.CASCADE)  # required
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30)  # required
     picture = models.ImageField(
         default="App/images/WebsitesLogos/default.jpg",
         upload_to="App/images/SalesPictures/",
-    )
-    description = models.TextField(
-        default=None, max_length=50
-    )  # To Do : limit description length
+    )  # required
+    description = models.TextField(default=None, max_length=50)  # required
     is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
