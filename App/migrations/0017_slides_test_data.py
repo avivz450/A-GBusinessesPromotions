@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             (
                 1,
                 "How it works?",
-                """Our goal is to advertise the businesses whose types are related to your site. 
+                """Our goal is to advertise the businesses whose types are related to your site.
 All you need to do is create a website on our platform, and copy that URL to your original site.
 As an admin, you choose which businesses and sales will be shown on your site which is on our platform.
 """,
@@ -29,8 +29,10 @@ As an admin, you choose which businesses and sales will be shown on your site wh
             (
                 2,
                 "Welcome to Vegan lovers!",
-                """Vegan refers to anything that’s free of animal products: No meat, fish, milk, cheese, eggs, wool, leather, honey and so forth.
-                Digging deeper into the word’s meaning will make you a more effective and persuasive advocate of all vegan-oriented concerns.
+                """Vegan refers to anything that’s free of animal products: No meat, fish, milk,
+                cheese, eggs, wool, leather, honey and so forth.
+                Digging deeper into the word’s meaning will make you a more effective and persuasive advocate of
+                 all vegan-oriented concerns.
 """,
                 "App/images/SlidePictures/test_data/Vegan/slide1.jpg",
             ),
@@ -46,10 +48,12 @@ As an admin, you choose which businesses and sales will be shown on your site wh
             (
                 2,
                 "What do vegans eat?",
-                """Absolutely loads of stuff. 
-                There’s a misconception that vegans only eat ‘vegetables’, but the better way to think of it is that vegans eat plants. 
-                Once you do that, you realise that this means potatoes, 
-                rice, pasta, bread, lentils, chickpeas, beans, soy, grains, seeds, nuts, fruits, oils, and vegetables, among others.
+                """Absolutely loads of stuff.
+                There’s a misconception that vegans only eat ‘vegetables’,
+                 but the better way to think of it is that vegans eat plants.
+                Once you do that, you realise that this means potatoes,
+                rice, pasta, bread, lentils, chickpeas, beans, soy,
+                 grains, seeds, nuts, fruits, oils, and vegetables, among others.
 """,
                 "App/images/SlidePictures/test_data/Vegan/slide3.jpg",
             ),
