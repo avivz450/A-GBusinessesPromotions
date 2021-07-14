@@ -4,7 +4,7 @@ from django.urls import reverse
 
 @pytest.mark.django_db
 class TestLogout:
-    demo_webpage_url = reverse("websitepage", args=[1, "Demo"])
+    demo_webpage_url = reverse("websitepage", args=[1, "Website Demo"])
 
     def test_status_code(self, client):
         response = client.get("/logout/")
