@@ -1,0 +1,36 @@
+#notify {
+    width: 302px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    }
+
+#notify div {
+    display: inline-block;
+    padding-right: 0px;
+    height: 48px;
+    width: 270px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-top: 1px;
+    }
+
+#notify div a {
+    padding-left: 0px;
+    width: 260px;
+    }
+
+
+#notify div button{
+    float:right;
+    display:inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 11px;
+    padding-right: 10px;
+}
+
+#dropdownMenuButton{
+    background-color: grey;
+    color: none;
+}

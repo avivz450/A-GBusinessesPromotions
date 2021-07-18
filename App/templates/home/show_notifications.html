@@ -1,0 +1,50 @@
+<div class="dropdown">
+    <button class="btn btn-secondary badge  notification-badge bi bi-bell"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            
+        {{ notifications.count }}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notify">
+        {% for notification in notifications %}
+            {% if not notification.user_has_seen %}
+                {% if notification.notification_type == 1 %}
+                <div class="dropdown-item" id="{{ notification.pk }}">
+                    <a href="#">{{ notification.from_user }} approved your business</a>
+                    <button type="button" class="close" aria-label="Close"
+                            onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% elif notification.notification_type == 2 %}
+                <div class="dropdown-item" id="{{ notification.pk }}">
+                    <a href="#">{{ notification.from_user }} asked to create business</a>
+                    <button type="button" class="close" aria-label="Close"
+                            onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% elif notification.notification_type == 3 %}
+                <div class="dropdown-item" id="{{ notification.pk }}">
+                    <a href="#">{{ notification.from_user }} approved your sale</a>
+                    <button type="button" class="close" aria-label="Close"
+                            onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% elif notification.notification_type == 4 %}
+                <div class="dropdown-item" id="{{ notification.pk }}">
+                    <a href="#">{{ notification.from_user }} asked to add sale</a>
+                    <button type="button" class="close" aria-label="Close"
+                            onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
