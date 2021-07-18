@@ -71,6 +71,13 @@ class Website(models.Model):
                     sales.append(sale)
 
         return sales
+    
+    def match_business_to_website(self, business, is_confirmed=False):
+        website_business_pair = Website_Business()
+        website_business_pair.business = business
+        website_business_pair.website = self
+        website_business_pair.is_confirmed = is_confirmed
+        website_business_pair.save()
 
 
 class Slide(models.Model):
@@ -194,8 +201,11 @@ class Sale(models.Model):
     description = models.TextField(
         default=None, max_length=50
     )  # To Do : limit description length
-    is_confirmed = models.BooleanField(default=False)
-
+    is_confirmed = models.CharField(
+        max_length=2,
+        choices=SaleStatus.choices,
+        default=SaleStatus.PENDING,
+    )
     def __str__(self):
         return "{self.title}".format(self=self)
 
