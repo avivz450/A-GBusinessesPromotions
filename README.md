@@ -29,7 +29,7 @@ Guests - will be able to watch the content only.
 6. Connect Sale/Business to other website efficiently.
 7. Host the website in AWS + edit our URLs. (V)
 8. Registration and login. (V)
-9. User notification.
+9. User notification. (V)
 10. Edit admin section.
 11. Add website. (V)
 
