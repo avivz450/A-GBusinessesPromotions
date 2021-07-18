@@ -323,9 +323,10 @@ def new_business(request, pk, website_name):
             if request.method == "POST":
                 businessForm = BusinessForm(request.POST, request.FILES)
                 if businessForm.is_valid():
-                    businessForm = businessForm.save(commit=False)
-                    businessForm.profile = logged_in_profile
-                    businessForm.save()
+                    new_business = businessForm.save(commit=False)
+                    new_business.profile = logged_in_profile
+                    new_business.save()
+                    website.match_business_to_website(new_business)
                     msg_content = """The business was successfully inserted.
                 It will be visible once the site administrators will approve it."""
                     messages.info(
