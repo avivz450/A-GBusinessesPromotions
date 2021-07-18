@@ -35,6 +35,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'home/css/notification.css' %}" rel="stylesheet">
 
 	{% if title %}
 		<title>{{ title }}</title>
@@ -56,55 +57,7 @@
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li class="dropdown"><a href="#" id="first_left_nav_item"><span>Businesses</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href={% url 'businesses' website.id website.name%}>Explore</a></li>
-			  {% if user.is_authenticated %}
-              <li><a href={% url 'new_business' website.id website.name%}>Add business</a></li>
-              <li><a href={% url 'choose_business_to_edit' website.id website.name%}>Edit business</a></li>
-              <li><a href="#">Connect business</a></li>
-			  {% endif %}
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Sales</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href={% url 'sales' website.id website.name%}>Explore</a></li>
-				{% if user.is_authenticated %}
-              <li><a href={% url 'new_sale' website.id website.name%}>Add sale</a></li>
-              <li><a href={% url 'choose_sale_to_edit' website.id website.name%}>Edit sale</a></li>
-				{% endif %}
-            </ul>
-          </li>              
-          <li><a class="nav-link scrollto " href="#portfolio">About us</a></li>
-          <li><a class="nav-link scrollto" id="last_left_nav_item" href="#testimonials">Contact us</a></li>
-			{% if user.is_authenticated %}
-			<li class="dropdown"><a href="#"><span>Hello {{user.username}}!</span> <i class="bi bi-chevron-down"></i></a>
-				<ul>
-				<li><a href={% url 'edit_profile' website.id website.name user.id %}>Edit profile</a></li>
-				{% if user.profile.is_vip is False %}
-				<li><a href={% url 'premium' website.id website.name %}>Upgrade</a></li>
-				{% endif %} 
-				{% if website_profile_pair.is_admin is True %}
-				<li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-right"></i></a>
-					<ul>
-					<li><a href="#">Edit businesses</a></li>
-					<li><a href="#">Edit sales</a></li>
-					<li><a href="#">Edit profiles</a></li>
-					</ul>
-				</li>
-				{% endif %} 
-				</ul>
-			</li>
-            <li><a class="nav-link scrollto" href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></li>
-			{% else %}
-            <li><a class="nav-link scrollto" id="right_nav_item" href="{% url 'login' website.id website.name %}?next={% firstof request.path '/' %}">Login</a></li>
-            <li><a class="nav-link scrollto" href={% url 'signup' website.id website.name %}>Sign up</a></li>
-			{% endif %} 
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      {% include 'home/navbar.html' %}
 
     </div>
 
@@ -134,6 +87,7 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'home/js/websitepage.js' %}"></script>
+  <script src="{% static 'home/js/notifications.js' %}"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
