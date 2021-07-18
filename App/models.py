@@ -1,10 +1,15 @@
 from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 from ckeditor.fields import RichTextField
 from location_field.models.plain import PlainLocationField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -45,7 +50,7 @@ class Profile(models.Model):
 class Website(models.Model):
     name = models.CharField(max_length=30)  # required
     logo = models.ImageField(
-        default="App/images/default.jpg",
+        default="App/images/WebsitesLogos/default.jpg",
         upload_to="App/images/WebsitesLogos/",
     )  # required
     number_of_slides_in_main_page = models.IntegerField(
@@ -71,19 +76,12 @@ class Website(models.Model):
 
         return sales
 
-    def match_business_to_website(self, business, is_confirmed=False):
-        website_business_pair = Website_Business()
-        website_business_pair.business = business
-        website_business_pair.website = self
-        website_business_pair.is_confirmed = is_confirmed
-        website_business_pair.save()
-
 
 class Slide(models.Model):
     website = models.ForeignKey(Website, on_delete=models.CASCADE)  # required
     title = models.CharField(max_length=200)  # required
     picture = models.ImageField(
-        default="App/images/default.jpg",
+        default=None,
         upload_to="App/images/SlidePictures/",
     )  # required
     description = models.TextField(default=None, max_length=500)  # required
@@ -124,7 +122,7 @@ class Business(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
     name = models.CharField(max_length=30)  # required
     logo = models.ImageField(
-        default="App/images/default.jpg", upload_to="App/images/BusinessesLogos/"
+        default=None, upload_to="App/images/BusinessesLogos/"
     )  # required
     description = RichTextField(default=None)  # required
     URL = models.URLField(null=True, blank=True, max_length=250)
@@ -192,28 +190,33 @@ class Sale(models.Model):
 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
     business = models.ForeignKey(Business, on_delete=models.CASCADE)  # required
-    title = models.CharField(max_length=30)  # required
+    title = models.CharField(max_length=30)
     picture = models.ImageField(
-        default="App/images/WebsitesLogos/default.jpg",
+        default=None,
         upload_to="App/images/SalesPictures/",
-    )  # required
-    description = models.TextField(default=None, max_length=50)  # required
-    is_confirmed = models.CharField(
-        max_length=2,
-        choices=SaleStatus.choices,
-        default=SaleStatus.PENDING,
     )
+    description = models.TextField(
+        default=None, max_length=50
+    )  # To Do : limit description length
+    is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return "{self.title}".format(self=self)
 
 
 class Notification(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    description = models.TextField(default=None)  # To Do : limit description length
-
-    def __str__(self):
-        return "{self.user.username}".format(self=self)
+    # 1 = Like, 2 = Comment, 3 = Follow
+    # 1 = business approved 2 business request to add
+    # 3 = sale approved 4 sale request to add
+    notification_type = models.IntegerField(default=None)
+    to_user = models.ForeignKey(Profile, related_name='notification_to', on_delete=models.CASCADE, null=True, default=None)
+    from_user = models.ForeignKey(Profile, related_name='notification_from', on_delete=models.CASCADE, null=True, default=None)
+    # post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
+    # comment = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
+    business = models.ForeignKey(Business, related_name='business', on_delete=models.CASCADE, null=True, default=None)
+    sale = models.ForeignKey(Sale, related_name='sale', on_delete=models.CASCADE, null=True, default=None)
+    date = models.DateTimeField(default=timezone.now)
+    user_has_seen = models.BooleanField(default=False)
 
 
 class Contact(models.Model):

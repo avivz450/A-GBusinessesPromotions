@@ -2,11 +2,12 @@ from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
+from .views import RemoveNotification
 
 # from django.conf.urls import include, url
 from django.conf.urls.static import static
 
-# from django.contrib import admin
+from django.contrib import admin
 
 
 urlpatterns = [
@@ -83,4 +84,5 @@ urlpatterns = [
     path(
         "websites/<int:pk>_<str:website_name>/premium/", views.premium, name="premium"
     ),
+    path('notification/delete/<int:notification_pk>', RemoveNotification.as_view(), name='notification-delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
