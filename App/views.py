@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import (
     Sale,
@@ -7,6 +8,7 @@ from .models import (
     Website_Profile,
     Website_Business,
     Slide,
+    Notification,
 )
 from .forms import (
     SignUpForm,
@@ -18,6 +20,7 @@ from .forms import (
     WebsiteForm,
     SlideForm,
 )
+from django.views import View
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -307,7 +310,7 @@ def edit_profile(request, website_pk, website_name, profile_pk):
 
 
 def new_business(request, pk, website_name):
-    website = Website.objects.filter(pk=pk)[0]
+    website = get_object_or_404(Website, id=pk)
 
     if not request.user.is_authenticated:
         return redirect("login", website.id, website.name)
@@ -316,7 +319,6 @@ def new_business(request, pk, website_name):
         num_of_businesses_of_profile = len(
             Business.objects.filter(profile=logged_in_profile)
         )
-
         if logged_in_profile.is_vip or num_of_businesses_of_profile == 0:
             if request.method == "POST":
                 businessForm = BusinessForm(request.POST, request.FILES)
@@ -708,3 +710,13 @@ def login_view(request, pk, website_name):
             "form": form,
         },
     )
+
+
+class RemoveNotification(View):
+    def delete(self, *args, **kwargs):
+        notification = Notification.objects.get(pk=kwargs["notification_pk"])
+
+        notification.user_has_seen = True
+        notification.save()
+
+        return HttpResponse("Success", content_type="text/plain")
