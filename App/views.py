@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import (
     Sale,
@@ -25,13 +25,6 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-
-
-
-
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.views.generic.edit import UpdateView, DeleteView
 
 
 def websitepage(request, pk, website_name):
@@ -326,14 +319,13 @@ def new_business(request, pk, website_name):
         num_of_businesses_of_profile = len(
             Business.objects.filter(profile=logged_in_profile)
         )
-
         if logged_in_profile.is_vip or num_of_businesses_of_profile == 0:
             if request.method == "POST":
                 businessForm = BusinessForm(request.POST, request.FILES)
                 if businessForm.is_valid():
                     businessForm = businessForm.save(commit=False)
                     businessForm.profile = logged_in_profile
-                    business = businessForm.save()
+                    businessForm.save()
                     msg_content = """The business was successfully inserted.
                 It will be visible once the site administrators will approve it."""
                     messages.info(
@@ -343,9 +335,6 @@ def new_business(request, pk, website_name):
                             "message_content": msg_content,
                         },
                     )
-                    website_admin_set = Website_Profile.objects.filter(website=website, is_admin=True)
-                    for website_profile_instance in website_admin_set:
-                        notification = Notification.objects.create(notification_type=2, from_user=logged_in_profile , to_user=website_profile_instance.profile, business=business)
             else:
                 form = BusinessForm()
                 return render(
@@ -538,7 +527,7 @@ def new_sale(request, pk, website_name):
                 if saleForm.is_valid():
                     saleForm = saleForm.save(commit=False)
                     saleForm.profile = logged_in_profile
-                    sale = saleForm.save()
+                    saleForm.save()
                     msg_content = """The sale was successfully inserted.
                 It will be visible once the site administrators will approve it."""
                     messages.info(
@@ -548,9 +537,6 @@ def new_sale(request, pk, website_name):
                             "message_content": msg_content,
                         },
                     )
-                    website_admin_set = Website_Profile.objects.filter(website=website, is_admin=True)
-                    for website_profile_instance in website_admin_set:
-                        notification = Notification.objects.create(notification_type=4, from_user=logged_in_profile , to_user=website_profile_instance.profile, sale=sale)
                     return render(
                         request,
                         "home/websitepage.html",
@@ -726,10 +712,10 @@ def login_view(request, pk, website_name):
 
 
 class RemoveNotification(View):
-    def delete(self,  *args, **kwargs):
-        notification = Notification.objects.get(pk=kwargs['notification_pk'])
+    def delete(self, *args, **kwargs):
+        notification = Notification.objects.get(pk=kwargs["notification_pk"])
 
         notification.user_has_seen = True
         notification.save()
 
-        return HttpResponse('Success', content_type='text/plain')
+        return HttpResponse("Success", content_type="text/plain")

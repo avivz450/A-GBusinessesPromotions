@@ -8,71 +8,104 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('App', '\u200f\u200f0006_sales_test_data'),
+        ("App", "\u200f\u200f0006_sales_test_data"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='notification',
-            name='description',
+            model_name="notification",
+            name="description",
         ),
         migrations.RemoveField(
-            model_name='notification',
-            name='profile',
+            model_name="notification",
+            name="profile",
         ),
         migrations.AddField(
-            model_name='notification',
-            name='business',
-            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='business', to='App.business'),
+            model_name="notification",
+            name="business",
+            field=models.ForeignKey(
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="business",
+                to="App.business",
+            ),
         ),
         migrations.AddField(
-            model_name='notification',
-            name='date',
+            model_name="notification",
+            name="date",
             field=models.DateTimeField(default=django.utils.timezone.now),
         ),
         migrations.AddField(
-            model_name='notification',
-            name='from_user',
-            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='notification_from', to='App.profile'),
+            model_name="notification",
+            name="from_user",
+            field=models.ForeignKey(
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="notification_from",
+                to="App.profile",
+            ),
         ),
         migrations.AddField(
-            model_name='notification',
-            name='notification_type',
+            model_name="notification",
+            name="notification_type",
             field=models.IntegerField(default=None),
         ),
         migrations.AddField(
-            model_name='notification',
-            name='sale',
-            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sale', to='App.sale'),
+            model_name="notification",
+            name="sale",
+            field=models.ForeignKey(
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="sale",
+                to="App.sale",
+            ),
         ),
         migrations.AddField(
-            model_name='notification',
-            name='to_user',
-            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='notification_to', to='App.profile'),
+            model_name="notification",
+            name="to_user",
+            field=models.ForeignKey(
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="notification_to",
+                to="App.profile",
+            ),
         ),
         migrations.AddField(
-            model_name='notification',
-            name='user_has_seen',
+            model_name="notification",
+            name="user_has_seen",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='business',
-            name='logo',
-            field=models.ImageField(default=None, upload_to='App/images/BusinessesLogos/'),
+            model_name="business",
+            name="logo",
+            field=models.ImageField(
+                default=None, upload_to="App/images/BusinessesLogos/"
+            ),
         ),
         migrations.AlterField(
-            model_name='sale',
-            name='picture',
-            field=models.ImageField(default=None, upload_to='App/images/SalesPictures/'),
+            model_name="sale",
+            name="picture",
+            field=models.ImageField(
+                default=None, upload_to="App/images/SalesPictures/"
+            ),
         ),
         migrations.AlterField(
-            model_name='slide',
-            name='picture',
-            field=models.ImageField(default=None, upload_to='App/images/SlidePictures/'),
+            model_name="slide",
+            name="picture",
+            field=models.ImageField(
+                default=None, upload_to="App/images/SlidePictures/"
+            ),
         ),
         migrations.AlterField(
-            model_name='website',
-            name='logo',
-            field=models.ImageField(default='App/images/WebsitesLogos/default.jpg', upload_to='App/images/WebsitesLogos/'),
+            model_name="website",
+            name="logo",
+            field=models.ImageField(
+                default="App/images/WebsitesLogos/default.jpg",
+                upload_to="App/images/WebsitesLogos/",
+            ),
         ),
     ]

@@ -1,15 +1,11 @@
 from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 from ckeditor.fields import RichTextField
 from location_field.models.plain import PlainLocationField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
-
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 
 # Create your models here.
@@ -209,12 +205,32 @@ class Notification(models.Model):
     # 1 = business approved 2 business request to add
     # 3 = sale approved 4 sale request to add
     notification_type = models.IntegerField(default=None)
-    to_user = models.ForeignKey(Profile, related_name='notification_to', on_delete=models.CASCADE, null=True, default=None)
-    from_user = models.ForeignKey(Profile, related_name='notification_from', on_delete=models.CASCADE, null=True, default=None)
+    to_user = models.ForeignKey(
+        Profile,
+        related_name="notification_to",
+        on_delete=models.CASCADE,
+        null=True,
+        default=None,
+    )
+    from_user = models.ForeignKey(
+        Profile,
+        related_name="notification_from",
+        on_delete=models.CASCADE,
+        null=True,
+        default=None,
+    )
     # post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
     # comment = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
-    business = models.ForeignKey(Business, related_name='business', on_delete=models.CASCADE, null=True, default=None)
-    sale = models.ForeignKey(Sale, related_name='sale', on_delete=models.CASCADE, null=True, default=None)
+    business = models.ForeignKey(
+        Business,
+        related_name="business",
+        on_delete=models.CASCADE,
+        null=True,
+        default=None,
+    )
+    sale = models.ForeignKey(
+        Sale, related_name="sale", on_delete=models.CASCADE, null=True, default=None
+    )
     date = models.DateTimeField(default=timezone.now)
     user_has_seen = models.BooleanField(default=False)
 
