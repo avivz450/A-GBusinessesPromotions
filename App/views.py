@@ -169,7 +169,9 @@ def add_slides(request, new_website_id, number_of_slides_to_submit):
 def businesses(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     context = {
-        "website_business_pairs": Website_Business.objects.filter(website=website),
+        "website_business_pairs": Website_Business.objects.filter(
+            website=website, is_confirmed=Website_Business.BusinessStatus.APPROVED
+        ),
         "website": website,
     }
     if request.method == "GET":
@@ -182,7 +184,7 @@ def businesses(request, pk, website_name):
 
 def sales(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
-    sales = website.get_website_sales()
+    sales = website.get_website_approved_sales()
 
     context = {
         "sales": sales,

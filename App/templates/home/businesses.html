@@ -17,7 +17,6 @@
         <!-- Answers Part -->
         <article class="businesses-container">
           {% for website_business_pair in website_business_pairs %}
-            {% if website_business_pair.is_confirmed %}
             <div class="card business-container" style="width: 18rem">
               <img
                 class="card-img-top"
@@ -32,7 +31,6 @@
                 <a href="{% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %}" class="btn btn-primary">Go to site</a>
               </div>
             </div>
-            {% endif %}
           {% endfor %}
         </article>
       </div>

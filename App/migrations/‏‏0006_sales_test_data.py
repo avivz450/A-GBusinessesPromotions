@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 "Sale demo 1",
                 "description description description description description description",
                 "App/images/SalesPictures/demo_sale_1.png",
-                True,
+                Sale.SaleStatus.APPROVED,
             ),
             (
                 4,
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 "Sale demo 2",
                 "description description description description description description",
                 "App/images/SalesPictures/demo_sale_2.png",
-                True,
+                Sale.SaleStatus.APPROVED,
             ),
             (
                 4,
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 "30% discount on rosemary oil",
                 "And other various diescounts on our oils!",
                 "App/images/SalesPictures/vegan_sale_2.png",
-                True,
+                Sale.SaleStatus.APPROVED,
             ),
             (
                 4,
@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 "Special offers on orders on Friday!",
                 "Reservations can be made until Wednesday at 16:00",
                 "App/images/SalesPictures/vegan_sale_1.jpg",
-                True,
+                Sale.SaleStatus.APPROVED,
             ),
         ]
 

@@ -17,7 +17,6 @@
         <!-- Answers Part -->
         <article class="sales-container">
           {% for sale in sales %}
-            {% if sale.is_confirmed %}
               <div class="card sale-container" style="width: 18rem">
                 <img
                   class="card-img-top"
@@ -35,7 +34,6 @@
                   <a href="{% url 'business-page' website.id website.name sale.business.id sale.business.name %}" class="btn btn-primary">Go to site</a>
                 </div>
               </div>
-            {% endif %}
           {% endfor %}
         </article>
       </div>
