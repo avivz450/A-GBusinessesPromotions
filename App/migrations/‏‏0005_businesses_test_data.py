@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
     ]
 
     def generate_data(apps, schema_editor):
-        from App.models import Business, Profile, Website
+        from App.models import Business, Profile, Website, Website_Business
         from django.shortcuts import get_object_or_404
 
         business_test_data = [
@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
                 "Business demo 1",
                 "App/images/BusinessesLogos/demo_business_1_logo.png",
                 "Business demo 1 description",
-                True,
+                Website_Business.BusinessStatus.APPROVED,
                 1,
             ),
             (
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 "Business demo 2",
                 "App/images/BusinessesLogos/demo_business_2_logo.png",
                 "Business demo 2 description",
-                False,
+                Website_Business.BusinessStatus.PENDING,
                 1,
             ),
             (
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 "Business demo 3",
                 "App/images/BusinessesLogos/demo_business_3_logo.png",
                 "Business demo 3 description",
-                True,
+                Website_Business.BusinessStatus.APPROVED,
                 1,
             ),
             (
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                 "MikiMaya",
                 "App/images/BusinessesLogos/vegan_business_1_logo.jpg",
                 "Mikimaya is a vegan restaurant in the town of Tzur Moshe, where you will find a menu rich in flavors.",
-                True,
+                Website_Business.BusinessStatus.APPROVED,
                 2,
             ),
             (
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 The special and magical thing about the cafe is that some of the proceeds go
                  directly to rescuing and rehabilitating animals!
                 So for a powerful experience, donation and delicious food, do yourself a favor, visit BOCHI!""",
-                False,
+                Website_Business.BusinessStatus.PENDING,
                 2,
             ),
             (
@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
                   products that are friendly to the body, mind and environment.
 In the store you can find products that provide natural
  and healthy alternatives to the products consumed in your home.""",
-                True,
+                Website_Business.BusinessStatus.APPROVED,
                 2,
             ),
         ]

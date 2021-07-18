@@ -4,6 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from ckeditor.fields import RichTextField
 from location_field.models.plain import PlainLocationField
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
@@ -56,14 +57,15 @@ class Website(models.Model):
     def __str__(self):
         return "{self.name}".format(self=self)
 
-    def get_website_sales(self):
+    def get_website_approved_sales(self):
         website_business_pairs = Website_Business.objects.filter(website=self)
         sales = []
 
         for website_business_pair in website_business_pairs:
             if website_business_pair.is_confirmed:
                 for sale in Sale.objects.filter(
-                    business=website_business_pair.business
+                    business=website_business_pair.business,
+                    is_confirmed=Sale.SaleStatus.APPROVED,
                 ):
                     sales.append(sale)
 
@@ -153,6 +155,11 @@ class Business(models.Model):
 
 
 class Website_Business(models.Model):
+    class BusinessStatus(models.TextChoices):
+        APPROVED = "AP", _("Approved")
+        DISAPPROVED = "DA", _("Disapproved")
+        PENDING = "PD", _("Pending")
+
     website = models.ForeignKey(
         Website, on_delete=models.CASCADE, related_name="wb_website_ID"
     )
@@ -160,7 +167,11 @@ class Website_Business(models.Model):
         Business, on_delete=models.CASCADE, related_name="business_ID"
     )
 
-    is_confirmed = models.BooleanField(default=False)
+    is_confirmed = models.CharField(
+        max_length=2,
+        choices=BusinessStatus.choices,
+        default=BusinessStatus.PENDING,
+    )
 
     class Meta:
         constraints = [
@@ -174,6 +185,11 @@ class Website_Business(models.Model):
 
 
 class Sale(models.Model):
+    class SaleStatus(models.TextChoices):
+        APPROVED = "AP", _("Approved")
+        DISAPPROVED = "DA", _("Disapproved")
+        PENDING = "PD", _("Pending")
+
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)  # required
     business = models.ForeignKey(Business, on_delete=models.CASCADE)  # required
     title = models.CharField(max_length=30)  # required
@@ -182,7 +198,11 @@ class Sale(models.Model):
         upload_to="App/images/SalesPictures/",
     )  # required
     description = models.TextField(default=None, max_length=50)  # required
-    is_confirmed = models.BooleanField(default=False)
+    is_confirmed = models.CharField(
+        max_length=2,
+        choices=SaleStatus.choices,
+        default=SaleStatus.PENDING,
+    )
 
     def __str__(self):
         return "{self.title}".format(self=self)
