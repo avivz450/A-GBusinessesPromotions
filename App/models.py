@@ -71,7 +71,7 @@ class Website(models.Model):
                     sales.append(sale)
 
         return sales
-    
+
     def match_business_to_website(self, business, is_confirmed=False):
         website_business_pair = Website_Business()
         website_business_pair.business = business
@@ -206,6 +206,7 @@ class Sale(models.Model):
         choices=SaleStatus.choices,
         default=SaleStatus.PENDING,
     )
+
     def __str__(self):
         return "{self.title}".format(self=self)
 
