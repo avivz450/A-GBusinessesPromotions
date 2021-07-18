@@ -212,7 +212,6 @@ class Sale(models.Model):
 
 
 class Notification(models.Model):
-    # 1 = Like, 2 = Comment, 3 = Follow
     # 1 = business approved 2 business request to add
     # 3 = sale approved 4 sale request to add
     notification_type = models.IntegerField(default=None)
