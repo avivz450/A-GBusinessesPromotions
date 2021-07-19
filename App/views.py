@@ -720,3 +720,44 @@ class RemoveNotification(View):
         notification.save()
 
         return HttpResponse("Success", content_type="text/plain")
+
+
+def admin_businesses(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+
+    return render(
+        request,
+        "home/admin_section/businesses.html",
+        {
+            "title": "Admin Section - Businesses",
+            "website": website,
+            "website_profile_pair": Website_Profile.get_website_profile_pair(
+                request.user, website
+            ),
+            "website_business_pairs": Website_Business.objects.filter(website=website),
+        },
+    )
+
+
+def change_business_status(request, pk, website_name, business_id, business_new_status):
+    website = get_object_or_404(Website, id=pk)
+    website_business_pair = get_object_or_404(Website_Business, id=business_id)
+
+    if business_new_status == "AP":
+        website_business_pair.is_confirmed = Website_Business.BusinessStatus.APPROVED
+    else:
+        website_business_pair.is_confirmed = Website_Business.BusinessStatus.DISAPPROVED
+
+    website_business_pair.save()
+    return render(
+        request,
+        "home/admin_section/businesses.html",
+        {
+            "title": "Admin Section - Businesses",
+            "website": website,
+            "website_profile_pair": Website_Profile.get_website_profile_pair(
+                request.user, website
+            ),
+            "website_business_pairs": Website_Business.objects.filter(website=website),
+        },
+    )

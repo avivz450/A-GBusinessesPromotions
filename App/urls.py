@@ -87,4 +87,14 @@ urlpatterns = [
         RemoveNotification.as_view(),
         name="notification-delete",
     ),
+    path(
+        "websites/<int:pk>_<str:website_name>/admin-section/Businesses/",
+        views.admin_businesses,
+        name="admin_businesses",
+    ),
+    path(
+        "websites/<int:pk>_<str:website_name>/admin-section/Businesses/<int:business_id>/<str:business_new_status>",
+        views.change_business_status,
+        name="change_business_status",
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
