@@ -36,7 +36,7 @@
             {% if website_profile_pair.is_admin is True %}
             <li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                <li><a href="#">Edit businesses</a></li>
+                <li><a href={% url 'admin_businesses' website.id website.name %}>Edit businesses</a></li>
                 <li><a href="#">Edit sales</a></li>
                 <li><a href="#">Edit profiles</a></li>
                 </ul>
