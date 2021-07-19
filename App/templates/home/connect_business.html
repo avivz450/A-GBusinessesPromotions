@@ -1,0 +1,86 @@
+{% extends "home/base.html" %} {% load static %} {% block content %}
+
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'home/css/connect_business.css' %}"
+/>
+
+<body>
+  <main>
+      <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+          <h1>Connect businesses to "{{website.name}}"</h1>
+            {% for website_to_connect_from in websites_to_connect_from %}
+              <div class="section-title">
+                <h2> Businesses of {{user.username}} from "{{website_to_connect_from.name}}" website</h2>
+                <p>Press <span>&#10003;</span> to connect one of the businesses from "{{website_to_connect_from.name}}" to "{{website.name}}"</p>
+              </div>
+              <div class="row portfolio-container">
+              {% for website_business_pair in user_website_business_pairs %}
+                {% if website_business_pair.website == website_to_connect_from and website_business_pair.business.profile.is_vip == True%}
+                  <div class="col-lg-4 col-md-6 portfolio-item wow fadeInUp">
+                    <div class="portfolio-wrap" id="vip_hover">
+                      <figure id="figure">
+                        <img src={{website_business_pair.business.logo.url}} class="img-fluid" alt="">
+                        <a href={% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %} class="link-preview" title="link to {{website_business_pair.business.name}}"><i class="bx bx-link"></i></a>
+                        <a href={% url 'connect_business' website.id website.name website_business_pair.business.id %}  class="link-details" title="Connect to {{website_business_pair.website.name}}"><i class="bx bx-check"></i></a>
+                      </figure>
+
+                      <div class="portfolio-info" id="vip_div">
+                        <h4><a href="portfolio-details.html">{{website_business_pair.business.name}}</a></h4>
+                        <p>category name</p>
+                      </div>
+                    </div>
+                  </div>
+                {% elif website_business_pair.website == website_to_connect_from and website_business_pair.business.profile.is_vip == False%}
+                  <div class="col-lg-4 col-md-6 portfolio-item wow fadeInUp">
+                    <div class="portfolio-wrap">
+                      <figure id="figure">
+                        <img src={{website_business_pair.business.logo.url}} class="img-fluid" alt="">
+                        <a href={% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %} class="link-preview" title="link to {{website_business_pair.business.name}}"><i class="bx bx-link"></i></a>
+                        <a href={% url 'connect_business' website.id website.name website_business_pair.business.id %}  class="link-details" title="Connect to {{website_business_pair.website.name}}"><i class="bx bx-check"></i></a>
+                      </figure>
+
+                      <div class="portfolio-info">
+                        <h4><a href="portfolio-details.html">{{website_business_pair.business.name}}</a></h4>
+                        <p>category name</p>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+              </div>
+            <hr class="dashed">
+          {% endfor %}
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+
+</body>
+
+{% endblock content %}

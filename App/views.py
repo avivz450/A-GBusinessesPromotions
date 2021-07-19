@@ -740,7 +740,6 @@ def admin_businesses(request, pk, website_name):
 
 
 def change_business_status(request, pk, website_name, business_id, business_new_status):
-    website = get_object_or_404(Website, id=pk)
     website_business_pair = get_object_or_404(Website_Business, id=business_id)
 
     if business_new_status == "AP":
@@ -749,15 +748,56 @@ def change_business_status(request, pk, website_name, business_id, business_new_
         website_business_pair.is_confirmed = Website_Business.BusinessStatus.DISAPPROVED
 
     website_business_pair.save()
+
+    return redirect("admin_businesses", pk, website_name)
+
+
+def connect_businesses_page(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+    website_business_pairs = Website_Business.objects.exclude(website=website).order_by(
+        "website"
+    )
+    user_website_business_pairs = []
+    websites_to_connect_from = []
+    last_website_to_connect_from = website_business_pairs[0].website
+
+    websites_to_connect_from.append(website_business_pairs[0].website)
+
+    for website_business_pair in website_business_pairs:
+        if (
+            website_business_pair.business.profile.user == request.user
+            and Website_Business.objects.filter(
+                website=website, business=website_business_pair.business
+            ).first()
+            is None
+        ):
+            user_website_business_pairs.append(website_business_pair)
+            if last_website_to_connect_from != website_business_pair.website:
+                websites_to_connect_from.append(website_business_pair.website)
+
     return render(
         request,
-        "home/admin_section/businesses.html",
+        "home/connect_business.html",
         {
-            "title": "Admin Section - Businesses",
+            "title": "Connect businesses",
             "website": website,
             "website_profile_pair": Website_Profile.get_website_profile_pair(
                 request.user, website
             ),
-            "website_business_pairs": Website_Business.objects.filter(website=website),
+            "user_website_business_pairs": user_website_business_pairs,
+            "websites_to_connect_from": websites_to_connect_from,
         },
     )
+
+
+def connect_business(request, pk, website_name, business_pk):
+    website = get_object_or_404(Website, id=pk)
+    business_to_connect = get_object_or_404(Business, id=business_pk)
+    new_business_website_pair = Website_Business(
+        website=website,
+        business=business_to_connect,
+        is_confirmed=Website_Business.BusinessStatus.APPROVED,
+    )
+    new_business_website_pair.save()
+
+    return redirect("connect_businesses_page", pk, website_name)

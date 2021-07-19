@@ -97,4 +97,14 @@ urlpatterns = [
         views.change_business_status,
         name="change_business_status",
     ),
+    path(
+        "websites/<int:pk>_<str:website_name>/connect_businesses/",
+        views.connect_businesses_page,
+        name="connect_businesses_page",
+    ),
+    path(
+        "websites/<int:pk>_<str:website_name>/connect_businesses/<int:business_pk>/",
+        views.connect_business,
+        name="connect_business",
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
