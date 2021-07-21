@@ -8,7 +8,7 @@
           {% if user.is_authenticated %}
           <li><a href={% url 'new_business' website.id website.name%} style="color:{{website.navbar_text_color}}">Add business</a></li>
           <li><a href={% url 'choose_business_to_edit' website.id website.name%} style="color:{{website.navbar_text_color}}">Edit business</a></li>
-          <li><a href="#" style="color:{{website.navbar_text_color}}">Connect business</a></li>
+          <li><a href={% url 'connect_businesses_page' website.id website.name%} style="color:{{website.navbar_text_color}}">Connect business</a></li>
           {% endif %}
         </ul>
       </li>
@@ -36,7 +36,7 @@
             {% if website_profile_pair.is_admin is True %}
             <li class="dropdown"><a href="#"><span style="color:{{website.navbar_text_color}}">Admin</span> <i class="bi bi-chevron-right"></i></a>
                 <ul style="background-color:{{website.navbar_background_color}}">
-                <li><a href="#" style="color:{{website.navbar_text_color}}">Edit businesses</a></li>
+                <li><a href={% url 'admin_businesses' website.id website.name %} style="color:{{website.navbar_text_color}}">Edit businesses</a></li>
                 <li><a href="#" style="color:{{website.navbar_text_color}}">Edit sales</a></li>
                 <li><a href="#" style="color:{{website.navbar_text_color}}">Edit profiles</a></li>
                 </ul>

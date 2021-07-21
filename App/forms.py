@@ -146,7 +146,7 @@ class UserBusinessesForm(forms.Form):
         businesses = []
 
         for website_business_pair in Website_Business.objects.filter(
-            website=website, is_confirmed=True
+            website=website, is_confirmed=Website_Business.BusinessStatus.APPROVED
         ):
             if website_business_pair.business.profile == logged_in_profile:
                 businesses.append(website_business_pair.business.id)
@@ -161,5 +161,5 @@ class UserSalesForm(forms.Form):
         logged_in_user = kwargs.pop("logged_in_user", None)
         super(UserSalesForm, self).__init__(*args, **kwargs)
         self.fields["sale"].queryset = Sale.objects.filter(
-            profile=logged_in_user, is_confirmed=True
+            profile=logged_in_user, is_confirmed=Sale.SaleStatus.APPROVED
         )
