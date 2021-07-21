@@ -234,7 +234,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #last_left_nav_item {
-  margin-right:200px;
+  margin-right:150px;
+}
+
+@media (max-width: 1150px) {
+  #last_left_nav_item {
+    margin-right:100px;
+  }
 }
 
 
