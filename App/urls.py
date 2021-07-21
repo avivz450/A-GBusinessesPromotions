@@ -93,9 +93,20 @@ urlpatterns = [
         name="admin_businesses",
     ),
     path(
-        "websites/<int:pk>_<str:website_name>/admin-section/Businesses/<int:business_id>/<str:business_new_status>",
+        "websites/<int:pk>_<str:website_name>/admin-section/Businesses/<int:business_id>/<str:business_new_status>/",
         views.change_business_status,
         name="change_business_status",
+    ),
+    path(
+        "websites/<int:pk>_<str:website_name>/admin-section/Sales/<str:activated_filter>/",
+        views.admin_sales,
+        name="admin_sales",
+    ),
+    path(
+        """websites/<int:pk>_<str:website_name>/admin-section/Sales/
+        <int:sale_id>/<str:sale_new_status>/<str:activated_filter>/""",
+        views.change_sale_status,
+        name="change_sale_status",
     ),
     path(
         "websites/<int:pk>_<str:website_name>/connect_businesses/",
