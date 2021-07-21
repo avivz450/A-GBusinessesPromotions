@@ -336,6 +336,16 @@ def new_business(request, pk, website_name):
                             "message_content": msg_content,
                         },
                     )
+                    website_admin_set = Website_Profile.objects.filter(
+                        website=website, is_admin=True
+                    )
+                    for website_profile_instance in website_admin_set:
+                        notification = Notification.objects.create(
+                            notification_type=2,
+                            from_user=logged_in_profile,
+                            to_user=website_profile_instance.profile,
+                        )
+                        notification.save()
             else:
                 form = BusinessForm()
                 return render(
@@ -538,6 +548,16 @@ def new_sale(request, pk, website_name):
                             "message_content": msg_content,
                         },
                     )
+                    website_admin_set = Website_Profile.objects.filter(
+                        website=website, is_admin=True
+                    )
+                    for website_profile_instance in website_admin_set:
+                        notification = Notification.objects.create(
+                            notification_type=4,
+                            from_user=logged_in_profile,
+                            to_user=website_profile_instance.profile,
+                        )
+                        notification.save()
                     return render(
                         request,
                         "home/websitepage.html",

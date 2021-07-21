@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 from location_field.models.plain import PlainLocationField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
+from colorfield.fields import ColorField
 
 
 # Create your models here.
@@ -45,6 +46,10 @@ class Profile(models.Model):
 
 class Website(models.Model):
     name = models.CharField(max_length=30)  # required
+    favicon = models.ImageField(
+        default="App/images/WebsitesLogos/default.jpg",
+        upload_to="App/images/WebsitesLogos/",
+    )
     logo = models.ImageField(
         default="App/images/WebsitesLogos/default.jpg",
         upload_to="App/images/WebsitesLogos/",
@@ -54,6 +59,11 @@ class Website(models.Model):
     )
     profiles = models.ManyToManyField("Profile", through="Website_Profile")
     businesses = models.ManyToManyField("Business", through="Website_Business")
+    navbar_background_color = ColorField(default="#fff")
+    navbar_text_color = ColorField(default="#4f5a62")
+    navbar_hover_text_color = ColorField(default="#3498db")
+    sliders_text_color = ColorField(default="#fff")
+    sliders_carsoul_color = ColorField(default="#blue")
 
     def __str__(self):
         return "{self.name}".format(self=self)
@@ -228,18 +238,6 @@ class Notification(models.Model):
         on_delete=models.CASCADE,
         null=True,
         default=None,
-    )
-    # post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
-    # comment = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
-    business = models.ForeignKey(
-        Business,
-        related_name="business",
-        on_delete=models.CASCADE,
-        null=True,
-        default=None,
-    )
-    sale = models.ForeignKey(
-        Sale, related_name="sale", on_delete=models.CASCADE, null=True, default=None
     )
     date = models.DateTimeField(default=timezone.now)
     user_has_seen = models.BooleanField(default=False)

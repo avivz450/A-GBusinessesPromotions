@@ -1,53 +1,53 @@
 {% load custom_tags %}
 
-<nav id="navbar" class="navbar order-last order-lg-0">
+<nav id="navbar" class="navbar order-last order-lg-0" style="background-color:'{{website.navbar_background_color}}'">
     <ul>
-      <li class="dropdown"><a href="#" id="first_left_nav_item"><span>Businesses</span> <i class="bi bi-chevron-down"></i></a>
-        <ul>
-          <li><a href={% url 'businesses' website.id website.name%}>Explore</a></li>
+      <li class="dropdown"><a href="#" id="first_left_nav_item"><span style="color:{{website.navbar_text_color}}">Businesses</span> <i class="bi bi-chevron-down"></i></a>
+        <ul style="background-color:{{website.navbar_background_color}}">
+          <li><a href={% url 'businesses' website.id website.name%} style="color:{{website.navbar_text_color}}">Explore</a></li>
           {% if user.is_authenticated %}
-          <li><a href={% url 'new_business' website.id website.name%}>Add business</a></li>
-          <li><a href={% url 'choose_business_to_edit' website.id website.name%}>Edit business</a></li>
-          <li><a href="#">Connect business</a></li>
+          <li><a href={% url 'new_business' website.id website.name%} style="color:{{website.navbar_text_color}}">Add business</a></li>
+          <li><a href={% url 'choose_business_to_edit' website.id website.name%} style="color:{{website.navbar_text_color}}">Edit business</a></li>
+          <li><a href="#" style="color:{{website.navbar_text_color}}">Connect business</a></li>
           {% endif %}
         </ul>
       </li>
-      <li class="dropdown"><a href="#"><span>Sales</span> <i class="bi bi-chevron-down"></i></a>
-        <ul>
-          <li><a href={% url 'sales' website.id website.name%}>Explore</a></li>
+      <li class="dropdown"><a href="#"><span style="color:{{website.navbar_text_color}}">Sales</span> <i class="bi bi-chevron-down"></i></a>
+        <ul style="background-color:{{website.navbar_background_color}}">
+          <li><a href={% url 'sales' website.id website.name%} style="color:{{website.navbar_text_color}}">Explore</a></li>
             {% if user.is_authenticated %}
-          <li><a href={% url 'new_sale' website.id website.name%}>Add sale</a></li>
-          <li><a href={% url 'choose_sale_to_edit' website.id website.name%}>Edit sale</a></li>
+          <li><a href={% url 'new_sale' website.id website.name%} style="color:{{website.navbar_text_color}}">Add sale</a></li>
+          <li><a href={% url 'choose_sale_to_edit' website.id website.name%} style="color:{{website.navbar_text_color}}">Edit sale</a></li>
             {% endif %}
         </ul>
       </li>              
-      <li><a class="nav-link scrollto " href="#portfolio">About us</a></li>
-      <li><a class="nav-link scrollto" id="last_left_nav_item" href="#testimonials">Contact us</a></li>
+      <li><a class="nav-link scrollto " href="#portfolio" style="color:{{website.navbar_text_color}}">About us</a></li>
+      <li><a class="nav-link scrollto" id="last_left_nav_item" href="#testimonials" style="color:{{website.navbar_text_color}}">Contact us</a></li>
         {% if user.is_authenticated %}
           <div class="nav-item">
             {% show_notifications %}
           </div>
-        <li class="dropdown"><a href="#"><span>Hello {{user.username}}!</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-            <li><a href={% url 'edit_profile' website.id website.name user.id %}>Edit profile</a></li>
+        <li class="dropdown"><a href="#"><span  style="color:{{website.navbar_text_color}}">Hello {{user.username}}!</span> <i class="bi bi-chevron-down"></i></a>
+            <ul style="background-color:{{website.navbar_background_color}}">
+            <li><a href={% url 'edit_profile' website.id website.name user.id %} style="color:{{website.navbar_text_color}}">Edit profile</a></li>
             {% if user.profile.is_vip is False %}
-            <li><a href={% url 'premium' website.id website.name %}>Upgrade</a></li>
+            <li><a href={% url 'premium' website.id website.name %} style="color:{{website.navbar_text_color}}">Upgrade</a></li>
             {% endif %} 
             {% if website_profile_pair.is_admin is True %}
-            <li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                <li><a href="#">Edit businesses</a></li>
-                <li><a href="#">Edit sales</a></li>
-                <li><a href="#">Edit profiles</a></li>
+            <li class="dropdown"><a href="#"><span style="color:{{website.navbar_text_color}}">Admin</span> <i class="bi bi-chevron-right"></i></a>
+                <ul style="background-color:{{website.navbar_background_color}}">
+                <li><a href="#" style="color:{{website.navbar_text_color}}">Edit businesses</a></li>
+                <li><a href="#" style="color:{{website.navbar_text_color}}">Edit sales</a></li>
+                <li><a href="#" style="color:{{website.navbar_text_color}}">Edit profiles</a></li>
                 </ul>
             </li>
             {% endif %} 
             </ul>
         </li>
-        <li><a class="nav-link scrollto" href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'logout' %}?next={% firstof request.path '/' %}" style="color:{{website.navbar_text_color}}">Logout</a></li>
         {% else %}
-        <li><a class="nav-link scrollto" id="right_nav_item" href="{% url 'login' website.id website.name %}?next={% firstof request.path '/' %}">Login</a></li>
-        <li><a class="nav-link scrollto" href={% url 'signup' website.id website.name %}>Sign up</a></li>
+        <li><a class="nav-link scrollto" id="right_nav_item" href="{% url 'login' website.id website.name %}?next={% firstof request.path '/' %}" style="color:{{website.navbar_text_color}}">Login</a></li>
+        <li><a class="nav-link scrollto" href={% url 'signup' website.id website.name %} style="color:{{website.navbar_text_color}}">Sign up</a></li>
         {% endif %} 
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>

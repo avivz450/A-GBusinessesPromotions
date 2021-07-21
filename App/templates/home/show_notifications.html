@@ -4,19 +4,19 @@
             id="dropdownMenuButton"
             data-toggle="dropdown"
             aria-haspopup="true"
-            aria-expanded="false">
-            
+            aria-expanded="false"
+            style="background-color:rgb(108, 172, 224); color:rgb(157, 65, 219)">
         {{ notifications.count }}
     </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notify">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notify" style="background-color:rgb(157, 65, 219); color:rgb(108, 172, 224)">
         {% for notification in notifications %}
             {% if not notification.user_has_seen %}
                 {% if notification.notification_type == 1 %}
                 <div class="dropdown-item" id="{{ notification.pk }}">
-                    <a href="#">{{ notification.from_user }} approved your business</a>
+                    <a href="#" style="color:rgb(108, 172, 224)">{{ notification.from_user }} approved your business</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" style="background-color:{{website.navbar_background_color}}">&times;</span>
                     </button>
                 </div>
                 {% elif notification.notification_type == 2 %}

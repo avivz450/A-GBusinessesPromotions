@@ -81,7 +81,13 @@ class WebsiteForm(forms.ModelForm):
         fields = (
             "name",
             "logo",
+            "favicon",
             "number_of_slides_in_main_page",
+            "navbar_background_color",
+            "navbar_text_color",
+            "navbar_hover_text_color",
+            "sliders_text_color",
+            "sliders_carsoul_color",
         )
 
 
