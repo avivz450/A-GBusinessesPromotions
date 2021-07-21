@@ -15,6 +15,7 @@ pytest = "*"
 django-crispy-forms = "*"
 django-location-field = "*"
 django-widget-tweaks = "*"
+django-colorfield = "*"
 
 [packages]
 django = "*"
