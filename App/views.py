@@ -744,6 +744,14 @@ class RemoveNotification(View):
 
 def admin_businesses(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
+    website_admin_set = Website_Profile.objects.filter(website=website, is_admin=True)
+    for website_profile_instance in website_admin_set:
+        notification = Notification.objects.create(
+            notification_type=1,
+            from_user=logged_in_profile,
+            to_user=website_profile_instance.profile,
+        )
+        notification.save()
 
     return render(
         request,
