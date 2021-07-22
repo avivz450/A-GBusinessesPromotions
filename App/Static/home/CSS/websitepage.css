@@ -105,9 +105,7 @@
     opacity: 1;
 }
 
-#hero .carousel-indicators .active {
-    background-color: blue;
-}
+
 
 #hero .btn-get-started {
     font-family: "Roboto", sans-serif;
