@@ -833,11 +833,25 @@ def change_sale_status(
     request, pk, website_name, sale_id, sale_new_status, activated_filter
 ):
     sale = get_object_or_404(Sale, id=sale_id)
+    logged_in_profile = Profile.objects.filter(user=request.user).first()
+    profile_to_send_notification = sale.profile
 
     if sale_new_status == "AP":
         sale.is_confirmed = Sale.SaleStatus.APPROVED
+        notification = Notification.objects.create(
+            notification_type=3,
+            from_user=logged_in_profile,
+            to_user=profile_to_send_notification,
+        )
+        notification.save()
     else:
         sale.is_confirmed = Sale.SaleStatus.DISAPPROVED
+        notification = Notification.objects.create(
+            notification_type=6,
+            from_user=logged_in_profile,
+            to_user=profile_to_send_notification,
+        )
+        notification.save()
 
     sale.save()
 

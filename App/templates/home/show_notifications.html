@@ -31,7 +31,7 @@
                     </button>
                 </div>
                 {% elif notification.notification_type == 3 %}
-                <div class="dropdown-item" id="{{ notification.pk }}">
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
                     <a href="#"onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
                     style="color:{{website.navbar_text_color}}">{{ notification.from_user }} approved your sale</a>
                     <button type="button" class="close" aria-label="Close"
@@ -40,7 +40,7 @@
                     </button>
                 </div>
                 {% elif notification.notification_type == 4 %}
-                <div class="dropdown-item" id="{{ notification.pk }}">
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
                     <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
                     style="color:{{website.navbar_text_color}}">{{ notification.from_user }} asked to add sale</a>
                     <button type="button" class="close" aria-label="Close"
@@ -49,7 +49,7 @@
                     </button>
                 </div>
                 {% elif notification.notification_type == 5 %}
-                <div class="dropdown-item" id="{{ notification.pk }}">
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
                     <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
                     style="color:{{website.navbar_text_color}}">{{ notification.from_user }} didn't approved your business</a>
                     <button type="button" class="close" aria-label="Close"
@@ -58,7 +58,7 @@
                     </button>
                 </div>
                 {% elif notification.notification_type == 6 %}
-                <div class="dropdown-item" id="{{ notification.pk }}">
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
                     <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
                     style="color:{{website.navbar_text_color}}">{{ notification.from_user }} didn't approved your sale</a>
                     <button type="button" class="close" aria-label="Close"
