@@ -224,7 +224,7 @@ class Sale(models.Model):
 class Notification(models.Model):
     # 1 = business approved, 2 = business request to add
     # 3 = sale approved, 4 = sale request to add
-    # 5 = business disapproved, 6 = sale disapproved 
+    # 5 = business disapproved, 6 = sale disapproved
     notification_type = models.IntegerField(default=None)
     to_user = models.ForeignKey(
         Profile,
