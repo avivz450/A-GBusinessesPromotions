@@ -744,14 +744,6 @@ class RemoveNotification(View):
 
 def admin_businesses(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
-    website_admin_set = Website_Profile.objects.filter(website=website, is_admin=True)
-    for website_profile_instance in website_admin_set:
-        notification = Notification.objects.create(
-            notification_type=1,
-            from_user=logged_in_profile,
-            to_user=website_profile_instance.profile,
-        )
-        notification.save()
 
     return render(
         request,
@@ -769,11 +761,25 @@ def admin_businesses(request, pk, website_name):
 
 def change_business_status(request, pk, website_name, business_id, business_new_status):
     website_business_pair = get_object_or_404(Website_Business, id=business_id)
+    logged_in_profile = Profile.objects.filter(user=request.user).first()
+    profile_to_send_notification = website_business_pair.business.profile
 
     if business_new_status == "AP":
         website_business_pair.is_confirmed = Website_Business.BusinessStatus.APPROVED
+        notification = Notification.objects.create(
+            notification_type=1,
+            from_user=logged_in_profile,
+            to_user=profile_to_send_notification,
+        )
+        notification.save()
     else:
         website_business_pair.is_confirmed = Website_Business.BusinessStatus.DISAPPROVED
+        notification = Notification.objects.create(
+            notification_type=5,
+            from_user=logged_in_profile,
+            to_user=profile_to_send_notification,
+        )
+        notification.save()
 
     website_business_pair.save()
 
