@@ -37,7 +37,7 @@
             <li class="dropdown"><a href="#"><span style="color:{{website.navbar_text_color}}">Admin</span> <i class="bi bi-chevron-right"></i></a>
                 <ul style="background-color:{{website.navbar_background_color}}">
                 <li><a href={% url 'admin_businesses' website.id website.name %} style="color:{{website.navbar_text_color}}">Edit businesses</a></li>
-                <li><a href="#" style="color:{{website.navbar_text_color}}">Edit sales</a></li>
+                <li><a href={% url 'admin_sales' website.id website.name "All" %} style="color:{{website.navbar_text_color}}">Edit sales</a></li>
                 <li><a href="#" style="color:{{website.navbar_text_color}}">Edit profiles</a></li>
                 </ul>
             </li>

@@ -772,6 +772,64 @@ def change_business_status(request, pk, website_name, business_id, business_new_
     return redirect("admin_businesses", pk, website_name)
 
 
+def admin_sales(request, pk, website_name, activated_filter):
+    website = get_object_or_404(Website, id=pk)
+    website_business_pairs = Website_Business.objects.filter(website=website)
+    related_sales_to_website = []
+
+    for website_business_pair in website_business_pairs:
+        if activated_filter == "Approved":
+            related_sales_to_business = Sale.objects.filter(
+                business=website_business_pair.business,
+                is_confirmed=Sale.SaleStatus.APPROVED,
+            )
+        elif activated_filter == "Disapproved":
+            related_sales_to_business = Sale.objects.filter(
+                business=website_business_pair.business,
+                is_confirmed=Sale.SaleStatus.DISAPPROVED,
+            )
+        elif activated_filter == "Pending":
+            related_sales_to_business = Sale.objects.filter(
+                business=website_business_pair.business,
+                is_confirmed=Sale.SaleStatus.PENDING,
+            )
+        elif activated_filter == "All":
+            related_sales_to_business = Sale.objects.filter(
+                business=website_business_pair.business
+            )
+        for sale in related_sales_to_business:
+            related_sales_to_website.append(sale)
+
+    return render(
+        request,
+        "home/admin_section/sales.html",
+        {
+            "title": "Admin Section - Sales",
+            "website": website,
+            "website_profile_pair": Website_Profile.get_website_profile_pair(
+                request.user, website
+            ),
+            "sales": related_sales_to_website,
+            "activated_filter": activated_filter,
+        },
+    )
+
+
+def change_sale_status(
+    request, pk, website_name, sale_id, sale_new_status, activated_filter
+):
+    sale = get_object_or_404(Sale, id=sale_id)
+
+    if sale_new_status == "AP":
+        sale.is_confirmed = Sale.SaleStatus.APPROVED
+    else:
+        sale.is_confirmed = Sale.SaleStatus.DISAPPROVED
+
+    sale.save()
+
+    return redirect("admin_sales", pk, website_name, activated_filter)
+
+
 def connect_businesses_page(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     website_business_pairs = Website_Business.objects.exclude(website=website).order_by(
