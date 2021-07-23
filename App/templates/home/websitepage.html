@@ -4,23 +4,25 @@
 </head>
 
 <body>
+  {% if website.sliders_text_color and website.sliders_text_color != '#000000' %}
  <section id="hero">
     <div class="hero-container">
-      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000" style="color:{{website.sliders_carsoul_color}}">
 
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+        <ol class="carousel-indicators" id="hero-carousel-indicators" style="color:{{website.sliders_carsoul_color}}"></ol>
 
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox" style="color:{{website.sliders_carsoul_color}}">
 
        {% for slide in slideList %}
           <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
         
-            <div class="carousel-background"><img src="{{slide.picture.url}}" id="slidePhoto" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">{{slide.title}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{slide.description}}</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+            <div class="carousel-background" style="color:{{website.sliders_carsoul_color}}"><img src="{{slide.picture.url}}" id="slidePhoto" alt=""></div>
+            <div class="carousel-container" style="color:{{website.sliders_carsoul_color}}">
+              <div class="carousel-content" style="color:{{website.sliders_carsoul_color}}">
+                <h2 class="animate__animated animate__fadeInDown" style="color:{{website.sliders_text_color}}">{{slide.title}}</h2>
+                <p class="animate__animated animate__fadeInUp" style="color:{{website.sliders_text_color}}">{{slide.description}}</p>
+                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto hoverable" onmouseover="this.style.backgroundColor = '{{website.sliders_carsoul_color}}'";
+                onmouseout="this.style.backgroundColor='transparent'"; style="border:1px solid {{website.sliders_carsoul_color}}; color:{{website.sliders_text_color}}">Get Started</a>
               </div>
             </div>
           </div>
@@ -29,16 +31,17 @@
 
         </div>
 
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bi bi-chevron-double-left" aria-hidden="true"></span>
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev" style="color:{{website.sliders_text_color}}">
+          <span class="carousel-control-prev-icon bi bi-chevron-double-left" aria-hidden="true" style="color:{{website.sliders_carsoul_color}}"></span>
         </a>
 
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-double-right" aria-hidden="true"></span>
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next" style="color:{{website.sliders_text_color}} ">
+          <span class="carousel-control-next-icon bi bi-chevron-double-right" aria-hidden="true" style="color:{{website.sliders_carsoul_color}}"></span>
         </a>
 
       </div>
     </div>
+    {% endif %}
   </section><!-- End Hero -->
 
 

@@ -336,6 +336,16 @@ def new_business(request, pk, website_name):
                             "message_content": msg_content,
                         },
                     )
+                    website_admin_set = Website_Profile.objects.filter(
+                        website=website, is_admin=True
+                    )
+                    for website_profile_instance in website_admin_set:
+                        notification = Notification.objects.create(
+                            notification_type=2,
+                            from_user=logged_in_profile,
+                            to_user=website_profile_instance.profile,
+                        )
+                        notification.save()
             else:
                 form = BusinessForm()
                 return render(
@@ -538,6 +548,16 @@ def new_sale(request, pk, website_name):
                             "message_content": msg_content,
                         },
                     )
+                    website_admin_set = Website_Profile.objects.filter(
+                        website=website, is_admin=True
+                    )
+                    for website_profile_instance in website_admin_set:
+                        notification = Notification.objects.create(
+                            notification_type=4,
+                            from_user=logged_in_profile,
+                            to_user=website_profile_instance.profile,
+                        )
+                        notification.save()
                     return render(
                         request,
                         "home/websitepage.html",
@@ -741,11 +761,25 @@ def admin_businesses(request, pk, website_name):
 
 def change_business_status(request, pk, website_name, business_id, business_new_status):
     website_business_pair = get_object_or_404(Website_Business, id=business_id)
+    logged_in_profile = Profile.objects.filter(user=request.user).first()
+    profile_to_send_notification = website_business_pair.business.profile
 
     if business_new_status == "AP":
         website_business_pair.is_confirmed = Website_Business.BusinessStatus.APPROVED
+        notification = Notification.objects.create(
+            notification_type=1,
+            from_user=logged_in_profile,
+            to_user=profile_to_send_notification,
+        )
+        notification.save()
     else:
         website_business_pair.is_confirmed = Website_Business.BusinessStatus.DISAPPROVED
+        notification = Notification.objects.create(
+            notification_type=5,
+            from_user=logged_in_profile,
+            to_user=profile_to_send_notification,
+        )
+        notification.save()
 
     website_business_pair.save()
 
@@ -799,11 +833,25 @@ def change_sale_status(
     request, pk, website_name, sale_id, sale_new_status, activated_filter
 ):
     sale = get_object_or_404(Sale, id=sale_id)
+    logged_in_profile = Profile.objects.filter(user=request.user).first()
+    profile_to_send_notification = sale.profile
 
     if sale_new_status == "AP":
         sale.is_confirmed = Sale.SaleStatus.APPROVED
+        notification = Notification.objects.create(
+            notification_type=3,
+            from_user=logged_in_profile,
+            to_user=profile_to_send_notification,
+        )
+        notification.save()
     else:
         sale.is_confirmed = Sale.SaleStatus.DISAPPROVED
+        notification = Notification.objects.create(
+            notification_type=6,
+            from_user=logged_in_profile,
+            to_user=profile_to_send_notification,
+        )
+        notification.save()
 
     sale.save()
 

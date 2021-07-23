@@ -4,40 +4,63 @@
             id="dropdownMenuButton"
             data-toggle="dropdown"
             aria-haspopup="true"
-            aria-expanded="false">
-            
+            aria-expanded="false"
+            style="background-color:{{website.navbar_text_color}}; color:{{website.navbar_background_color}}">
         {{ notifications.count }}
     </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notify">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notify" style="background-color:{{website.navbar_background_color}}"
+    onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>
         {% for notification in notifications %}
             {% if not notification.user_has_seen %}
                 {% if notification.notification_type == 1 %}
-                <div class="dropdown-item" id="{{ notification.pk }}">
-                    <a href="#">{{ notification.from_user }} approved your business</a>
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
+                    <a href="#" onmouseover="this.style.color='{{website.navbar_hover_text_color}}'; this.style.bgColor='{{website.navbar_background_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} approved your business</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {% elif notification.notification_type == 2 %}
-                <div class="dropdown-item" id="{{ notification.pk }}">
-                    <a href="#">{{ notification.from_user }} asked to create business</a>
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
+                    <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} asked to create business</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {% elif notification.notification_type == 3 %}
-                <div class="dropdown-item" id="{{ notification.pk }}">
-                    <a href="#">{{ notification.from_user }} approved your sale</a>
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
+                    <a href="#"onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} approved your sale</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {% elif notification.notification_type == 4 %}
-                <div class="dropdown-item" id="{{ notification.pk }}">
-                    <a href="#">{{ notification.from_user }} asked to add sale</a>
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
+                    <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} asked to add sale</a>
+                    <button type="button" class="close" aria-label="Close"
+                            onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% elif notification.notification_type == 5 %}
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
+                    <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} didn't approved your business</a>
+                    <button type="button" class="close" aria-label="Close"
+                            onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% elif notification.notification_type == 6 %}
+                <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
+                    <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} didn't approved your sale</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
                         <span aria-hidden="true">&times;</span>

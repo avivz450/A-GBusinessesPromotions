@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="shortcut icon" href="{% static 'home/favicon.ico' %}"/>
+  <link rel="shortcut icon" href="{{website.favicon.url}}"/>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -35,6 +35,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'home/css/navbar.css' %}" rel="stylesheet">
   <link href="{% static 'home/css/notification.css' %}" rel="stylesheet">
 
 	{% if title %}
@@ -42,12 +43,18 @@
 	{% else %}
 		<title>Welcome!</title>
 	{% endif %}
+
+  <style>
+  #hero .carousel-indicators .active {
+    background-color: {{website.sliders_carsoul_color}};
+  }
+  </style>
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
+  <header id="header" class="fixed-top d-flex align-items-center" style="background-color:{{website.navbar_background_color}}">
     <div class="container d-flex align-items-center">
 
       <div class="logo me-auto" id="last_left_nav_item">

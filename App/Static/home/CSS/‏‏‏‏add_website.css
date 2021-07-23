@@ -4,7 +4,7 @@
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 135vh;
+  height: 200vh;
   background: url("/static/home/background2.jpg") no-repeat center center fixed;
   background-size: cover;
   position: relative;

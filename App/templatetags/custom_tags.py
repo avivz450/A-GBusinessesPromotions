@@ -5,7 +5,7 @@ register = template.Library()
 
 
 @register.inclusion_tag("home/show_notifications.html", takes_context=True)
-def show_notifications(context):
+def show_notifications(context, website):
     request_user = context["request"].user
     logged_in_profile = Profile.objects.filter(user=request_user).first()
     notifications = (
@@ -13,4 +13,4 @@ def show_notifications(context):
         .exclude(user_has_seen=True)
         .order_by("-date")
     )
-    return {"notifications": notifications}
+    return {"notifications": notifications, "website": website}
