@@ -24,8 +24,8 @@
 - Add reviews to businesses
 - Add "ask to connect to my site" 
 - Add block users feature : 
-- 1. Add block profiles option to the admin section (is block handle)
-- 2. Add block user page
+1. Add block profiles option to the admin section (is block handle)
+2. Add block user page
 - Add edit website (to admins only)
 - Add "navigate to business feature (with google API)"
 
