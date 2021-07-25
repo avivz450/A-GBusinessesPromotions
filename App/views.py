@@ -483,6 +483,7 @@ def premium(request, pk, website_name):
                     "website_profile_pair": Website_Profile.get_website_profile_pair(
                         request.user, website
                     ),
+                    "slideList": Slide.objects.filter(website=website),
                 },
             )
         elif logged_in_profile.is_vip is True:
@@ -745,18 +746,23 @@ class RemoveNotification(View):
 def admin_businesses(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
 
-    return render(
-        request,
-        "home/admin_section/businesses.html",
-        {
-            "title": "Admin Section - Businesses",
-            "website": website,
-            "website_profile_pair": Website_Profile.get_website_profile_pair(
-                request.user, website
-            ),
-            "website_business_pairs": Website_Business.objects.filter(website=website),
-        },
-    )
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        return render(
+            request,
+            "home/admin_section/businesses.html",
+            {
+                "title": "Admin Section - Businesses",
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+                "website_business_pairs": Website_Business.objects.filter(
+                    website=website
+                ),
+            },
+        )
 
 
 def change_business_status(request, pk, website_name, business_id, business_new_status):
@@ -788,45 +794,49 @@ def change_business_status(request, pk, website_name, business_id, business_new_
 
 def admin_sales(request, pk, website_name, activated_filter):
     website = get_object_or_404(Website, id=pk)
-    website_business_pairs = Website_Business.objects.filter(website=website)
-    related_sales_to_website = []
 
-    for website_business_pair in website_business_pairs:
-        if activated_filter == "Approved":
-            related_sales_to_business = Sale.objects.filter(
-                business=website_business_pair.business,
-                is_confirmed=Sale.SaleStatus.APPROVED,
-            )
-        elif activated_filter == "Disapproved":
-            related_sales_to_business = Sale.objects.filter(
-                business=website_business_pair.business,
-                is_confirmed=Sale.SaleStatus.DISAPPROVED,
-            )
-        elif activated_filter == "Pending":
-            related_sales_to_business = Sale.objects.filter(
-                business=website_business_pair.business,
-                is_confirmed=Sale.SaleStatus.PENDING,
-            )
-        elif activated_filter == "All":
-            related_sales_to_business = Sale.objects.filter(
-                business=website_business_pair.business
-            )
-        for sale in related_sales_to_business:
-            related_sales_to_website.append(sale)
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        website_business_pairs = Website_Business.objects.filter(website=website)
+        related_sales_to_website = []
 
-    return render(
-        request,
-        "home/admin_section/sales.html",
-        {
-            "title": "Admin Section - Sales",
-            "website": website,
-            "website_profile_pair": Website_Profile.get_website_profile_pair(
-                request.user, website
-            ),
-            "sales": related_sales_to_website,
-            "activated_filter": activated_filter,
-        },
-    )
+        for website_business_pair in website_business_pairs:
+            if activated_filter == "Approved":
+                related_sales_to_business = Sale.objects.filter(
+                    business=website_business_pair.business,
+                    is_confirmed=Sale.SaleStatus.APPROVED,
+                )
+            elif activated_filter == "Disapproved":
+                related_sales_to_business = Sale.objects.filter(
+                    business=website_business_pair.business,
+                    is_confirmed=Sale.SaleStatus.DISAPPROVED,
+                )
+            elif activated_filter == "Pending":
+                related_sales_to_business = Sale.objects.filter(
+                    business=website_business_pair.business,
+                    is_confirmed=Sale.SaleStatus.PENDING,
+                )
+            elif activated_filter == "All":
+                related_sales_to_business = Sale.objects.filter(
+                    business=website_business_pair.business
+                )
+            for sale in related_sales_to_business:
+                related_sales_to_website.append(sale)
+
+        return render(
+            request,
+            "home/admin_section/sales.html",
+            {
+                "title": "Admin Section - Sales",
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+                "sales": related_sales_to_website,
+                "activated_filter": activated_filter,
+            },
+        )
 
 
 def change_sale_status(
@@ -860,40 +870,44 @@ def change_sale_status(
 
 def connect_businesses_page(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
-    website_business_pairs = Website_Business.objects.exclude(website=website).order_by(
-        "website"
-    )
-    user_website_business_pairs = []
-    websites_to_connect_from = []
-    last_website_to_connect_from = website_business_pairs[0].website
 
-    websites_to_connect_from.append(website_business_pairs[0].website)
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        website_business_pairs = Website_Business.objects.exclude(
+            website=website
+        ).order_by("website")
+        user_website_business_pairs = []
+        websites_to_connect_from = []
+        last_website_to_connect_from = website_business_pairs[0].website
 
-    for website_business_pair in website_business_pairs:
-        if (
-            website_business_pair.business.profile.user == request.user
-            and Website_Business.objects.filter(
-                website=website, business=website_business_pair.business
-            ).first()
-            is None
-        ):
-            user_website_business_pairs.append(website_business_pair)
-            if last_website_to_connect_from != website_business_pair.website:
-                websites_to_connect_from.append(website_business_pair.website)
+        websites_to_connect_from.append(website_business_pairs[0].website)
 
-    return render(
-        request,
-        "home/connect_business.html",
-        {
-            "title": "Connect businesses",
-            "website": website,
-            "website_profile_pair": Website_Profile.get_website_profile_pair(
-                request.user, website
-            ),
-            "user_website_business_pairs": user_website_business_pairs,
-            "websites_to_connect_from": websites_to_connect_from,
-        },
-    )
+        for website_business_pair in website_business_pairs:
+            if (
+                website_business_pair.business.profile.user == request.user
+                and Website_Business.objects.filter(
+                    website=website, business=website_business_pair.business
+                ).first()
+                is None
+            ):
+                user_website_business_pairs.append(website_business_pair)
+                if last_website_to_connect_from != website_business_pair.website:
+                    websites_to_connect_from.append(website_business_pair.website)
+
+        return render(
+            request,
+            "home/connect_business.html",
+            {
+                "title": "Connect businesses",
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+                "user_website_business_pairs": user_website_business_pairs,
+                "websites_to_connect_from": websites_to_connect_from,
+            },
+        )
 
 
 def connect_business(request, pk, website_name, business_pk):
