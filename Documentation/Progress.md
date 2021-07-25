@@ -13,7 +13,7 @@
 
 ## plans
 ### must have :
-- Add business page
+- Show business page
 - Styling: explore sale/business, edit+ add sale/business, upgrade page, edit profile
 - Filter and sort to businesses and sales
 - Add contact us page including adding an option to send email to all website admins once pressing submit
