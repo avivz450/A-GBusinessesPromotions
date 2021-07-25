@@ -51,9 +51,12 @@
             <li class="dropdown"><a href="#"><span style="color:{{website.navbar_text_color}}"
               onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Admin</span> <i class="bi bi-chevron-right"></i></a>
                 <ul style="background-color:{{website.navbar_background_color}}">
-                <li><a href={% url 'admin_businesses' website.id website.name %} style="color:{{website.navbar_text_color}}">Edit businesses</a></li>
-                <li><a href={% url 'admin_sales' website.id website.name "All" %} style="color:{{website.navbar_text_color}}">Edit sales</a></li>
-                <li><a href="#" style="color:{{website.navbar_text_color}}">Edit profiles</a></li>
+                <li><a href={% url 'admin_businesses' website.id website.name %} style="color:{{website.navbar_text_color}}"
+                  onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Edit businesses</a></li>
+                <li><a href={% url 'admin_sales' website.id website.name "All" %} style="color:{{website.navbar_text_color}}"
+                  onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Edit sales</a></li>
+                <li><a href="#" style="color:{{website.navbar_text_color}}"
+                  onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Edit profiles</a></li>
                 </ul>
             </li>
             {% endif %} 
@@ -62,7 +65,8 @@
         <li><a class="nav-link scrollto" href="{% url 'logout' %}?next={% firstof request.path '/' %}" style="color:{{website.navbar_text_color}}"
           onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Logout</a></li>
         {% else %}
-        <li><a class="nav-link scrollto" id="right_nav_item" href="{% url 'login' website.id website.name %}?next={% firstof request.path '/' %}" style="color:{{website.navbar_text_color}}">Login</a></li>
+        <li><a class="nav-link scrollto" id="right_nav_item" href="{% url 'login' website.id website.name %}?next={% firstof request.path '/' %}" style="color:{{website.navbar_text_color}}"
+          onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Login</a></li>
         <li><a class="nav-link scrollto" href={% url 'signup' website.id website.name %} style="color:{{website.navbar_text_color}}"
           onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Sign up</a></li>
         {% endif %} 
