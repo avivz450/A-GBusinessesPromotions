@@ -14,10 +14,10 @@ A web application whose purpose is to advertise businesses whose type is determi
 3. Make a profit to the app owners by premium packages.
 
 ## Users :
-Site manager - will accept/ignore businesses to his own web, will inspect the content of the business.
-Business owners - will open their business on a suitable page.
+- Site manager - will accept/ignore businesses to his own web, will inspect the content of the business.
+- Business owners - will open their business on a suitable page.
 Premium users will have additional benefits.
-Guests - will be able to watch the content only.
+- Guests - will be able to watch the content only.
 
 ## Features :
 1. Adding business/sales. (V)
