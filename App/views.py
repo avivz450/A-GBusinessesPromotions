@@ -483,6 +483,7 @@ def premium(request, pk, website_name):
                     "website_profile_pair": Website_Profile.get_website_profile_pair(
                         request.user, website
                     ),
+                    "slideList": Slide.objects.filter(website=website),
                 },
             )
         elif logged_in_profile.is_vip is True:
