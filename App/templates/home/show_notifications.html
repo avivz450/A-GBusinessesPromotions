@@ -8,6 +8,7 @@
             style="background-color:{{website.navbar_text_color}}; color:{{website.navbar_background_color}}">
         {{ notifications.count }}
     </button>
+    {% if notification.count > 0 %}
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notify" style="background-color:{{website.navbar_background_color}}"
     onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>
         {% for notification in notifications %}
@@ -70,4 +71,5 @@
             {% endif %}
         {% endfor %}
     </div>
+    {% endif %}
 </div>
