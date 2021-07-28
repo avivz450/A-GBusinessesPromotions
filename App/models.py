@@ -63,7 +63,7 @@ class Website(models.Model):
     navbar_text_color = ColorField(default="#4f5a62")
     navbar_hover_text_color = ColorField(default="#3498db")
     sliders_text_color = ColorField(default="#fff")
-    sliders_carsoul_color = ColorField(default="#blue")
+    sliders_carsoul_color = ColorField(default="#0009FF")
 
     def __str__(self):
         return "{self.name}".format(self=self)

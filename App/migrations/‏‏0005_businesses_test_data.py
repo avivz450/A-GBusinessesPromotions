@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
         business_test_data = [
             (
-                4,
+                21,
                 "Business demo 1",
                 "App/images/BusinessesLogos/demo_business_1_logo.png",
                 "Business demo 1 description",
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 1,
             ),
             (
-                4,
+                21,
                 "Business demo 2",
                 "App/images/BusinessesLogos/demo_business_2_logo.png",
                 "Business demo 2 description",
@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 1,
             ),
             (
-                4,
+                21,
                 "Business demo 3",
                 "App/images/BusinessesLogos/demo_business_3_logo.png",
                 "Business demo 3 description",
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 1,
             ),
             (
-                4,
+                21,
                 "MikiMaya",
                 "App/images/BusinessesLogos/vegan_business_1_logo.jpg",
                 "Mikimaya is a vegan restaurant in the town of Tzur Moshe, where you will find a menu rich in flavors.",
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 2,
             ),
             (
-                4,
+                21,
                 "BOCHI cafe",
                 "App/images/BusinessesLogos/vegan_business_2_logo.jpg",
                 """A house of veganism.
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
                 2,
             ),
             (
-                4,
+                21,
                 "Magna Nature",
                 "App/images/BusinessesLogos/vegan_business_3_logo.jpg",
                 """"Magna Nature" is an online store for natural products that was
@@ -67,6 +67,87 @@ In the store you can find products that provide natural
  and healthy alternatives to the products consumed in your home.""",
                 Website_Business.BusinessStatus.APPROVED,
                 2,
+            ),
+            (
+                22,
+                "Coffee Botique",
+                "App/images/BusinessesLogos/coffee_lovers.jpg",
+                """"Beans all over the world, to match the perfect taste to the
+                every one...
+                """,
+                Website_Business.BusinessStatus.APPROVED,
+                3,
+            ),
+            (
+                22,
+                "Ninja",
+                "App/images/BusinessesLogos/food_ninja.jpg",
+                """"Electric kitchen machines.""",
+                Website_Business.BusinessStatus.APPROVED,
+                4,
+            ),
+            (
+                22,
+                "The Big Butcher",
+                "App/images/BusinessesLogos/food_butcher.jpg",
+                """"Botique butcher with the most delicious meats.""",
+                Website_Business.BusinessStatus.APPROVED,
+                5,
+            ),
+            (
+                22,
+                "Lets Go To The Candy Shop",
+                "App/images/BusinessesLogos/food_candies.jpg",
+                """"Candies candies and more candies, all kinds of candies in variety
+                of flavors and colors.""",
+                Website_Business.BusinessStatus.APPROVED,
+                6,
+            ),
+            (
+                22,
+                "Iron Muscle",
+                "App/images/BusinessesLogos/fitness_equipments.jpg",
+                """"All the sports equipment that you will need are here
+                in the store for your convenient""",
+                Website_Business.BusinessStatus.APPROVED,
+                7,
+            ),
+            (
+                22,
+                "My Protein",
+                "App/images/BusinessesLogos/fitness_myprotein.jpg",
+                """"Clothing, dietary needs, suppelments and more!""",
+                Website_Business.BusinessStatus.APPROVED,
+                7,
+            ),
+            (
+                22,
+                "Crafting Materials",
+                "App/images/BusinessesLogos/crafting_arta.jpg",
+                """"Here you can buy a variety of products that match
+                exactly your needs""",
+                Website_Business.BusinessStatus.APPROVED,
+                8,
+            ),
+            (
+                22,
+                "Chocolate botique",
+                "App/images/BusinessesLogos/chocolate.jpg",
+                """"Hand made chocolate straight from coacoa beans to delicious
+                botique chocolate with a secret recipe that make each bite full
+                with rich flavor of chocolate.""",
+                Website_Business.BusinessStatus.APPROVED,
+                9,
+            ),
+            (
+                22,
+                "Little Dairy Queen",
+                "App/images/BusinessesLogos/food_dairy.jpg",
+                """"Dairy products that belong to family up north with a big farm,
+                 they raise the cows in the open air with no antibiotics
+                 and its one of the healthiest milk in the country.""",
+                Website_Business.BusinessStatus.APPROVED,
+                9,
             ),
         ]
 

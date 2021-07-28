@@ -14,6 +14,23 @@ class Migration(migrations.Migration):
             ("Shachar", "ShacharShachar", "Shachar@gmail.com"),
             ("Liat", "LiatLiat", "Liat@gmail.com"),
             ("Bella", "BellaBella", "Bella@gmail.com"),
+            ("Dana", "DanaDana", "Dana@gmail.com"),
+            ("Josh", "JoshJosh", "Josh@gmail.com"),
+            ("Drake", "DrakeDrake", "Drake@gmail.com"),
+            ("Ash", "AshAsh", "Ash@gmail.com"),
+            ("Goku", "GokuGoku", "Goku@gmail.com"),
+            ("Jon", "JonJon", "Jon@gmail.com"),
+            ("Misty", "MistyMisty", "Misty@gmail.com"),
+            ("Zafrani", "ZafraniZafrani", "Zafrani@gmail.com"),
+            ("Brock", "BrockBrock", "Brock@gmail.com"),
+            ("Maor", "MaorMaor", "Maor@gmail.com"),
+            ("Refael", "RefaelRefael", "Refael@gmail.com"),
+            ("Logan", "LoganLogan", "Logan@gmail.com"),
+            ("Peter", "PeterPeter", "Peter@gmail.com"),
+            ("Parker", "ParkerParker", "Parker@gmail.com"),
+            ("Tony", "TonyTony", "Tony@gmail.com"),
+            ("Stark", "StarkStark", "Stark@gmail.com"),
+            ("Groot", "GrootGroot", "Groot@gmail.com"),
         ]
 
         with transaction.atomic():

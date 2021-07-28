@@ -8,7 +8,7 @@
             style="background-color:{{website.navbar_text_color}}; color:{{website.navbar_background_color}}">
         {{ notifications.count }}
     </button>
-    {% if notification.count > 0 %}
+    {% if number_of_notifications > 0 %}
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notify" style="background-color:{{website.navbar_background_color}}"
     onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>
         {% for notification in notifications %}
@@ -16,7 +16,7 @@
                 {% if notification.notification_type == 1 %}
                 <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
                     <a href="#" onmouseover="this.style.color='{{website.navbar_hover_text_color}}'; this.style.bgColor='{{website.navbar_background_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
-                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} approved your business</a>
+                    style="color:{{website.navbar_text_color}}">Your business is approved</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
                         <span aria-hidden="true">&times;</span>
@@ -34,7 +34,7 @@
                 {% elif notification.notification_type == 3 %}
                 <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
                     <a href="#"onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
-                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} approved your sale</a>
+                    style="color:{{website.navbar_text_color}}">Your sale is approved</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
                         <span aria-hidden="true">&times;</span>
@@ -52,7 +52,7 @@
                 {% elif notification.notification_type == 5 %}
                 <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
                     <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
-                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} didn't approved your business</a>
+                    style="color:{{website.navbar_text_color}}">Your business is disapproved</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
                         <span aria-hidden="true">&times;</span>
@@ -61,7 +61,7 @@
                 {% elif notification.notification_type == 6 %}
                 <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
                     <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
-                    style="color:{{website.navbar_text_color}}">{{ notification.from_user }} didn't approved your sale</a>
+                    style="color:{{website.navbar_text_color}}">Your sale is disapproved</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
                         <span aria-hidden="true">&times;</span>
