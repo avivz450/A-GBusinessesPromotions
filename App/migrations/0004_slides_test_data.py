@@ -57,6 +57,121 @@ As an admin, you choose which businesses and sales will be shown on your site wh
 """,
                 "App/images/SlidePictures/test_data/Vegan/slide3.jpg",
             ),
+            (
+                3,
+                "Welcome To Coffee Lovers!",
+                """In this website yo will find every desire that make your senses to dance..
+""",
+                "App/images/SlidePictures/test_data/Coffee/slide1.jpg",
+            ),
+            (
+                3,
+                "Coffee Product",
+                """Here you can find different topics that every coffee lover will be glad to have
+                from fresh beans to advanced coffee makers.
+""",
+                "App/images/SlidePictures/test_data/Coffee/slide2.jpg",
+            ),
+            (
+                4,
+                "The Best Electronics",
+                """We have the best product gurenteed, full life time care on all the store.
+""",
+                "App/images/SlidePictures/test_data/Electronics/slide1.jpg",
+            ),
+            (
+                4,
+                "House Gadgets",
+                """You will be able to find electrincs for the kitchen, toilet, bedroom, tv room,
+                and more to make your home more advanced
+""",
+                "App/images/SlidePictures/test_data/Electronics/slide2.jpg",
+            ),
+            (
+                5,
+                "Place Of Meats",
+                """We have free range animals meat with no antibiotics and supplements, well care meats straight
+                from the farmer to your table.
+""",
+                "App/images/SlidePictures/test_data/Carnibors/slide1.jpg",
+            ),
+            (
+                5,
+                "For Every One",
+                """If you are new, intermidate or advanced, we are sure u can find the right business
+                for you.
+""",
+                "App/images/SlidePictures/test_data/Carnibors/slide2.jpg",
+            ),
+            (
+                6,
+                "Candies",
+                """Its sweet, its sour, its salty and its yummy!!!
+""",
+                "App/images/SlidePictures/test_data/Candies/slide1.jpg",
+            ),
+            (
+                6,
+                "Did you taste them all?",
+                """Here you can find a big amount of different candies to your taste.
+""",
+                "App/images/SlidePictures/test_data/Candies/slide2.jpg",
+            ),
+            (
+                7,
+                "Welcome To Fitness Lifestyle!",
+                """The complete fitness community online.
+""",
+                "App/images/SlidePictures/test_data/Fitness/slide1.jpg",
+            ),
+            (
+                7,
+                "fitness is for every one",
+                """Today we know how much important is to exrecize to maintaining
+                an healthy life, body and mind.
+""",
+                "App/images/SlidePictures/test_data/Fitness/slide2.jpg",
+            ),
+            (
+                7,
+                "Products And More",
+                """Here you can find what ever fitness product you will need
+                from home gym, outdoors sports and different supplements.
+""",
+                "App/images/SlidePictures/test_data/Fitness/slide3.jpg",
+            ),
+            (
+                8,
+                "Welcome To Crafting World!",
+                """Here you can find all kinds of different craftings areas.
+""",
+                "App/images/SlidePictures/test_data/Crafting/slide1.jpg",
+            ),
+            (
+                8,
+                "Are You Enthusiastic About Crafting",
+                """Some times its can be hard to find crafting products
+                and materials, so here you can find all kinds of different
+                stores to get what you need.
+""",
+                "App/images/SlidePictures/test_data/Crafting/slide2.jpg",
+            ),
+            (
+                9,
+                "Dairy",
+                """Makes your body strong, raise bones density, giving you good vitamins
+                and healthy for your diet.
+""",
+                "App/images/SlidePictures/test_data/Dairy/slide1.jpg",
+            ),
+            (
+                9,
+                "Products",
+                """Its not surprise that dairy is in most of our food that we cunsume each cay,
+                so here you will be able to find all the good tnigs that made from milk.
+""",
+                "App/images/SlidePictures/test_data/Dairy/slide2.jpg",
+            ),
         ]
 
         with transaction.atomic():
