@@ -13,4 +13,8 @@ def show_notifications(context, website):
         .exclude(user_has_seen=True)
         .order_by("-date")
     )
-    return {"notifications": notifications, "website": website}
+    return {
+        "notifications": notifications,
+        "website": website,
+        "number_of_notifications": len(notifications),
+    }
