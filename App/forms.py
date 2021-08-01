@@ -69,8 +69,8 @@ class BusinessForm(forms.ModelForm):
             "picture_2",
             "facebook_link",
             "instagram_link",
-            "city",
             "location",
+            "location_points",
             "description",
         )
 
@@ -114,7 +114,7 @@ class SaleForm(forms.ModelForm):
         businesses = []
 
         for website_business_pair in Website_Business.objects.filter(
-            website=website, is_confirmed=True
+            website=website, is_confirmed=Website_Business.BusinessStatus.APPROVED
         ):
             if website_business_pair.business.profile == logged_in_profile:
                 businesses.append(website_business_pair.business.id)
