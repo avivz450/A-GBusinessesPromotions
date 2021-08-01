@@ -25,6 +25,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+import pdb
 
 
 def websitepage(request, pk, website_name):
@@ -890,21 +891,24 @@ def connect_businesses_page(request, pk, website_name):
         ).order_by("website")
         user_website_business_pairs = []
         websites_to_connect_from = []
-        last_website_to_connect_from = website_business_pairs[0].website
-
-        websites_to_connect_from.append(website_business_pairs[0].website)
 
         for website_business_pair in website_business_pairs:
             if (
                 website_business_pair.business.profile.user == request.user
-                and Website_Business.objects.filter(
-                    website=website, business=website_business_pair.business
-                ).first()
-                is None
+                and website_business_pair.website not in websites_to_connect_from
             ):
-                user_website_business_pairs.append(website_business_pair)
-                if last_website_to_connect_from != website_business_pair.website:
-                    websites_to_connect_from.append(website_business_pair.website)
+                websites_to_connect_from.append(website_business_pair.website)
+
+        for website_with_user_businesses in websites_to_connect_from:
+            for website_business_pair in Website_Business.objects.filter(
+                website=website_with_user_businesses
+            ):
+                number_of_occurences_in_website = Website_Business.objects.filter(
+                    website=website, business=website_business_pair.business
+                )
+                if website_business_pair.business.profile.user == request.user and len(number_of_occurences_in_website) == 0:
+                    user_website_business_pairs.append(website_business_pair)
+
 
         return render(
             request,
