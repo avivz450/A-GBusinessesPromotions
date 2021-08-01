@@ -148,6 +148,7 @@ def add_slides(request, new_website_id, number_of_slides_to_submit):
                     request,
                     "home/websitepage.html",
                     {
+                        "title": "Add Slides to website",
                         "website": website,
                         "website_profile_pair": website_profile_pair,
                         "slideList": slideList,
@@ -233,6 +234,7 @@ def signup(request, pk, website_name):
                     "website_profile_pair": Website_Profile.get_website_profile_pair(
                         request.user, website
                     ),
+                    "slideList": Slide.objects.filter(website=website),
                 },
             )
         else:
@@ -270,6 +272,7 @@ def edit_profile(request, website_pk, website_name, profile_pk):
                 "website_profile_pair": Website_Profile.get_website_profile_pair(
                     request.user, website
                 ),
+                "slideList": Slide.objects.filter(website=website),
             },
         )
     else:
@@ -326,7 +329,9 @@ def new_business(request, pk, website_name):
                     new_business = businessForm.save(commit=False)
                     new_business.profile = logged_in_profile
                     new_business.save()
-                    website.match_business_to_website(new_business)
+                    website.match_business_to_website(
+                        new_business, Website_Business.BusinessStatus.PENDING
+                    )
                     msg_content = """The business was successfully inserted.
                 It will be visible once the site administrators will approve it."""
                     messages.info(
@@ -378,6 +383,7 @@ def new_business(request, pk, website_name):
                 "website_profile_pair": Website_Profile.get_website_profile_pair(
                     request.user, website
                 ),
+                "slideList": Slide.objects.filter(website=website),
             },
         )
 
@@ -433,6 +439,7 @@ def edit_business(request, website_pk, website_name, business_pk):
                 "website_profile_pair": Website_Profile.get_website_profile_pair(
                     request.user, website
                 ),
+                "slideList": Slide.objects.filter(website=website),
             },
         )
     else:
@@ -503,6 +510,7 @@ def premium(request, pk, website_name):
                     "website_profile_pair": Website_Profile.get_website_profile_pair(
                         request.user, website
                     ),
+                    "slideList": Slide.objects.filter(website=website),
                 },
             )
         else:
@@ -568,6 +576,7 @@ def new_sale(request, pk, website_name):
                             "website_profile_pair": Website_Profile.get_website_profile_pair(
                                 request.user, website
                             ),
+                            "slideList": Slide.objects.filter(website=website),
                         },
                     )
             return render(
@@ -599,6 +608,7 @@ def new_sale(request, pk, website_name):
                     "website_profile_pair": Website_Profile.get_website_profile_pair(
                         request.user, website
                     ),
+                    "slideList": Slide.objects.filter(website=website),
                 },
             )
 
@@ -652,6 +662,7 @@ def edit_sale(request, website_pk, website_name, sale_pk):
                 "website_profile_pair": Website_Profile.get_website_profile_pair(
                     request.user, website
                 ),
+                "slideList": Slide.objects.filter(website=website),
             },
         )
     else:

@@ -1,13 +1,14 @@
 {% extends "home/base.html" %}
 {% load static %}
 {% block content %}
+{% load crispy_forms_tags %}
 
 <body class="main-bg">
     <div class="newfrm">
         <p class="newmsg">Please add a new sale : </p>
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <input type="submit" value="Post">
         </form>
     </div>
