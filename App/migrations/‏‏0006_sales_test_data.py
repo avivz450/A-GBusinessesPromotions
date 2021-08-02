@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
                 7,
                 "Colombia coffee beans",
                 "Strong and full body aroma",
-                "App/images/SalesPictures/coffe_sale_1.jpg",
+                "App/images/SalesPictures/coffee_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -440,7 +440,7 @@ class Migration(migrations.Migration):
                 14,
                 "Square perline chocolate",
                 "Dark and milk",
-                "App/images/SalesPictures/choclate_sale_1.jpg",
+                "App/images/SalesPictures/chocolate_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -448,7 +448,7 @@ class Migration(migrations.Migration):
                 14,
                 "Chocolate bar",
                 "Milk Chocolate with salted caramel",
-                "App/images/SalesPictures/choclate_sale_2.jpg",
+                "App/images/SalesPictures/chocolate_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -456,7 +456,7 @@ class Migration(migrations.Migration):
                 14,
                 "Artistic perline set",
                 "Filled with nuggat cream",
-                "App/images/SalesPictures/choclate_sale_3.jpg",
+                "App/images/SalesPictures/chocolate_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -464,7 +464,7 @@ class Migration(migrations.Migration):
                 14,
                 "Perlines",
                 "Dark, Milk, with nuts and more...",
-                "App/images/SalesPictures/choclate_sale_4.jpg",
+                "App/images/SalesPictures/chocolate_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -472,7 +472,7 @@ class Migration(migrations.Migration):
                 14,
                 "Valentines box",
                 "Semi sweet dark chocolate",
-                "App/images/SalesPictures/choclate_sale_5.jpg",
+                "App/images/SalesPictures/chocolate_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -480,7 +480,7 @@ class Migration(migrations.Migration):
                 14,
                 "Pink bar",
                 "White chocolate with pink himalayan salt",
-                "App/images/SalesPictures/choclate_sale_6.jpg",
+                "App/images/SalesPictures/chocolate_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -488,7 +488,7 @@ class Migration(migrations.Migration):
                 14,
                 "Chocolate spread",
                 "Speacial home made chocolate",
-                "App/images/SalesPictures/choclate_sale_7.jpg",
+                "App/images/SalesPictures/chocolate_sale_7.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -496,7 +496,7 @@ class Migration(migrations.Migration):
                 14,
                 "Chocolate cake",
                 "Tall creamy nuty chocolate cake",
-                "App/images/SalesPictures/choclate_sale_8.jpg",
+                "App/images/SalesPictures/chocolate_sale_8.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (
@@ -504,7 +504,7 @@ class Migration(migrations.Migration):
                 14,
                 "Artistic perlines",
                 "Beautiful perlines in units",
-                "App/images/SalesPictures/choclate_sale_9.jpg",
+                "App/images/SalesPictures/chocolate_sale_9.jpg",
                 Sale.SaleStatus.APPROVED,
             ),
             (

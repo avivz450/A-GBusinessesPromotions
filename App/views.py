@@ -25,7 +25,6 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-import pdb
 
 
 def websitepage(request, pk, website_name):
@@ -906,9 +905,11 @@ def connect_businesses_page(request, pk, website_name):
                 number_of_occurences_in_website = Website_Business.objects.filter(
                     website=website, business=website_business_pair.business
                 )
-                if website_business_pair.business.profile.user == request.user and len(number_of_occurences_in_website) == 0:
+                if (
+                    website_business_pair.business.profile.user == request.user
+                    and len(number_of_occurences_in_website) == 0
+                ):
                     user_website_business_pairs.append(website_business_pair)
-
 
         return render(
             request,
