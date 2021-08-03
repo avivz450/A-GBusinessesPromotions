@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         website_test_data = [
             (
                 "Website Demo",
+                "App/images/WebsitesLogos/test_data/Website_Demo/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Website_Demo/AG_Logo.png",
                 2,
                 "#fff",
@@ -24,6 +25,7 @@ class Migration(migrations.Migration):
             ),
             (
                 "Vegan",
+                "App/images/WebsitesLogos/test_data/Vegan/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Vegan/Vegan_Logo.png",
                 2,
                 "#efff00",
@@ -35,6 +37,7 @@ class Migration(migrations.Migration):
             ),
             (
                 "Coffee",
+                "App/images/WebsitesLogos/test_data/Coffee/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Coffee/Coffee_Logo.png",
                 2,
                 "#FF8601",
@@ -46,6 +49,7 @@ class Migration(migrations.Migration):
             ),
             (
                 "Electronics",
+                "App/images/WebsitesLogos/test_data/Electronics/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Electronics/Electronics_Logo.png",
                 2,
                 "#fff",
@@ -57,6 +61,7 @@ class Migration(migrations.Migration):
             ),
             (
                 "Carnibors",
+                "App/images/WebsitesLogos/test_data/Carnibors/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Carnibors/Carnibors_Logo.png",
                 2,
                 "#fff",
@@ -68,6 +73,7 @@ class Migration(migrations.Migration):
             ),
             (
                 "Candies",
+                "App/images/WebsitesLogos/test_data/Candies/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Candies/Candies_Logo.png",
                 2,
                 "#01E8E6",
@@ -79,6 +85,7 @@ class Migration(migrations.Migration):
             ),
             (
                 "Fitness",
+                "App/images/WebsitesLogos/test_data/Fitness/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Fitness/Fitness_Logo.png",
                 3,
                 "#686868",
@@ -90,6 +97,7 @@ class Migration(migrations.Migration):
             ),
             (
                 "Craftig",
+                "App/images/WebsitesLogos/test_data/Crafting/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Crafting/Crafting_Logo.png",
                 2,
                 "#fff",
@@ -101,6 +109,7 @@ class Migration(migrations.Migration):
             ),
             (
                 "Dairy",
+                "App/images/WebsitesLogos/test_data/Dairy/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Dairy/Dairy_Logo.png",
                 2,
                 "#FEFFC8",
@@ -115,6 +124,7 @@ class Migration(migrations.Migration):
         with transaction.atomic():
             for (
                 website_name,
+                favicon,
                 logo,
                 number_of_slides,
                 navbar_background_color,
@@ -126,6 +136,7 @@ class Migration(migrations.Migration):
             ) in website_test_data:
                 website = Website(
                     name=website_name,
+                    favicon=favicon,
                     logo=logo,
                     number_of_slides_in_main_page=number_of_slides,
                     navbar_background_color=navbar_background_color,
