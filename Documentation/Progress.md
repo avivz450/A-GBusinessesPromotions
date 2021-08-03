@@ -1,8 +1,9 @@
 
 # July Features Process
 ## New features from last meeting
-- ec2 instance for remote website
-- domain route 53
+- AWS :
+* EC2 instance for remote website 
+* Domain route 53
 - user notifications
 - landing page styling
 - adding website(mall) page including dynamic styling
