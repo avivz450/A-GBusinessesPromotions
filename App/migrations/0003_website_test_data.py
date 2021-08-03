@@ -22,18 +22,20 @@ class Migration(migrations.Migration):
                 "#fff",
                 "#0009FF",
                 21,
+                True,
             ),
             (
                 "Vegan",
                 "App/images/WebsitesLogos/test_data/Vegan/favicon.ico",
                 "App/images/WebsitesLogos/test_data/Vegan/Vegan_Logo.png",
                 2,
-                "#efff00",
+                "#fbff00",
                 "#33A300",
                 "#01FF42",
                 "#B5E63F",
                 "#33A300",
                 21,
+                True,
             ),
             (
                 "Coffee",
@@ -46,6 +48,7 @@ class Migration(migrations.Migration):
                 "#fffdd0",
                 "#FF8601",
                 22,
+                True,
             ),
             (
                 "Electronics",
@@ -58,6 +61,7 @@ class Migration(migrations.Migration):
                 "#fff",
                 "#E4EA01",
                 22,
+                True,
             ),
             (
                 "Carnibors",
@@ -70,6 +74,7 @@ class Migration(migrations.Migration):
                 "#fff",
                 "#BA0102",
                 22,
+                True,
             ),
             (
                 "Candies",
@@ -82,6 +87,7 @@ class Migration(migrations.Migration):
                 "#FF01C6",
                 "#01E8E6",
                 22,
+                True,
             ),
             (
                 "Fitness",
@@ -94,6 +100,7 @@ class Migration(migrations.Migration):
                 "#fff",
                 "#41EE5C",
                 22,
+                True,
             ),
             (
                 "Craftig",
@@ -106,6 +113,7 @@ class Migration(migrations.Migration):
                 "#fff",
                 "#EB01FF",
                 22,
+                True,
             ),
             (
                 "Dairy",
@@ -118,6 +126,7 @@ class Migration(migrations.Migration):
                 "#fff",
                 "#0009FF",
                 22,
+                True,
             ),
         ]
 
@@ -133,6 +142,7 @@ class Migration(migrations.Migration):
                 sliders_text_color,
                 sliders_carsoul_color,
                 user,
+                is_admin,
             ) in website_test_data:
                 website = Website(
                     name=website_name,
@@ -148,7 +158,7 @@ class Migration(migrations.Migration):
                 website.save()
                 profile = get_object_or_404(Profile, pk=user)
 
-                profile.match_website_to_profile(website)
+                profile.match_website_to_profile(website, is_admin)
 
     operations = [
         migrations.RunPython(generate_data),

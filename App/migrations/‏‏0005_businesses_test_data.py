@@ -149,6 +149,32 @@ In the store you can find products that provide natural
                 Website_Business.BusinessStatus.APPROVED,
                 9,
             ),
+            (
+                22,
+                "The old fisherman",
+                "App/images/BusinessesLogos/food_fisherman.jpg",
+                """"60 years of fishing family business.""",
+                Website_Business.BusinessStatus.APPROVED,
+                5,
+            ),
+            (
+                20,
+                "Knife master",
+                "App/images/BusinessesLogos/food_knife.jpg",
+                """"The only place for our knife need. here you can find all
+                kinds of knifes and accessories for them.""",
+                Website_Business.BusinessStatus.APPROVED,
+                5,
+            ),
+            (
+                20,
+                "House of grill's",
+                "App/images/BusinessesLogos/food_grills.jpg",
+                """"We got grills!!!
+                Come to us and get your grill today.""",
+                Website_Business.BusinessStatus.APPROVED,
+                5,
+            ),
         ]
 
         with transaction.atomic():
