@@ -381,11 +381,3 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-.locationwidget form-control{
-    display: none;
-}
-
-#div_id_location_points{
-  display: none;
-}
