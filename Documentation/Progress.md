@@ -10,14 +10,14 @@
 - Solved all the bugs, there are no bugs right now in the system
 - New design to website page
 - Google API
-- Styled add business page
+- Styled add a business, login, edit profile and signup pages 
 - Added test data
 
 ## Plans
 ### Must have (by priority):
 - Style business page
 - Add filter and sort to businesses and sales
-- Styling: explore sale/business, edit+ add sale, edit business, upgrade page, edit profile
+- Styling: explore sale/business, edit+ add sale, edit business, upgrade page
 - Add contact us page including adding an option to send email to all website admins once pressing submit
 - Add about us page
 
