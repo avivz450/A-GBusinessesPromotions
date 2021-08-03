@@ -47,8 +47,8 @@ class Migration(migrations.Migration):
             user2 = User.objects.create_superuser(
                 username="Gideon", password="GideonGideon", email="Gideon@gmail.com"
             ).save()
-            Profile(user=user1).save()
-            Profile(user=user2).save()
+            Profile(user=user1, is_vip=True).save()
+            Profile(user=user2, is_vip=True).save()
             # Test: Update a profile to be blocked.
             profile = Profile.objects.get(user=User.objects.get(username="Bella"))
             profile.is_blocked = True

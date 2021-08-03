@@ -36,11 +36,11 @@ class Profile(models.Model):
     def __str__(self):
         return "{self.user.username}".format(self=self)
 
-    def match_website_to_profile(self, website):
+    def match_website_to_profile(self, website, is_admin=False):
         website_profile_pair = Website_Profile()
         website_profile_pair.profile = self
         website_profile_pair.website = website
-        website_profile_pair.is_admin = False
+        website_profile_pair.is_admin = is_admin
         website_profile_pair.save()
 
 
