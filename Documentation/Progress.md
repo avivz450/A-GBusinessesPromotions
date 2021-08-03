@@ -14,10 +14,10 @@
 - Added test data
 
 ## Plans
-### Must have :
+### Must have (by priority):
 - Style business page
-- Styling: explore sale/business, edit+ add sale, edit business, upgrade page, edit profile
 - Add filter and sort to businesses and sales
+- Styling: explore sale/business, edit+ add sale, edit business, upgrade page, edit profile
 - Add contact us page including adding an option to send email to all website admins once pressing submit
 - Add about us page
 
