@@ -895,6 +895,12 @@ def connect_businesses_page(request, pk, website_name):
             if (
                 website_business_pair.business.profile.user == request.user
                 and website_business_pair.website not in websites_to_connect_from
+                and len(
+                    Website_Business.objects.filter(
+                        business=website_business_pair.business, website=website
+                    )
+                )
+                == 0
             ):
                 websites_to_connect_from.append(website_business_pair.website)
 
