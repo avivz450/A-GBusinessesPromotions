@@ -5,6 +5,7 @@
 
 ## Plans
 ### Must have (by priority):
++ Once the user pressed on connect business, he will be on pending (+ notifications)
 + Business page (include styling)
 + Add filter and sort to businesses and sales
 + Styling: explore sale/business
