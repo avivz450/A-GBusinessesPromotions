@@ -12,10 +12,6 @@
     content: "";
     background: rgba(214, 212, 212, 0.342);
     position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
   }
   
   #hero .container {
