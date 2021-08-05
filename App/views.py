@@ -15,7 +15,6 @@ from .forms import (
     BusinessForm,
     SaleForm,
     ChooseWebsiteForm,
-    UserBusinessesForm,
     UserSalesForm,
     WebsiteForm,
     SlideForm,
@@ -386,34 +385,6 @@ def new_business(request, pk, website_name):
                 "slideList": Slide.objects.filter(website=website),
             },
         )
-
-
-def choose_business_to_edit(request, pk, website_name):
-    website = get_object_or_404(Website, id=pk)
-
-    if not request.user.is_authenticated:
-        return redirect("login", website.id, website.name)
-    else:
-        if request.method == "POST":
-            chosen_business = Business.objects.get(id=request.POST.get("business", ""))
-            return redirect(
-                "edit_business", website.id, website.name, chosen_business.id
-            )
-        else:
-            form = UserBusinessesForm(logged_in_user=request.user.id, website=website)
-            return render(
-                request,
-                "home/choose_object_to_edit.html",
-                {
-                    "title": "Edit business",
-                    "form": form,
-                    "object": "business",
-                    "website": website,
-                    "website_profile_pair": Website_Profile.get_website_profile_pair(
-                        request.user, website
-                    ),
-                },
-            )
 
 
 def edit_business(request, website_pk, website_name, business_pk):
@@ -943,3 +914,48 @@ def connect_business(request, pk, website_name, business_pk):
     new_business_website_pair.save()
 
     return redirect("connect_businesses_page", pk, website_name)
+
+
+def my_businesses(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+    website_businesses_pair = Website_Business.objects.all()
+    user_website_businesses_pairs = []
+
+    for website_business_pair in website_businesses_pair:
+        if website_business_pair.business.profile.user == request.user:
+            user_website_businesses_pairs.append(website_business_pair)
+
+    user_websites_businesses_dictionary = {}
+    for user_website_businesses_pair in user_website_businesses_pairs:
+        if user_website_businesses_pair.website in user_websites_businesses_dictionary:
+            user_websites_businesses_dictionary[
+                user_website_businesses_pair.website
+            ].append(user_website_businesses_pair)
+        else:
+            user_websites_businesses_dictionary[
+                user_website_businesses_pair.website
+            ] = [user_website_businesses_pair]
+
+    user_website_stripwebsite_dictionary = {}
+    for user_website in user_websites_businesses_dictionary:
+        user_website_stripwebsite_dictionary[user_website] = user_website.name.replace(
+            " ", ""
+        )
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        return render(
+            request,
+            "home/my_businesses.html",
+            {
+                "title": "My businesses",
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+                "user_websites_businesses_dictionary_keys": user_website_stripwebsite_dictionary.items(),
+                "user_websites_businesses_dictionary": user_websites_businesses_dictionary.values(),
+                "business_enum": Website_Business.BusinessStatus.choices,
+            },
+        )

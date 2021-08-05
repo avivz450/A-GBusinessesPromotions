@@ -51,11 +51,6 @@ urlpatterns = (
             name="edit_business",
         ),
         path(
-            "websites/<int:pk>_<str:website_name>/edit_business/",
-            views.choose_business_to_edit,
-            name="choose_business_to_edit",
-        ),
-        path(
             "websites/<int:pk>_<str:website_name>/businesses/",
             views.businesses,
             name="businesses",
@@ -125,6 +120,11 @@ urlpatterns = (
             "websites/<int:pk>_<str:website_name>/connect_businesses/<int:business_pk>/",
             views.connect_business,
             name="connect_business",
+        ),
+        path(
+            "websites/<int:pk>_<str:website_name>/my_businesses/",
+            views.my_businesses,
+            name="my_businesses",
         ),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
