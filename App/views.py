@@ -985,7 +985,7 @@ def contact_us(request, pk, website_name):
                 )
                 for website_profile_instance in website_admin_set:
                     send_mail(
-                        "Message from: " + full_name,
+                        full_name + " sent you a message from " + website_name,
                         "Subject: "
                         + subject
                         + "\n\n"
