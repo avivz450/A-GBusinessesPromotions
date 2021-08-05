@@ -135,25 +135,6 @@ class ChooseWebsiteForm(forms.Form):
     )
 
 
-class UserBusinessesForm(forms.Form):
-    business = forms.ModelMultipleChoiceField(queryset=Business.objects.all())
-
-    def __init__(self, *args, **kwargs):
-        logged_in_user = kwargs.pop("logged_in_user", None)
-        logged_in_profile = Profile.objects.filter(user=logged_in_user).first()
-        website = kwargs.pop("website", None)
-        super(UserBusinessesForm, self).__init__(*args, **kwargs)
-        businesses = []
-
-        for website_business_pair in Website_Business.objects.filter(
-            website=website, is_confirmed=Website_Business.BusinessStatus.APPROVED
-        ):
-            if website_business_pair.business.profile == logged_in_profile:
-                businesses.append(website_business_pair.business.id)
-
-        self.fields["business"].queryset = Business.objects.filter(id__in=businesses)
-
-
 class UserSalesForm(forms.Form):
     sale = forms.ModelMultipleChoiceField(queryset=Sale.objects.all())
 
