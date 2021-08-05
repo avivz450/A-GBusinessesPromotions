@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Business, Sale, Website, Website_Business, Profile, Slide
+from .models import Business, Sale, Website, Website_Business, Profile, Slide, Contact
 
 
 class SignUpForm(UserCreationForm):
@@ -143,4 +143,15 @@ class UserSalesForm(forms.Form):
         super(UserSalesForm, self).__init__(*args, **kwargs)
         self.fields["sale"].queryset = Sale.objects.filter(
             profile=logged_in_user, is_confirmed=Sale.SaleStatus.APPROVED
+        )
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = (
+            "full_name",
+            "email",
+            "subject",
+            "message",
         )

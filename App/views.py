@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import send_mail, BadHeaderError
 from .models import (
     Sale,
     Profile,
@@ -18,6 +19,7 @@ from .forms import (
     UserSalesForm,
     WebsiteForm,
     SlideForm,
+    ContactForm,
 )
 from django.views import View
 from django.contrib.auth import login, authenticate, logout
@@ -959,3 +961,53 @@ def my_businesses(request, pk, website_name):
                 "business_enum": Website_Business.BusinessStatus.choices,
             },
         )
+
+
+def contact_us(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+    context = {
+        "website": website,
+    }
+    if request.method == "GET":
+        form = ContactForm()
+        context["form"] = form
+    else:
+        form = ContactForm(request.POST)
+        context["form"] = form
+        if form.is_valid():
+            full_name = form.cleaned_data["full_name"]
+            subject = form.cleaned_data["subject"]
+            email = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
+            try:
+                website_admin_set = Website_Profile.objects.filter(
+                    website=website, is_admin=True
+                )
+                for website_profile_instance in website_admin_set:
+                    send_mail(
+                        "Message from: " + full_name,
+                        "Subject: "
+                        + subject
+                        + "\n\n"
+                        + "Message: "
+                        + message
+                        + "\n\n"
+                        + "Email: "
+                        + email,
+                        email,
+                        [website_profile_instance.profile.user.email],
+                    )
+                messages.success(
+                    request,
+                    {
+                        "title": "SUCCESS: ",
+                        "message_content": " Your message has been sent!",
+                    },
+                )
+            except BadHeaderError:
+                return HttpResponse("Invalid header found.")
+    return render(request, "home/contact_us.html", context)
+
+
+def successView(request):
+    return HttpResponse("Success! Thank you for your message.")

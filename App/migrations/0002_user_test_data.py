@@ -42,10 +42,12 @@ class Migration(migrations.Migration):
                 Profile(user=user).save()
             # Test: Create a Profile with user who was updated to superuser (admin)
             user1 = User.objects.create_superuser(
-                username="Aviv", password="AvivAviv", email="Aviv@gmail.com"
+                username="Aviv", password="AvivAviv", email="Avivz450@gmail.com"
             ).save()
             user2 = User.objects.create_superuser(
-                username="Gideon", password="GideonGideon", email="Gideon@gmail.com"
+                username="Gideon",
+                password="GideonGideon",
+                email="gideonshachar@gmail.com",
             ).save()
             Profile(user=user1, is_vip=True).save()
             Profile(user=user2, is_vip=True).save()
