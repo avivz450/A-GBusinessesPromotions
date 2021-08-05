@@ -9,6 +9,7 @@ from .models import (
     Website_Profile,
     Website_Business,
     Slide,
+    Business_Category,
 )
 
 admin.site.register(Profile)
@@ -20,3 +21,4 @@ admin.site.register(Website)
 admin.site.register(Slide)
 admin.site.register(Website_Profile)
 admin.site.register(Website_Business)
+admin.site.register(Business_Category)
