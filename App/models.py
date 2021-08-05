@@ -57,6 +57,9 @@ class Website(models.Model):
     number_of_slides_in_main_page = models.IntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(3)]
     )
+    number_of_businesses_categories = models.IntegerField(
+        default=1, validators=[MinValueValidator(1), MaxValueValidator(10)]
+    )
     profiles = models.ManyToManyField("Profile", through="Website_Profile")
     businesses = models.ManyToManyField("Business", through="Website_Business")
     navbar_background_color = ColorField(default="#fff")
@@ -124,6 +127,16 @@ class Business(models.Model):
 
     def __str__(self):
         return "{self.name}".format(self=self)
+
+
+class Business_Category(models.Model):
+    website = models.ForeignKey(Website, on_delete=models.CASCADE)
+    category_name = models.CharField(
+        max_length=30,
+    )
+
+    def __str__(self):
+        return "{self.category_name}".format(self=self)
 
 
 class Website_Business(models.Model):

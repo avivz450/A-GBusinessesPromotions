@@ -1,7 +1,16 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Business, Sale, Website, Website_Business, Profile, Slide, Contact
+from .models import (
+    Business,
+    Sale,
+    Website,
+    Website_Business,
+    Profile,
+    Slide,
+    Contact,
+    Business_Category,
+)
 
 
 class SignUpForm(UserCreationForm):
@@ -82,6 +91,7 @@ class WebsiteForm(forms.ModelForm):
             "name",
             "logo",
             "favicon",
+            "number_of_businesses_categories",
             "number_of_slides_in_main_page",
             "navbar_background_color",
             "navbar_text_color",
@@ -155,3 +165,9 @@ class ContactForm(forms.ModelForm):
             "subject",
             "message",
         )
+
+
+class BusinessCategoryForm(forms.ModelForm):
+    class Meta:
+        model = Business_Category
+        fields = ("category_name",)
