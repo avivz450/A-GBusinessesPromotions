@@ -57,9 +57,9 @@
             {{ form.media }}
             {{ form | crispy }}
           {% if current_slide_to_submit == website.number_of_slides_in_main_page%}
-          <input type="submit" class="fadeIn fourth" value="Continue">
-          {% else %}
           <input type="submit" class="fadeIn fourth" value="Make Website!">
+          {% else %}
+          <input type="submit" class="fadeIn fourth" value="Continue">
           {%endif%}
         </form>
       </div>
