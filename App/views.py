@@ -20,6 +20,7 @@ from .forms import (
     WebsiteForm,
     SlideForm,
     ContactForm,
+    BusinessCategoryForm,
 )
 from django.views import View
 from django.contrib.auth import login, authenticate, logout
@@ -106,7 +107,10 @@ def add_website(request):
         if form.is_valid():
             new_website = form.save()
             return redirect(
-                "add_slides", new_website.id, new_website.number_of_slides_in_main_page
+                "add_categories",
+                new_website.id,
+                new_website.number_of_businesses_categories,
+                new_website.number_of_slides_in_main_page,
             )
     else:
         form = WebsiteForm()
@@ -118,6 +122,39 @@ def add_website(request):
             "title": "Add Website",
         },
     )
+
+
+@login_required(login_url="/login/")
+def add_categories(
+    request, new_website_id, number_of_categories_to_submit, number_of_slides_to_submit
+):
+    website = get_object_or_404(Website, id=new_website_id)
+    category_form_list = []
+
+    if request.method == "POST":
+        for i in range(number_of_categories_to_submit):
+            curr_business_category_form = BusinessCategoryForm(
+                request.POST, prefix="caregory_form_" + str(i)
+            )
+            if curr_business_category_form.is_valid():
+                curr_business_category = curr_business_category_form.save(commit=False)
+                curr_business_category.website = website
+                curr_business_category.save()
+        return redirect("add_slides", new_website_id, number_of_slides_to_submit)
+    else:
+        for i in range(number_of_categories_to_submit):
+            category_form_list.append(
+                BusinessCategoryForm(prefix="caregory_form_" + str(i))
+            )
+        return render(
+            request,
+            "home/add_categories.html",
+            {
+                "category_form_list": category_form_list,
+                "website": website,
+                "title": "Add Categories",
+            },
+        )
 
 
 @login_required(login_url="/login/")
