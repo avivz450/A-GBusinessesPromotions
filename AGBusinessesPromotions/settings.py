@@ -137,6 +137,10 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+# STATICFILES_DIRS = (os.path.join("static"), )
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "")
 MEDIA_URL = "//"
 
@@ -164,3 +168,12 @@ LOCATION_FIELD = {
 }
 
 AUTHENTICATION_BACKENDS = ["django.contrib.auth.backends.AllowAllUsersModelBackend"]
+
+DEFAULT_FROM_EMAIL = "sadnaag@gmail.com"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "sadnaag@gmail.com"
+EMAIL_HOST_PASSWORD = "SadnaAGSadnaAG"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

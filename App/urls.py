@@ -126,6 +126,11 @@ urlpatterns = (
             views.my_businesses,
             name="my_businesses",
         ),
+        path(
+            "websites/<int:pk>_<str:website_name>/contact_us/",
+            views.contact_us,
+            name="contact_us",
+        ),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 )
