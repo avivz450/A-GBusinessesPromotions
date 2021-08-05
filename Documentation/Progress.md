@@ -4,7 +4,7 @@
 + Edit businesses of user :
     + Once user pressed on "My Businesses", in any site, he will see all the businesses that the user created in any site, including the status.
     + After the user pressed on "Edit" on a certain business, he will be reffered to edit that business in the relevant website.
-
++ Add contact us page including sending an email to all website admins once pressing submit
 ## Plans
 ### Must have (by priority):
 + Once the user pressed on connect business, he will be on pending (+ notifications)
@@ -20,7 +20,6 @@
 + DNS
 + Connect user from other site in login page
 + Style upgrade page
-+ Add contact us page including adding an option to send email to all website admins once pressing submit
 + Add about us page
 
 ### Nice to have (by priority):
