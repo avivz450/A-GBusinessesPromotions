@@ -157,6 +157,7 @@ class Website_Business(models.Model):
         choices=BusinessStatus.choices,
         default=BusinessStatus.PENDING,
     )
+    category_name = models.CharField(max_length=30)
 
     class Meta:
         constraints = [

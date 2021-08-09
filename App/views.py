@@ -160,52 +160,51 @@ def add_categories(
 @login_required(login_url="/login/")
 def add_slides(request, new_website_id, number_of_slides_to_submit):
     website = get_object_or_404(Website, id=new_website_id)
-    form = SlideForm()
-    current_slide_number = (
-        website.number_of_slides_in_main_page - number_of_slides_to_submit + 1
-    )
+    slide_form_list = []
     if request.method == "POST":
-        form = SlideForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.instance.website = website
-            form.save()
-            if number_of_slides_to_submit == 1:
-                logged_in_profile = Profile.objects.filter(user=request.user).first()
-                website_profile_pair = Website_Profile.objects.create(
-                    profile=logged_in_profile, website=website, is_admin=True
-                )
-                messages.success(
-                    request,
-                    {
-                        "title": "SUCCESS: ",
-                        "message_content": "Your website has been created successfuly!",
-                    },
-                )
-                slideList = Slide.objects.filter(website=website)
-                return render(
-                    request,
-                    "home/websitepage.html",
-                    {
-                        "title": "Add Slides to website",
-                        "website": website,
-                        "website_profile_pair": website_profile_pair,
-                        "slideList": slideList,
-                    },
-                )
-            else:
-                return redirect(
-                    "add_slides", new_website_id, number_of_slides_to_submit - 1
-                )
-    return render(
-        request,
-        "home/add_slides.html",
-        {
-            "form": form,
-            "website": website,
-            "current_slide_to_submit": current_slide_number,
-            "title": "Add Slide #" + str(current_slide_number),
-        },
-    )
+        for i in range(number_of_slides_to_submit):
+            curr_slide_form = SlideForm(
+                request.POST, request.FILES, prefix="slide_form_" + str(i)
+            )
+            if curr_slide_form.is_valid():
+                curr_slide = curr_slide_form.save(commit=False)
+                curr_slide.website = website
+                curr_slide.save()
+        logged_in_profile = Profile.objects.filter(user=request.user).first()
+        website_profile_pair = Website_Profile.objects.create(
+            profile=logged_in_profile, website=website, is_admin=True
+        )
+        website_profile_pair.save()
+        messages.success(
+            request,
+            {
+                "title": "SUCCESS: ",
+                "message_content": "Your website has been created successfuly!",
+            },
+        )
+        slideList = Slide.objects.filter(website=website)
+        return render(
+            request,
+            "home/websitepage.html",
+            {
+                "title": "Add Slides to website",
+                "website": website,
+                "website_profile_pair": website_profile_pair,
+                "slideList": slideList,
+            },
+        )
+    else:
+        for i in range(number_of_slides_to_submit):
+            slide_form_list.append(SlideForm(prefix="slide_form_" + str(i)))
+        return render(
+            request,
+            "home/add_slides.html",
+            {
+                "slide_form_list": slide_form_list,
+                "website": website,
+                "title": "Add Slide to " + website.name,
+            },
+        )
 
 
 def businesses(request, pk, website_name):
