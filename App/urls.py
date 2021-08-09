@@ -20,8 +20,8 @@ urlpatterns = (
         path("signup/", views.landingpage_signup, name="landingpage_signup"),
         path("add_website/", views.add_website, name="add_website"),
         path(
-            """add_website/add_categories/<int:new_website_id>/
-            <int:number_of_slides_to_submit>/<int:number_of_categories_to_submit>/""",
+            """add_website/add_categories/<int:new_website_id>/<int:number_of_categories_to_submit>/
+            <int:number_of_slides_to_submit>/""",
             views.add_categories,
             name="add_categories",
         ),
