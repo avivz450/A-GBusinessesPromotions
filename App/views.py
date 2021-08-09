@@ -209,17 +209,33 @@ def add_slides(request, new_website_id, number_of_slides_to_submit):
 
 def businesses(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
+    category_website_business_dictionary = {}
+    website_business_pairs = Website_Business.objects.filter(website=website)
+
+    for website_business_pair in website_business_pairs:
+        if website_business_pair.category_name in category_website_business_dictionary:
+            category_website_business_dictionary[
+                website_business_pair.category_name
+            ].append(website_business_pair)
+        else:
+            category_website_business_dictionary[
+                website_business_pair.category_name
+            ] = [website_business_pair]
+
     context = {
         "website_business_pairs": Website_Business.objects.filter(
             website=website, is_confirmed=Website_Business.BusinessStatus.APPROVED
         ),
         "website": website,
+        "category_website_business_dictionary_keys": category_website_business_dictionary.items(),
+        "category_website_business_dictionary": category_website_business_dictionary.values(),
     }
-    if request.method == "GET":
-        if request.user.is_authenticated:
-            context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
-                request.user, website
-            )
+
+    if request.user.is_authenticated:
+        context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
+            request.user, website
+        )
+
     return render(request, "home/businesses.html", context)
 
 

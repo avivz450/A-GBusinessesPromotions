@@ -7,35 +7,91 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'home/css/businesses_style.css' %}"
+  href="{% static 'home/css/admin_section/businesses.css' %}"
 />
 
 <body>
-  <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <!-- Answers Part -->
-        <article class="businesses-container">
-          {% for website_business_pair in website_business_pairs %}
-            <div class="card business-container" style="width: 18rem">
-              <img
-                class="card-img-top"
-                src="{{ website_business_pair.business.logo.url }}"
-                alt="Card image cap"
-                width="30"
-                height="230"
-              />
-              <div class="card-body">
-                <h5 class="card-title">{{ website_business_pair.business.name}}</h5>
-                <p class="card-text">{{ website_business_pair.business.description|safe }}</p>
-                <a href="{% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %}" class="btn btn-primary">Go to site</a>
+  <main>
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 id="h2_businesses"> {{website.name}}'s businesses </h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              {% for key, value in category_website_business_dictionary_keys %}
+                  <li data-filter=".filter-{{key}}">{{key}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+        {% for category_key in category_website_business_dictionary %}
+          {% for website_business_pair in category_key %}
+            {% if website_business_pair.business.profile.is_vip is True %}
+                <div class="col-lg-4 col-md-6 portfolio-item filter-{{website_business_pair.category_name}} wow fadeInUp">
+                <div class="portfolio-wrap">
+                  <figure id="figure">
+                    <img src={{website_business_pair.business.logo.url}} class="img-fluid" alt="" id="business_logo">
+                    <a href={% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name%} class="link-preview" title="Link to {{website_business_pair.business.name}} page"><i class="bx bx-link"></i></a>
+                    <a href={% url 'edit_business' website.id website.name website_business_pair.business.id%} class="link-details" title="Edit {{website_business_pair.business.name}} page"><i class="bx bx-edit"></i></a>
+                  </figure>
+
+                  <div class="portfolio-info">
+                    <h4><a href="portfolio-details.html">{{website_business_pair.business.name}}</a></h4>
+                      <p>{{ website_business_pair.category_name }}</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            {% endif %}
+          {%endfor%}
+        {% endfor %}
+
+        {% for category_key in category_website_business_dictionary %}
+          {% for website_business_pair in category_key %}
+            {% if website_business_pair.business.profile.is_vip is False %}
+                <div class="col-lg-4 col-md-6 portfolio-item filter-{{website_business_pair.category_name}} wow fadeInUp">
+                <div class="portfolio-wrap" id="no_vip_hover">
+                  <figure id="figure">
+                    <img src={{website_business_pair.business.logo.url}} class="img-fluid" alt="" id="business_logo">
+                    <a href={% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name%} class="link-preview" title="Approve"><i class="bx bx-link"></i></a>
+                    <a href={% url 'edit_business' website.id website.name website_business_pair.business.id%} class="link-details" title="Disapprove"><i class="bx bx-edit"></i></a>
+                  </figure>
+
+                  <div class="portfolio-info" id="no_vip_div">
+                    <h4><a href="portfolio-details.html">{{website_business_pair.business.name}}</a></h4>
+                      <p>{{ website_business_pair.category_name }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
           {% endfor %}
-        </article>
+        {% endfor %}
+        </div>
+
       </div>
-    </div>
-  </main>
+    </section><!-- End Portfolio Section -->
+
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
 </body>
 
 {% endblock content %}
