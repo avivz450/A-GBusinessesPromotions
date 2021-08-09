@@ -24,7 +24,7 @@
   <link href="{% static 'home/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
 	<!-- Template Main CSS File -->
-	<link href="{% static 'home/css/‏‏‏‏add_website.css' %}" rel="stylesheet">
+	<link href="{% static 'home/css/slides.css' %}" rel="stylesheet">
 
 	{% if title %}
 		<title>{{ title }}</title>
@@ -52,15 +52,13 @@
 
         <!-- Login Form -->
         <form enctype="multipart/form-data" method="post">
-          {% csrf_token %} 
-          <h5>Please enter the details of slide number {{current_slide_to_submit}}</h5>
+          {% for form in slide_form_list%}
+          <h5>Please enter the details of slide number {{ forloop.counter }}</h5>
+            {% csrf_token %} 
             {{ form.media }}
             {{ form | crispy }}
-          {% if current_slide_to_submit == website.number_of_slides_in_main_page%}
+          {% endfor %}
           <input type="submit" class="fadeIn fourth" value="Make Website!">
-          {% else %}
-          <input type="submit" class="fadeIn fourth" value="Continue">
-          {%endif%}
         </form>
       </div>
     </div>
