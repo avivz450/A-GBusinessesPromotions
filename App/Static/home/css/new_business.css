@@ -218,7 +218,7 @@
     transform: scale(0.95);
   }
   
-  input[type=text], input[type=password], input[type=email], input[type=number], input[type=url], input[type=tel]{
+  input[type=text], input[type=password], input[type=email], input[type=number], input[type=url], input[type=tel], select[name="business_category"] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -239,12 +239,12 @@
     border-radius: 5px 5px 5px 5px;
   }
   
-  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, input[type=url]:focus, input[type=tel]:focus {
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, input[type=url]:focus, input[type=tel]:focus, select[name="business_category"]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
   
-  input[type=text]:placeholder, input[type=password]:placeholder, input[type=email]:placeholder, input[type=number]:placeholder, input[type=url]:placeholder, input[type=tel]:placeholder {
+  input[type=text]:placeholder, input[type=password]:placeholder, input[type=email]:placeholder, input[type=number]:placeholder, input[type=url]:placeholder, input[type=tel]:placeholder, select[name="business_category"]:placeholder {
     color: #cccccc;
   }
   

@@ -171,3 +171,16 @@ class BusinessCategoryForm(forms.ModelForm):
     class Meta:
         model = Business_Category
         fields = ("category_name",)
+
+
+class UserCategoryForm(forms.Form):
+    business_category = forms.ModelMultipleChoiceField(
+        queryset=Business_Category.objects.all()
+    )
+
+    def __init__(self, *args, **kwargs):
+        website = kwargs.pop("website", None)
+        super(UserCategoryForm, self).__init__(*args, **kwargs)
+        self.fields["business_category"].queryset = Business_Category.objects.filter(
+            website=website
+        )
