@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 "Business demo 1 description",
                 Website_Business.BusinessStatus.APPROVED,
                 1,
+                "demo",
             ),
             (
                 21,
@@ -26,6 +27,7 @@ class Migration(migrations.Migration):
                 "Business demo 2 description",
                 Website_Business.BusinessStatus.PENDING,
                 1,
+                "demo",
             ),
             (
                 21,
@@ -34,6 +36,7 @@ class Migration(migrations.Migration):
                 "Business demo 3 description",
                 Website_Business.BusinessStatus.APPROVED,
                 1,
+                "demo",
             ),
             (
                 21,
@@ -42,6 +45,7 @@ class Migration(migrations.Migration):
                 "Mikimaya is a vegan restaurant in the town of Tzur Moshe, where you will find a menu rich in flavors.",
                 Website_Business.BusinessStatus.APPROVED,
                 2,
+                "restaurant",
             ),
             (
                 21,
@@ -55,6 +59,7 @@ class Migration(migrations.Migration):
                 So for a powerful experience, donation and delicious food, do yourself a favor, visit BOCHI!""",
                 Website_Business.BusinessStatus.PENDING,
                 2,
+                "restaurant",
             ),
             (
                 21,
@@ -67,6 +72,7 @@ In the store you can find products that provide natural
  and healthy alternatives to the products consumed in your home.""",
                 Website_Business.BusinessStatus.APPROVED,
                 2,
+                "food",
             ),
             (
                 22,
@@ -77,6 +83,7 @@ In the store you can find products that provide natural
                 """,
                 Website_Business.BusinessStatus.APPROVED,
                 3,
+                "food",
             ),
             (
                 22,
@@ -85,6 +92,7 @@ In the store you can find products that provide natural
                 """"Electric kitchen machines.""",
                 Website_Business.BusinessStatus.APPROVED,
                 4,
+                "store",
             ),
             (
                 22,
@@ -93,6 +101,7 @@ In the store you can find products that provide natural
                 """"Botique butcher with the most delicious meats.""",
                 Website_Business.BusinessStatus.APPROVED,
                 5,
+                "food",
             ),
             (
                 22,
@@ -102,6 +111,7 @@ In the store you can find products that provide natural
                 of flavors and colors.""",
                 Website_Business.BusinessStatus.APPROVED,
                 6,
+                "food",
             ),
             (
                 22,
@@ -111,6 +121,7 @@ In the store you can find products that provide natural
                 in the store for your convenient""",
                 Website_Business.BusinessStatus.APPROVED,
                 7,
+                "store",
             ),
             (
                 22,
@@ -119,6 +130,7 @@ In the store you can find products that provide natural
                 """"Clothing, dietary needs, suppelments and more!""",
                 Website_Business.BusinessStatus.APPROVED,
                 7,
+                "store",
             ),
             (
                 22,
@@ -128,6 +140,7 @@ In the store you can find products that provide natural
                 exactly your needs""",
                 Website_Business.BusinessStatus.APPROVED,
                 8,
+                "store",
             ),
             (
                 22,
@@ -138,6 +151,7 @@ In the store you can find products that provide natural
                 with rich flavor of chocolate.""",
                 Website_Business.BusinessStatus.APPROVED,
                 9,
+                "store",
             ),
             (
                 22,
@@ -148,6 +162,7 @@ In the store you can find products that provide natural
                  and its one of the healthiest milk in the country.""",
                 Website_Business.BusinessStatus.APPROVED,
                 9,
+                "store",
             ),
             (
                 22,
@@ -156,6 +171,7 @@ In the store you can find products that provide natural
                 """"60 years of fishing family business.""",
                 Website_Business.BusinessStatus.APPROVED,
                 5,
+                "store",
             ),
             (
                 20,
@@ -165,6 +181,7 @@ In the store you can find products that provide natural
                 kinds of knifes and accessories for them.""",
                 Website_Business.BusinessStatus.APPROVED,
                 5,
+                "store",
             ),
             (
                 20,
@@ -174,6 +191,7 @@ In the store you can find products that provide natural
                 Come to us and get your grill today.""",
                 Website_Business.BusinessStatus.APPROVED,
                 5,
+                "store",
             ),
         ]
 
@@ -185,6 +203,7 @@ In the store you can find products that provide natural
                 description,
                 is_confirmed,
                 website_id,
+                category,
             ) in business_test_data:
                 website = Website.objects.filter(pk=website_id)[0]
                 business = Business(
@@ -194,7 +213,7 @@ In the store you can find products that provide natural
                     description=description,
                 )
                 business.save()
-                website.match_business_to_website(business, is_confirmed, "Category")
+                website.match_business_to_website(business, is_confirmed, category)
 
     operations = [
         migrations.RunPython(generate_data),
