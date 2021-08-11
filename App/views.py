@@ -212,7 +212,9 @@ def add_slides(request, new_website_id, number_of_slides_to_submit):
 def businesses(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     category_website_business_dictionary = {}
-    website_business_pairs = Website_Business.objects.filter(website=website)
+    website_business_pairs = Website_Business.objects.filter(
+        website=website, is_confirmed=Website_Business.BusinessStatus.APPROVED
+    )
 
     for website_business_pair in website_business_pairs:
         if website_business_pair.category_name in category_website_business_dictionary:
@@ -999,6 +1001,17 @@ def connect_business(request, pk, website_name, business_pk):
                             has been succesfuly sent to the website's admins to review.""",
                     },
                 )
+                website_admin_set = Website_Profile.objects.filter(
+                    website=website, is_admin=True
+                )
+                logged_in_profile = Profile.objects.filter(user=request.user).first()
+                for website_profile_instance in website_admin_set:
+                    notification = Notification.objects.create(
+                        notification_type=2,
+                        from_user=logged_in_profile,
+                        to_user=website_profile_instance.profile,
+                    )
+                    notification.save()
                 return render(
                     request,
                     "home/websitepage.html",
