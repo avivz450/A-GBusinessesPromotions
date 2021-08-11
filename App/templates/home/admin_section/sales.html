@@ -15,7 +15,18 @@
   href="{% static 'home/css/admin_section/businesses.css' %}"
 />
 
-<body>
+<style>
+  .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+    color: {{website.navbar_background_color}};
+    background: {{website.navbar_text_color}};
+  }
+
+  .section-title h2::after {
+    background: {{website.navbar_text_color}};
+  }
+</style>
+
+<body style="background-color:{{website.navbar_background_color}}30">
 
 
   <main id='main'>
