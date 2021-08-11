@@ -29,7 +29,6 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-import pdb
 
 
 def websitepage(request, pk, website_name):
@@ -394,7 +393,6 @@ def new_business(request, pk, website_name):
                         Website_Business.BusinessStatus.PENDING,
                         business_category.category_name,
                     )
-                    pdb.set_trace()
                     msg_content = """The business was successfully inserted.
                 It will be visible once the site administrators will approve it."""
                     messages.info(
@@ -972,14 +970,62 @@ def connect_businesses_page(request, pk, website_name):
 def connect_business(request, pk, website_name, business_pk):
     website = get_object_or_404(Website, id=pk)
     business_to_connect = get_object_or_404(Business, id=business_pk)
-    new_business_website_pair = Website_Business(
-        website=website,
-        business=business_to_connect,
-        is_confirmed=Website_Business.BusinessStatus.APPROVED,
-    )
-    new_business_website_pair.save()
 
-    return redirect("connect_businesses_page", pk, website_name)
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        if request.method == "POST":
+            category_form = UserCategoryForm(request.POST, website=website)
+            business_category = Business_Category.objects.filter(
+                id=request.POST.get("business_category", "")
+            ).first()
+            if category_form.is_valid():
+                new_business_website_pair = Website_Business(
+                    website=website,
+                    business=business_to_connect,
+                    is_confirmed=Website_Business.BusinessStatus.PENDING,
+                    category_name=business_category.category_name,
+                )
+                new_business_website_pair.save()
+                messages.info(
+                    request,
+                    {
+                        "title": "INFO: ",
+                        "message_content": "Connection request of '"
+                        + business_to_connect.name
+                        + "' to '"
+                        + website.name
+                        + """'
+                            has been succesfuly sent to the website's admins to review.""",
+                    },
+                )
+                return render(
+                    request,
+                    "home/websitepage.html",
+                    {
+                        "title": "Welcome!",
+                        "website": website,
+                        "website_profile_pair": Website_Profile.get_website_profile_pair(
+                            request.user, website
+                        ),
+                        "slideList": Slide.objects.filter(website=website),
+                    },
+                )
+        else:
+            category_form = UserCategoryForm(website=website)
+            return render(
+                request,
+                "home/connected_business_category.html",
+                {
+                    "title": "Welcome!",
+                    "website": website,
+                    "business": business_to_connect,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
+                    "form": category_form,
+                },
+            )
 
 
 def my_businesses(request, pk, website_name):
