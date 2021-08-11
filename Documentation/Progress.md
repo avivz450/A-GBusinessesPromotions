@@ -7,9 +7,9 @@
 + Add contact us page including sending an email to all website admins once pressing submit
 + Styling: explore businesses
 + Add filter and sort to businesses
++ Once the user pressed on connect business, he will be on pending
 ## Plans
 ### Must have (by priority):
-+ Once the user pressed on connect business, he will be on pending (+ notifications)
 + Business page (include styling)
 + Add filter and sort to sales
 + Styling: explore sales
