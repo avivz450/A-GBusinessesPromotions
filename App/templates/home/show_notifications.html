@@ -15,7 +15,7 @@
             {% if not notification.user_has_seen %}
                 {% if notification.notification_type == 1 %}
                 <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
-                    <a href="#" onmouseover="this.style.color='{{website.navbar_hover_text_color}}'; this.style.bgColor='{{website.navbar_background_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    <a href={% url 'businesses' website.id website.name%} onmouseover="this.style.color='{{website.navbar_hover_text_color}}'; this.style.bgColor='{{website.navbar_background_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
                     style="color:{{website.navbar_text_color}}">Your business is approved</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
@@ -24,7 +24,7 @@
                 </div>
                 {% elif notification.notification_type == 2 %}
                 <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
-                    <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    <a href={% url 'admin_businesses' website.id website.name %} onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
                     style="color:{{website.navbar_text_color}}">{{ notification.from_user }} asked to create business</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
@@ -33,7 +33,7 @@
                 </div>
                 {% elif notification.notification_type == 3 %}
                 <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
-                    <a href="#"onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    <a href={% url 'sales' website.id website.name%} onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
                     style="color:{{website.navbar_text_color}}">Your sale is approved</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
@@ -42,7 +42,7 @@
                 </div>
                 {% elif notification.notification_type == 4 %}
                 <div class="dropdown-item" id="{{ notification.pk }}" style="background-color:{{website.navbar_background_color}}">
-                    <a href="#" onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
+                    <a href={% url 'admin_sales' website.id website.name "All" %} onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";
                     style="color:{{website.navbar_text_color}}">{{ notification.from_user }} asked to add sale</a>
                     <button type="button" class="close" aria-label="Close"
                             onclick="removeNotification(`{% url 'notification-delete' notification.pk %}`, `{{ notification.pk }}`)">
