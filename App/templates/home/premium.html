@@ -36,6 +36,7 @@
 
 	<!-- Template Main CSS File -->
 	<link href="{% static 'home/css/landingpage.css' %}" rel="stylesheet"> 
+  <link href="{% static 'home/css/premium.css' %}" rel="stylesheet">
 
 	{% if title %}
 		<title>{{ title }}</title>
@@ -47,30 +48,54 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
 
 	 </head>
+<style>
+  .btn-primary {
+    color: #fff;
+    background-color: #0088fe;
+    border-color: #0089ff;
+}
+</style>
 
+<body id="pricing-hero">
+  <section class="pricing-table">
+    <div class="container">
+      <div class="block-heading">
+     </div>
+      <div class="row justify-content-md-center">
+        <div class="col-md-10 col-lg-8  ">
+          <div class="item">
+            <div class="ribbon">Best Value</div>
+            <div class="heading">
+              <h3>PREMIUM</h3>
+            </div>
+            <div class="features">
+              <h4><span class="feature">Duration</span> : <span class="value">Life Time</span></h4>
+              <h4><span class="feature">Full Support</span> : <span class="value">Yes</span></h4>
+              <h4><span class="feature">Unlimited amount to creating businesses</span> : <span class="value">Yes</span></h4>
+              <h4><span class="feature">Unlimited amount of adding sales</span> : <span class="value">Yes</span></h4>
+              <h4><span class="feature">Vip businesses will be presented before non-vip business</span> : <span class="value">Yes</span></h4>
+              <h4><span class="feature">Vip sales will be presented before non-vip sales</span> : <span class="value">Yes</span></h4>
+            </div>
+            <p></p>
+            <div class="price">
+              <h4>$50</h4>
+            </div>
 
-<body>
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-  
-    <div class="container text-center text-md-left" data-aos="fade-up">
-      <h1><span>Vip benefits</span></h1>
-      <h2>Unlimited amount to creating businesses</h2>
-      <h2>Unlimited amount of adding sales</h2>
-      <h2>Vip businesses will be presented before non-vip business</h2>
-      <h2>Vip sales will be presented before non-vip sales</h2>
-
-
-        <div class="newfrm">
-            <form method="POST">
-                {% csrf_token %}
-                <input type="submit" name="vip_user" value="VIP" class="btn-primary"/>
-            </form>
+            <div class="price">
+              <form method="POST">
+                  {% csrf_token %}
+                  <input type="submit" name="vip_user" value="VIP" class="btn btn-block btn-primary"/>
+              </form>
+          </div>
+          </div>
         </div>
-
-        
-      
+      </div>
     </div>
   </section>
+
+
+
+
 </body>
   <!-- debuging <script src="{% static 'home/js/landingpage.js' %}"></script> -->
   <!-- debuging <script src="{% static 'home/js/login_register.js' %}"></script> -->

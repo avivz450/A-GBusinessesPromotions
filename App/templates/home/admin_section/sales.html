@@ -39,7 +39,7 @@
           <p>Approve/disapprove the following shown sales : </p>
         </div>
 
-        <div class="row">
+        <div>
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li {% if activated_filter == "All" %}class="filter-active" {%endif%} onclick="location.href='{% url 'admin_sales' website.id website.name "All"%}'">All</li>

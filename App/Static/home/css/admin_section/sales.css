@@ -131,9 +131,7 @@ body {
       background: #f7fbfe;
   }
 
-  .row{
-    background-color: #f7fbfe;
-  }
+
 
   #h2_sales::after{
     left: calc(50% - 20px);
