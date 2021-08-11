@@ -25,7 +25,7 @@ Premium users will have additional benefits.
 3. Editing an existing business/sale page. (V)
 4. View sales/businesses for each user/guest. (V)
 5. Charging for premium services. (V)
-6. Connect Sale/Business to other website efficiently.
+6. Connect Sale/Business to other website efficiently. (V)
 7. Host the website in AWS + edit our URLs. (V)
 8. Registration and login. (V)
 9. User notification. (V)
