@@ -85,10 +85,11 @@ class Website(models.Model):
 
         return sales
 
-    def match_business_to_website(self, business, is_confirmed):
+    def match_business_to_website(self, business, is_confirmed, category_name):
         website_business_pair = Website_Business()
         website_business_pair.business = business
         website_business_pair.website = self
+        website_business_pair.category_name = category_name
         website_business_pair.is_confirmed = is_confirmed
         website_business_pair.save()
 

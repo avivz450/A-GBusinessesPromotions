@@ -51,8 +51,9 @@
         <form enctype="multipart/form-data" method="post">
         <h2>Please add a new business : </h2>
           {% csrf_token %} 
-          {{ form.media }}
-          {{ form | crispy }}
+          {{ business_form.media }}
+          {{ business_form | crispy }}
+          {{ category_form | crispy }}
           <input type="submit" class="fadeIn fourth" value="Continue">
         </form>
       </div>

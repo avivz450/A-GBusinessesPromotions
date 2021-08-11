@@ -194,7 +194,7 @@ In the store you can find products that provide natural
                     description=description,
                 )
                 business.save()
-                website.match_business_to_website(business, is_confirmed)
+                website.match_business_to_website(business, is_confirmed, "Category")
 
     operations = [
         migrations.RunPython(generate_data),

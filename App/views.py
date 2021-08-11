@@ -10,6 +10,7 @@ from .models import (
     Website_Business,
     Slide,
     Notification,
+    Business_Category,
 )
 from .forms import (
     SignUpForm,
@@ -21,12 +22,14 @@ from .forms import (
     SlideForm,
     ContactForm,
     BusinessCategoryForm,
+    UserCategoryForm,
 )
 from django.views import View
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+import pdb
 
 
 def websitepage(request, pk, website_name):
@@ -377,14 +380,21 @@ def new_business(request, pk, website_name):
         )
         if logged_in_profile.is_vip or num_of_businesses_of_profile == 0:
             if request.method == "POST":
-                businessForm = BusinessForm(request.POST, request.FILES)
-                if businessForm.is_valid():
-                    new_business = businessForm.save(commit=False)
+                category_form = UserCategoryForm(request.POST, website=website)
+                business_form = BusinessForm(request.POST, request.FILES)
+                if business_form.is_valid() and category_form.is_valid():
+                    new_business = business_form.save(commit=False)
                     new_business.profile = logged_in_profile
                     new_business.save()
+                    business_category = Business_Category.objects.filter(
+                        id=request.POST.get("business_category", "")
+                    ).first()
                     website.match_business_to_website(
-                        new_business, Website_Business.BusinessStatus.PENDING
+                        new_business,
+                        Website_Business.BusinessStatus.PENDING,
+                        business_category.category_name,
                     )
+                    pdb.set_trace()
                     msg_content = """The business was successfully inserted.
                 It will be visible once the site administrators will approve it."""
                     messages.info(
@@ -405,12 +415,14 @@ def new_business(request, pk, website_name):
                         )
                         notification.save()
             else:
-                form = BusinessForm()
+                category_form = UserCategoryForm(website=website)
+                business_form = BusinessForm()
                 return render(
                     request,
                     "home/new_business.html",
                     {
-                        "form": form,
+                        "business_form": business_form,
+                        "category_form": category_form,
                         "title": "New Business",
                         "website": website,
                         "website_profile_pair": Website_Profile.get_website_profile_pair(
