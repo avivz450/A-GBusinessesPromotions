@@ -11,6 +11,8 @@
 + Styling: explore sales
 + Once the user pressed on connect business, he will be on pending
 + HTTPS instead HTTP
++ Style upgrade page
+
 ## Plans
 ### Must have (by priority):
 + Business page (include styling)
@@ -22,7 +24,6 @@
     + After the user pressed on "Edit" on a certain website, he will be reffered to edit that website in the relevant website.
 + DNS
 + Connect user from other site in login page
-+ Style upgrade page
 + Add about us page
 
 ### Nice to have (by priority):
