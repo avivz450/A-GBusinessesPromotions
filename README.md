@@ -21,7 +21,7 @@ Premium users will have additional benefits.
 
 ## Features :
 1. Adding business/sales. (V)
-2. Filter and sort businesses/sales by specific criteria.
+2. Filter and sort businesses/sales by specific criteria. (V)
 3. Editing an existing business/sale page. (V)
 4. View sales/businesses for each user/guest. (V)
 5. Charging for premium services. (V)
@@ -49,6 +49,7 @@ Premium users will have additional benefits.
 - Virtualization: Vagrant and VirtualBox
 - AWS ec2 instance: host our website on the cloud
 - AWS route 53: adding our DOMAIN to the instance path
+- AWS load balancer: secure website with https and certification ssl
 
 ## Dependencies
 The dependencies that must be installed for this software to work are:
