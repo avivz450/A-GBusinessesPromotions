@@ -7,12 +7,12 @@
 + Add contact us page including sending an email to all website admins once pressing submit
 + Styling: explore businesses
 + Add filter and sort to businesses
++ Add filter and sort to sales
++ Styling: explore sales
 + Once the user pressed on connect business, he will be on pending
 ## Plans
 ### Must have (by priority):
 + Business page (include styling)
-+ Add filter and sort to sales
-+ Styling: explore sales
 + Edit sales of user :
     + Once user pressed on "My Sales", in any site, he will see all the sales that the user created in any site, including the status.
     + After the user pressed on "Edit" on a certain sale, he will be reffered to edit that sale in the relevant website.
