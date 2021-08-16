@@ -10,6 +10,7 @@
 + Add filter and sort to sales
 + Styling: explore sales
 + Once the user pressed on connect business, he will be on pending
++ HTTPS instead HTTP
 ## Plans
 ### Must have (by priority):
 + Business page (include styling)
