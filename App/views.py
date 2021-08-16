@@ -29,6 +29,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+import pdb
 
 
 def websitepage(request, pk, website_name):
@@ -246,16 +247,20 @@ def businesses(request, pk, website_name):
 def sales(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     sales = website.get_website_approved_sales()
-
     context = {
         "sales": sales,
         "website": website,
     }
-    if request.method == "GET":
-        if request.user.is_authenticated:
-            context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
-                request.user, website
-            )
+
+    if request.user.is_authenticated:
+        context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
+            request.user, website
+        )
+    if request.method == "POST":
+        filterText = request.POST.get("search", "")
+        filteredSales = [sale for sale in sales if filterText.lower() in sale.title.lower()]
+        context["sales"] = filteredSales
+
     return render(request, "home/sales.html", context)
 
 
