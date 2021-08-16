@@ -1,5 +1,8 @@
 {% extends "home/base.html" %} {% load static %} {% block content %}
 
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
   rel="stylesheet"
@@ -7,38 +10,89 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'home/css/display_sales_style.css' %}"
+  href="{% static 'home/css/admin_section/sales.css' %}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'home/css/admin_section/businesses.css' %}"
 />
 
-<body class="main-bg">
-  <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <!-- Answers Part -->
-        <article class="sales-container">
-          {% for sale in sales %}
-              <div class="card sale-container" style="width: 18rem">
-                <img
-                  class="card-img-top"
-                  src="{{ sale.picture.url }}"
-                  alt="Card image cap"
-                  width="30"
-                  height="230"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">{{ sale.title}}</h5>
-                  <p class="card-text">{{ sale.description }}</p>
-                  <div class="col-12">
-                    <b>by {{ sale.business.name }}</b>
+<style>
+  .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+    color: {{website.navbar_background_color}};
+    background: {{website.navbar_text_color}};
+  }
+
+  .section-title h2::after {
+    background: {{website.navbar_text_color}};
+  }
+</style>
+
+<body style="background-color:{{website.navbar_background_color}}30">
+
+
+  <main id='main'>
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio"  class="more-services section-bg portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 id="h2_sales">{{website.name}}'s sales </h2>
+        </div>
+
+        <form enctype="multipart/form-data" class="example" method="post">
+          {% csrf_token %} 
+          <input type="text" placeholder="Enter sale name" name="search">
+          <button type="submit" style="background-color:{{website.navbar_text_color}}"><i class="fa fa-search"></i></button>
+        </form>
+
+          <div class="row portfolio-container">
+            {% for sale in sales %}
+              {% if sale.profile.is_vip is True %}
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0">
+                  <div class="card" id="vip_user_hover">
+                    <img src={{sale.picture.url}} class="card-img-top" alt="...">
+                    <div class="card-body" id="vip_card_body">
+                      <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
+                      <p class="card-text">{{sale.description}}</p>
+                      <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %} class="btn">Go to business page!</a>
+                      <p class="card-text" id="related_business_text">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
+                    </div>
                   </div>
-                  <a href="{% url 'business-page' website.id website.name sale.business.id sale.business.name %}" class="btn btn-primary">Go to site</a>
                 </div>
-              </div>
-          {% endfor %}
-        </article>
-      </div>
-    </div>
-  </main>
+              {% endif %}
+            {% endfor %}
+
+            {% for sale in sales %}
+              {% if sale.profile.is_vip is False %}
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0">
+                  <div class="card" id="regular_user_hover">
+                    <img src={{sale.picture.url}} class="card-img-top" alt="...">
+                    <div class="card-body" id="regular_card_body">
+                      <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
+                      <p class="card-text">{{sale.description}}</p>
+                      <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %} class="btn">Go to business page!</a>
+                      <p class="card-text" id="related_business_text">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
+                    </div>
+                  </div>
+                </div> 
+              {% endif %}
+            {% endfor %}
+        </div>
+    </section><!-- End Portfolio Section -->
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 </body>
 
 {% endblock content %}
