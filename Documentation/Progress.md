@@ -27,7 +27,6 @@
 + Add about us page
 
 ### Nice to have (by priority):
-+ Filter businesses/sales by user input
 + Add "ask to connect to my site"
 + Add "navigate to business feature (with google API)"
 + Add reviews to businesses
