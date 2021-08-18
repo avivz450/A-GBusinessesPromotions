@@ -52,6 +52,12 @@ urlpatterns = (
             name="business-page",
         ),
         path(
+            """websites/<int:webpage_pk>_<str:website_name>/businesses
+            /<int:business_pk>_<str:business_name>/<int:additional_pictures>/""",
+            views.business_additional_pictures,
+            name="business_additional_pictures",
+        ),
+        path(
             "websites/<int:website_pk>_<str:website_name>/edit_business/<int:business_pk>/",
             views.edit_business,
             name="edit_business",

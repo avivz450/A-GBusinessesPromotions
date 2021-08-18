@@ -1,0 +1,77 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<html>
+	<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="{% static 'home/favicon.ico' %}"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'home/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+	<!-- Template Main CSS File -->
+    <link href="{% static 'home/css/new_sale.css' %}" rel="stylesheet">
+
+	{% if title %}
+		<title>{{ title }}</title>
+	{% else %}
+		<title>Welcome!</title>
+	{% endif %}
+
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+
+	 </head>
+
+
+<body>
+
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container text-center text-md-left" data-aos="fade-up">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <img src="{{business.logo.url}}" id="icon" alt="User Icon" style="
+    width: 200px;
+" />
+        </div>
+
+        <!-- Login Form -->
+        <form enctype="multipart/form-data" method="post">
+          {% csrf_token %} 
+          {% for form in image_form_list %}
+            {{ form | crispy }}
+          {% endfor%}
+          <input type="submit" class="fadeIn fourth" value="Submit">
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+</html>
+
+
+
+{% endblock content %}

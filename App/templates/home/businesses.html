@@ -56,7 +56,7 @@
                   </figure>
 
                   <div class="portfolio-info">
-                    <h4><a href="portfolio-details.html">{{website_business_pair.business.name}}</a></h4>
+                    <h4><a href={% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %}>{{website_business_pair.business.name}}</a></h4>
                       <p>{{ website_business_pair.category_name }}</p>
                   </div>
                 </div>
@@ -77,7 +77,7 @@
                   </figure>
 
                   <div class="portfolio-info" id="no_vip_div">
-                    <h4><a href="portfolio-details.html">{{website_business_pair.business.name}}</a></h4>
+                    <h4><a href={% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %}>{{website_business_pair.business.name}}</a></h4>
                       <p>{{ website_business_pair.category_name }}</p>
                   </div>
                 </div>
