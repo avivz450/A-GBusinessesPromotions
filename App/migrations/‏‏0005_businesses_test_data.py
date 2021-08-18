@@ -114,7 +114,7 @@ In the store you can find products that provide natural
                 "food",
             ),
             (
-                22,
+                19,
                 "Iron Muscle",
                 "App/images/BusinessesLogos/fitness_equipments.jpg",
                 """"All the sports equipment that you will need are here
@@ -154,7 +154,7 @@ In the store you can find products that provide natural
                 "store",
             ),
             (
-                22,
+                18,
                 "Little Dairy Queen",
                 "App/images/BusinessesLogos/food_dairy.jpg",
                 """"Dairy products that belong to family up north with a big farm,
@@ -165,7 +165,7 @@ In the store you can find products that provide natural
                 "store",
             ),
             (
-                22,
+                10,
                 "The old fisherman",
                 "App/images/BusinessesLogos/food_fisherman.jpg",
                 """"60 years of fishing family business.""",

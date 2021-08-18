@@ -54,7 +54,7 @@
             {% else %}
             <div class="col-lg-4 col-md-6 portfolio-item filter-Pending wow fadeInUp">
             {% endif %}
-              <div class="portfolio-wrap">
+              <div class="portfolio-wrap" style="background-color:{{website.navbar_background_color}}30">
                 <figure id="figure">
                   <img src={{website_business_pair.business.logo.url}} class="img-fluid" alt="" id="business_logo">
                   <a href={% url 'change_business_status' website.id website.name website_business_pair.id "AP"%} class="link-preview" title="Approve"><i class="bx bx-check"></i></a>
@@ -79,7 +79,7 @@
             {% else %}
             <div class="col-lg-4 col-md-6 portfolio-item filter-Pending wow fadeInUp">
             {% endif %}
-              <div class="portfolio-wrap" id="no_vip_hover">
+              <div class="portfolio-wrap" id="no_vip_hover" style="background-color:{{website.navbar_background_color}}30">
                 <figure id="figure">
                   <img src={{website_business_pair.business.logo.url}} class="img-fluid" alt="" id="business_logo">
                   <a href={% url 'change_business_status' website.id website.name website_business_pair.id "AP"%} class="link-preview" title="Approve"><i class="bx bx-check"></i></a>

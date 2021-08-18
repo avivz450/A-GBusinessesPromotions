@@ -260,7 +260,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                19,
                 11,
                 "Changeable dumbbell",
                 "300$ for only two weeks",
@@ -268,7 +268,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                19,
                 11,
                 "2 KG dumbbells",
                 "In 40 nis only for this mounth",
@@ -276,7 +276,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                19,
                 11,
                 "2 KG dumbbell",
                 "In 25 nis only for this mounth",
@@ -284,7 +284,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                19,
                 11,
                 "Full bench press set",
                 "Free delivery until the end of the year",
@@ -292,7 +292,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                19,
                 11,
                 "Adjustment dumbbell",
                 "10% discount and free shipment only for 2 weeks",
@@ -300,7 +300,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                19,
                 11,
                 "Plate set",
                 "10 nis per 1 KG only for this week",
@@ -484,7 +484,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                18,
                 15,
                 "Milk",
                 "20% discount when buying 2 liters or more",
@@ -492,7 +492,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                18,
                 15,
                 "Parmesan",
                 "1 + 1 on the small size",
@@ -500,7 +500,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                18,
                 15,
                 "Cream cheese",
                 "10% discount on weekends",
@@ -508,7 +508,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                18,
                 15,
                 "Cheddar cheese",
                 "10% discount on weekends",
@@ -516,7 +516,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                18,
                 15,
                 "Gorgonzola",
                 "Buy 2 get 1 for free",
@@ -524,7 +524,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                18,
                 15,
                 "Yugort",
                 "10% discount",
@@ -532,7 +532,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                18,
                 15,
                 "Ice cream",
                 "Buy 2 KG and get half kG for free",
@@ -540,7 +540,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                18,
                 15,
                 "Mozzarella",
                 "Buy the 2 KG pack and get 20% off",
@@ -548,7 +548,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                10,
                 16,
                 "Norweign salmon",
                 "20% discount after 4pm",
@@ -556,7 +556,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                10,
                 16,
                 "Lavrak",
                 "15% discount after 4pm",
@@ -564,7 +564,7 @@ class Migration(migrations.Migration):
                 Sale.SaleStatus.APPROVED,
             ),
             (
-                22,
+                10,
                 16,
                 "Tuna",
                 "Buy 1 KG and get 10% discount",
