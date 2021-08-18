@@ -100,18 +100,19 @@ class Business(models.Model):
     logo = models.ImageField(
         default=None, upload_to="App/images/BusinessesLogos/"
     )  # required
-    description = RichTextField(default=None)  # required
+    description = models.TextField(default=None)  # required
     URL = models.URLField(null=True, blank=True, max_length=250)
     facebook_link = models.URLField(null=True, blank=True, max_length=250)
     instagram_link = models.URLField(null=True, blank=True, max_length=250)
-    picture_0 = models.ImageField(
+    youtube_link = models.URLField(null=True, blank=True, max_length=250)
+    main_picture = models.ImageField(
         null=True, blank=True, upload_to="App/images/BusinessesPictures/"
     )
-    picture_1 = models.ImageField(
+    location_image = models.ImageField(
         null=True, blank=True, upload_to="App/images/BusinessesPictures/"
     )
-    picture_2 = models.ImageField(
-        null=True, blank=True, upload_to="App/images/BusinessesPictures/"
+    number_of_additional_pictures = models.IntegerField(
+        default=1, validators=[MinValueValidator(5), MaxValueValidator(10)]
     )
     from_hour = models.TimeField(
         null=True, blank=True, auto_now=False, auto_now_add=False
@@ -124,10 +125,19 @@ class Business(models.Model):
     location_points = PlainLocationField(
         based_fields=["location"], zoom=7, null=True, blank=True
     )
+    location_details = models.CharField(null=True, blank=True, max_length=100)
     websites = models.ManyToManyField("Website", through="Website_Business")
 
     def __str__(self):
         return "{self.name}".format(self=self)
+
+
+class Business_Image(models.Model):
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="App/images/BusinessesPictures/")
+
+    def __str__(self):
+        return "{self.business.name}".format(self=self)
 
 
 class Business_Category(models.Model):

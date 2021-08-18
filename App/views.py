@@ -11,6 +11,7 @@ from .models import (
     Slide,
     Notification,
     Business_Category,
+    Business_Image,
 )
 from .forms import (
     SignUpForm,
@@ -23,13 +24,13 @@ from .forms import (
     ContactForm,
     BusinessCategoryForm,
     UserCategoryForm,
+    BusinessImageForm,
 )
 from django.views import View
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-import pdb
 
 
 def websitepage(request, pk, website_name):
@@ -258,7 +259,9 @@ def sales(request, pk, website_name):
         )
     if request.method == "POST":
         filterText = request.POST.get("search", "")
-        filteredSales = [sale for sale in sales if filterText.lower() in sale.title.lower()]
+        filteredSales = [
+            sale for sale in sales if filterText.lower() in sale.title.lower()
+        ]
         context["sales"] = filteredSales
 
     return render(request, "home/sales.html", context)
@@ -400,25 +403,14 @@ def new_business(request, pk, website_name):
                         Website_Business.BusinessStatus.PENDING,
                         business_category.category_name,
                     )
-                    msg_content = """The business was successfully inserted.
-                It will be visible once the site administrators will approve it."""
-                    messages.info(
-                        request,
-                        {
-                            "title": "INFO: ",
-                            "message_content": msg_content,
-                        },
+                    return redirect(
+                        "business_additional_pictures",
+                        website.id,
+                        website.name,
+                        new_business.id,
+                        new_business.name,
+                        new_business.number_of_additional_pictures,
                     )
-                    website_admin_set = Website_Profile.objects.filter(
-                        website=website, is_admin=True
-                    )
-                    for website_profile_instance in website_admin_set:
-                        notification = Notification.objects.create(
-                            notification_type=2,
-                            from_user=logged_in_profile,
-                            to_user=website_profile_instance.profile,
-                        )
-                        notification.save()
             else:
                 category_form = UserCategoryForm(website=website)
                 business_form = BusinessForm()
@@ -456,6 +448,75 @@ def new_business(request, pk, website_name):
                 "slideList": Slide.objects.filter(website=website),
             },
         )
+
+
+def business_additional_pictures(
+    request, webpage_pk, website_name, business_pk, business_name, additional_pictures
+):
+    website = get_object_or_404(Website, id=webpage_pk)
+    business = get_object_or_404(Business, id=business_pk)
+    image_form_list = []
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        logged_in_profile = Profile.objects.filter(user=request.user).first()
+        if request.method == "POST":
+            for i in range(additional_pictures):
+                curr_business_image_form = BusinessImageForm(
+                    request.POST, request.FILES, prefix="image_form_" + str(i)
+                )
+                if curr_business_image_form.is_valid():
+                    curr_business_image = curr_business_image_form.save(commit=False)
+                    curr_business_image.business = business
+                    curr_business_image.save()
+            msg_content = """The business was successfully inserted.
+                    It will be visible once the site administrators will approve it."""
+            messages.info(
+                request,
+                {
+                    "title": "INFO: ",
+                    "message_content": msg_content,
+                },
+            )
+            website_admin_set = Website_Profile.objects.filter(
+                website=website, is_admin=True
+            )
+            for website_profile_instance in website_admin_set:
+                notification = Notification.objects.create(
+                    notification_type=2,
+                    from_user=logged_in_profile,
+                    to_user=website_profile_instance.profile,
+                )
+                notification.save()
+            return render(
+                request,
+                "home/websitepage.html",
+                {
+                    "title": "Welcome!",
+                    "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
+                    "slideList": Slide.objects.filter(website=website),
+                },
+            )
+        else:
+            for i in range(additional_pictures):
+                image_form_list.append(BusinessImageForm(prefix="image_form_" + str(i)))
+            return render(
+                request,
+                "home/add_images.html",
+                {
+                    "image_form_list": image_form_list,
+                    "website": website,
+                    "business": business,
+                    "title": "Add Business Images",
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
+                },
+            )
 
 
 def edit_business(request, website_pk, website_name, business_pk):
@@ -738,15 +799,24 @@ def edit_sale(request, website_pk, website_name, sale_pk):
 
 
 def business_page(request, webpage_pk, website_name, business_pk, business_name):
-    website = get_object_or_404(Website, id=webpage_pk)
-    business = get_object_or_404(Business, id=business_pk)
+    website_business_pair = Website_Business.objects.filter(
+        website=webpage_pk, business=business_pk
+    ).first()
+    business_location_points = website_business_pair.business.location_points.split(",")
+    business_images = Business_Image.objects.filter(
+        business=website_business_pair.business
+    )
     context = {
-        "business": business,
-        "website": website,
+        "business": website_business_pair.business,
+        "website": website_business_pair.website,
+        "latitude": business_location_points[0],
+        "longitude": business_location_points[1],
+        "website_business_pair": website_business_pair,
+        "business_images": business_images,
     }
     if request.user.is_authenticated:
         context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
-            request.user, website
+            request.user, website_business_pair.website
         )
     return render(request, "home/business_page.html", context)
 

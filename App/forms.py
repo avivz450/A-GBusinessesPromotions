@@ -10,6 +10,7 @@ from .models import (
     Slide,
     Contact,
     Business_Category,
+    Business_Image,
 )
 
 
@@ -70,16 +71,18 @@ class BusinessForm(forms.ModelForm):
             "name",
             "logo",
             "URL",
+            "facebook_link",
+            "instagram_link",
+            "youtube_link",
             "from_hour",
             "to_hour",
             "phone_number",
-            "picture_0",
-            "picture_1",
-            "picture_2",
-            "facebook_link",
-            "instagram_link",
+            "main_picture",
+            "number_of_additional_pictures",
             "location",
             "location_points",
+            "location_details",
+            "location_image",
             "description",
         )
 
@@ -184,3 +187,9 @@ class UserCategoryForm(forms.Form):
         self.fields["business_category"].queryset = Business_Category.objects.filter(
             website=website
         )
+
+
+class BusinessImageForm(forms.ModelForm):
+    class Meta:
+        model = Business_Image
+        fields = ("image",)
