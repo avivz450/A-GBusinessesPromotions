@@ -180,6 +180,12 @@ In the store you can find products that provide natural
                 """"The only place for our knife need. here you can find all
                 kinds of knifes and accessories for them.""",
                 Website_Business.BusinessStatus.APPROVED,
+                "09:00",
+                "18:00",
+                "050-1234567",
+                "Herzl 105",
+                (32.054180, 34.770835),
+                5,
                 5,
                 "store",
             ),
@@ -190,6 +196,11 @@ In the store you can find products that provide natural
                 """"We got grills!!!
                 Come to us and get your grill today.""",
                 Website_Business.BusinessStatus.APPROVED,
+                "09:00",
+                "18:00",
+                "050-1234567",
+                "Herzl 105",
+                (32.054180, 34.770835),
                 5,
                 "store",
             ),
@@ -202,6 +213,11 @@ In the store you can find products that provide natural
                 logo,
                 description,
                 is_confirmed,
+                from_hour,
+                to_hour,
+                phone_number,
+                location,
+                location_points,
                 website_id,
                 category,
             ) in business_test_data:
@@ -211,6 +227,11 @@ In the store you can find products that provide natural
                     name=name,
                     logo=logo,
                     description=description,
+                    from_hour=from_hour,
+                    to_hour=to_hour,
+                    phone_number=phone_number,
+                    location=location,
+                    location_points=location_points,
                 )
                 business.save()
                 website.match_business_to_website(business, is_confirmed, category)
