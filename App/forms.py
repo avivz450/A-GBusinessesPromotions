@@ -70,6 +70,7 @@ class BusinessForm(forms.ModelForm):
         fields = (
             "name",
             "logo",
+            "description",
             "URL",
             "facebook_link",
             "instagram_link",
@@ -83,7 +84,6 @@ class BusinessForm(forms.ModelForm):
             "location_points",
             "location_details",
             "location_image",
-            "description",
         )
 
 
