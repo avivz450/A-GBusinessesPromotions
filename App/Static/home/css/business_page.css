@@ -332,5 +332,6 @@ body {
 }
 
 #main_picture{
-  width: 700px;
+  height: 450px;
+  width: auto;
 }
