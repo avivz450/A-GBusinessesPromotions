@@ -78,15 +78,19 @@
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <!-- Tabs Titles -->
-
-        <!-- Add business Form -->
         <form enctype="multipart/form-data" method="post">
+        {% csrf_token %} 
         <h2> Login </h2>
-          {% csrf_token %} 
+      {% if form is None %}
+        <h5> Your account is not connected to {{website.name}} website. Press connect to connect it.<p></p></h5>
+        <input type="submit" class="fadeIn fourth" name="connect_button" value="Connect">
+      {% else %}
+        <!-- Add business Form -->
           {{ form.media }}
           {{ form | crispy }}
-          <input type="submit" class="fadeIn fourth" value="Continue">
-        </form>
+          <input type="submit" class="fadeIn fourth" name="continue_button" value="Continue">
+      {% endif %}
+          </form>
       </div>
     </div>
   </section>
