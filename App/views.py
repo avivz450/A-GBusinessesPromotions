@@ -798,7 +798,7 @@ def login_view(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     form = AuthenticationForm()
 
-    if request.method == "POST":
+    if request.POST.get("continue_button") == "Continue":
         username = request.POST.get("username", "")
         password = request.POST.get("password", "")
         user = authenticate(request, username=username, password=password)
@@ -810,15 +810,22 @@ def login_view(request, pk, website_name):
         else:
             if user is None:
                 message_content = "Invalid username/password."
+                messages.error(
+                    request,
+                    {
+                        "title": "ERROR: ",
+                        "message_content": message_content,
+                    },
+                )
             else:
-                message_content = "This user is not connected to this website."
-            messages.error(
-                request,
-                {
-                    "title": "ERROR: ",
-                    "message_content": message_content,
-                },
-            )
+                form = None
+                request.session["user"] = user.id
+    elif request.POST.get("connect_button") == "Connect":
+        logged_in_profile = Profile.objects.filter(user=request.session["user"]).first()
+        logged_in_profile.match_website_to_profile(website)
+        login(request, logged_in_profile.user)
+        return redirect("websitepage", website.id, website.name)
+
     return render(
         request,
         "home/login.html",
