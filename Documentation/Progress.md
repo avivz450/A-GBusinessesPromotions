@@ -13,12 +13,12 @@
 + HTTPS instead HTTP
 + Style upgrade page
 + Business page (include styling)
-
-## Plans
-### Must have (by priority):
 + Edit sales of user :
     + Once user pressed on "My Sales", in any site, he will see all the sales that the user created in any site, including the status.
     + After the user pressed on "Edit" on a certain sale, he will be reffered to edit that sale in the relevant website.
+    
+## Plans
+### Must have (by priority):
 + Edit websites of user :
     + Once user pressed on "My Websites", in any site, he will see all the websites that the user is admin of them.
     + After the user pressed on "Edit" on a certain website, he will be reffered to edit that website in the relevant website.
