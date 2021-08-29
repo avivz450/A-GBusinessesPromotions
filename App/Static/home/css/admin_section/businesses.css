@@ -324,14 +324,11 @@ s
   .portfolio-details .portfolio-description p {
     padding: 0;
   }
-  
-  #figure{
-    width: 60%;
-    margin: auto;
-  }
+
 
   #business_logo{
     height: 240px;
+    width: 100%;
   }
 
   #no_vip_div{

@@ -87,11 +87,6 @@ urlpatterns = (
             name="edit_sale",
         ),
         path(
-            "websites/<int:pk>_<str:website_name>/edit_sale/",
-            views.choose_sale_to_edit,
-            name="choose_sale_to_edit",
-        ),
-        path(
             "websites/<int:pk>_<str:website_name>/premium/",
             views.premium,
             name="premium",
@@ -137,6 +132,11 @@ urlpatterns = (
             "websites/<int:pk>_<str:website_name>/my_businesses/",
             views.my_businesses,
             name="my_businesses",
+        ),
+        path(
+            "websites/<int:pk>_<str:website_name>/my_sales/",
+            views.my_sales,
+            name="my_sales",
         ),
         path(
             "websites/<int:pk>_<str:website_name>/contact_us/",

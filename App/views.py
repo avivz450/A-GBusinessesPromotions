@@ -18,7 +18,6 @@ from .forms import (
     BusinessForm,
     SaleForm,
     ChooseWebsiteForm,
-    UserSalesForm,
     WebsiteForm,
     SlideForm,
     ContactForm,
@@ -716,32 +715,6 @@ def new_sale(request, pk, website_name):
             )
 
 
-def choose_sale_to_edit(request, pk, website_name):
-    website = get_object_or_404(Website, id=pk)
-
-    if not request.user.is_authenticated:
-        return redirect("login", website.id, website.name)
-    else:
-        if request.method == "POST":
-            chosen_sale = Sale.objects.get(id=request.POST.get("sale", ""))
-            return redirect("edit_sale", website.id, website.name, chosen_sale.id)
-        else:
-            form = UserSalesForm(logged_in_user=request.user.id)
-            return render(
-                request,
-                "home/choose_object_to_edit.html",
-                {
-                    "title": "Edit sale",
-                    "form": form,
-                    "object": "sale",
-                    "website": website,
-                    "website_profile_pair": Website_Profile.get_website_profile_pair(
-                        request.user, website
-                    ),
-                },
-            )
-
-
 def edit_sale(request, website_pk, website_name, sale_pk):
     website = get_object_or_404(Website, id=website_pk)
     sale = get_object_or_404(Sale, id=sale_pk)
@@ -1209,3 +1182,28 @@ def contact_us(request, pk, website_name):
 
 def successView(request):
     return HttpResponse("Success! Thank you for your message.")
+
+
+def my_sales(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        logged_in_profile = Profile.objects.filter(user=request.user).first()
+        sales = Sale.objects.filter(profile=logged_in_profile)
+        context = {
+            "sales": sales,
+            "website": website,
+            "website_profile_pair": Website_Profile.get_website_profile_pair(
+                request.user, website
+            ),
+        }
+        if request.method == "POST":
+            filterText = request.POST.get("search", "")
+            filteredSales = [
+                sale for sale in sales if filterText.lower() in sale.title.lower()
+            ]
+            context["sales"] = filteredSales
+
+    return render(request, "home/my_sales.html", context)

@@ -148,17 +148,6 @@ class ChooseWebsiteForm(forms.Form):
     )
 
 
-class UserSalesForm(forms.Form):
-    sale = forms.ModelMultipleChoiceField(queryset=Sale.objects.all())
-
-    def __init__(self, *args, **kwargs):
-        logged_in_user = kwargs.pop("logged_in_user", None)
-        super(UserSalesForm, self).__init__(*args, **kwargs)
-        self.fields["sale"].queryset = Sale.objects.filter(
-            profile=logged_in_user, is_confirmed=Sale.SaleStatus.APPROVED
-        )
-
-
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
