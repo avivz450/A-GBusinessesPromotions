@@ -68,7 +68,7 @@
           {% csrf_token %} 
           {{ form.media }}
           {{ form | crispy }}
-          <input type="submit" class="fadeIn fourth" value="Continue">
+          <input type="submit" class="fadeIn fourth" value="Continue" style="background-color:{{website.navbar_text_color}}">
         </form>
       </div>
     </div>
