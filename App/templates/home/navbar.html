@@ -27,8 +27,6 @@
             {% if user.is_authenticated %}
           <li><a href={% url 'new_sale' website.id website.name%} style="color:{{website.navbar_text_color}}"
             onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Add sale</a></li>
-          <li><a href={% url 'choose_sale_to_edit' website.id website.name%} style="color:{{website.navbar_text_color}}"
-            onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Edit sale</a></li>
             {% endif %}
         </ul>
       </li>              
@@ -49,6 +47,8 @@
               onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Edit profile</a></li>
             <li><a href={% url 'my_businesses' website.id website.name%} style="color:{{website.navbar_text_color}}"
               onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>My businesses</a></li>
+            <li><a href={% url 'my_sales' website.id website.name%} style="color:{{website.navbar_text_color}}"
+              onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>My sales</a></li>
             {% if user.profile.is_vip is False %}
             <li><a href={% url 'premium' website.id website.name %} style="color:{{website.navbar_text_color}}"
               onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Upgrade</a></li>
