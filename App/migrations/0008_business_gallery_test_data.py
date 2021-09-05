@@ -516,6 +516,21 @@ class Migration(migrations.Migration):
             (26, "App/images/BusinessesGallery/coffee_house_3.jfif"),
             (26, "App/images/BusinessesGallery/coffee_house_4.jfif"),
             (26, "App/images/BusinessesGallery/coffee_house_5.jfif"),
+            (27, "App/images/BusinessesGallery/matt_does_fitness_1.jfif"),
+            (27, "App/images/BusinessesGallery/matt_does_fitness_2.jfif"),
+            (27, "App/images/BusinessesGallery/matt_does_fitness_3.jfif"),
+            (27, "App/images/BusinessesGallery/matt_does_fitness_4.jfif"),
+            (27, "App/images/BusinessesGallery/matt_does_fitness_5.jfif"),
+            (28, "App/images/BusinessesGallery/space_florentin_1.jfif"),
+            (28, "App/images/BusinessesGallery/space_florentin_2.jfif"),
+            (28, "App/images/BusinessesGallery/space_florentin_3.jfif"),
+            (28, "App/images/BusinessesGallery/space_florentin_4.jpg"),
+            (28, "App/images/BusinessesGallery/space_florentin_5.jfif"),
+            (29, "App/images/BusinessesGallery/lake_tlv_1.png"),
+            (29, "App/images/BusinessesGallery/lake_tlv_2.jpg"),
+            (29, "App/images/BusinessesGallery/lake_tlv_3.jpg"),
+            (29, "App/images/BusinessesGallery/lake_tlv_4.jfif"),
+            (29, "App/images/BusinessesGallery/lake_tlv_5.jfif"),
         ]
 
         with transaction.atomic():
