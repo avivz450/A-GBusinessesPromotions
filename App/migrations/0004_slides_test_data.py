@@ -172,6 +172,23 @@ As an admin, you choose which businesses and sales will be shown on your site wh
 """,
                 "App/images/SlidePictures/test_data/Dairy/slide2.jpg",
             ),
+            (
+                10,
+                "Tel Aviv City",
+                """Located in the center of Israel, populated in diversity of people, work places,
+                memorials, hangout places, you can choose apartments in a tall building to a
+                private house.
+""",
+                "App/images/SlidePictures/test_data/Tel_Aviv/slide1.jpg",
+            ),
+            (
+                10,
+                "",
+                """One of the most populated area in israel that also near to the beach,
+                attracts a lot of tourists every year and a symbol to tolerance.
+""",
+                "App/images/SlidePictures/test_data/Tel_Aviv/slide2.jpg",
+            ),
         ]
 
         with transaction.atomic():

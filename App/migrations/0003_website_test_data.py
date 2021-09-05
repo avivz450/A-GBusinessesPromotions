@@ -128,6 +128,19 @@ class Migration(migrations.Migration):
                 22,
                 True,
             ),
+            (
+                "Tel Aviv",
+                "App/images/WebsitesLogos/test_data/Tel_Aviv/favicon.ico",
+                "App/images/WebsitesLogos/test_data/Tel_Aviv/Tel_Aviv_Logo.png",
+                2,
+                "#fff",
+                "#4f5a62",
+                "#3498db",
+                "#fff",
+                "#0009FF",
+                22,
+                True,
+            ),
         ]
 
         with transaction.atomic():
