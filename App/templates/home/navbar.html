@@ -2,6 +2,13 @@
 
 <nav id="navbar" class="navbar order-last order-lg-0" style="background-color:'{{website.navbar_background_color}}'">
     <ul style="background-color:{{website.navbar_background_color}}">
+      {% if user.is_authenticated is False %}
+      <li><a href={% url 'businesses' website.id website.name%} style="color:{{website.navbar_text_color}}"
+        onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Businesses</a></li>
+      <li><a href={% url 'sales' website.id website.name%} style="color:{{website.navbar_text_color}}"
+        onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Sales</a></li>
+      {% endif %}
+      {% if user.is_authenticated %}
       <li class="dropdown"><a href="#" id="first_left_nav_item"><span style="color:{{website.navbar_text_color}}"
         onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Businesses</span>
         <i class="bi bi-chevron-down" style="color:{{website.navbar_text_color}}"
@@ -9,14 +16,13 @@
         <ul style="background-color:{{website.navbar_background_color}}">
           <li><a href={% url 'businesses' website.id website.name%} style="color:{{website.navbar_text_color}}"
             onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Explore</a></li>
-          {% if user.is_authenticated %}
           <li><a href={% url 'new_business' website.id website.name%} style="color:{{website.navbar_text_color}}"
             onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Add business</a></li>
           <li><a href={% url 'connect_businesses_page' website.id website.name%} style="color:{{website.navbar_text_color}}"
             onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Connect business</a></li>
-          {% endif %}
         </ul>
       </li>
+
       <li class="dropdown"><a href="#"><span style="color:{{website.navbar_text_color}}"
         onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Sales</span>
         <i class="bi bi-chevron-down" style="color:{{website.navbar_text_color}}"
@@ -24,12 +30,11 @@
         <ul style="background-color:{{website.navbar_background_color}}">
           <li><a href={% url 'sales' website.id website.name%} style="color:{{website.navbar_text_color}}"
             onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Explore</a></li>
-            {% if user.is_authenticated %}
           <li><a href={% url 'new_sale' website.id website.name%} style="color:{{website.navbar_text_color}}"
             onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Add sale</a></li>
-            {% endif %}
         </ul>
-      </li>              
+      </li>
+      {% endif %}              
       <li><a class="nav-link scrollto " href="#portfolio" style="color:{{website.navbar_text_color}}"
         onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>About us</a></li>
       <li><a href={% url 'contact_us' website.id website.name %} class="nav-link scrollto" id="last_left_nav_item" style="color:{{website.navbar_text_color}}"
@@ -46,7 +51,7 @@
             <li><a href={% url 'edit_profile' website.id website.name user.id %} style="color:{{website.navbar_text_color}}"
               onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Edit profile</a></li>
             <li><a href={% url 'my_businesses' website.id website.name%} style="color:{{website.navbar_text_color}}"
-              onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>My businesses</a></li>
+              onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>My stores</a></li>
             <li><a href={% url 'my_sales' website.id website.name%} style="color:{{website.navbar_text_color}}"
               onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>My sales</a></li>
             {% if user.profile.is_vip is False %}
