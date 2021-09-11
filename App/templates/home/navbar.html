@@ -30,8 +30,6 @@
             {% endif %}
         </ul>
       </li>              
-      <li><a class="nav-link scrollto " href="#portfolio" style="color:{{website.navbar_text_color}}"
-        onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>About us</a></li>
       <li><a href={% url 'contact_us' website.id website.name %} class="nav-link scrollto" id="last_left_nav_item" style="color:{{website.navbar_text_color}}"
         onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Contact us</a></li>
         {% if user.is_authenticated %}
