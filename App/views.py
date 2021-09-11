@@ -779,6 +779,7 @@ def business_page(request, webpage_pk, website_name, business_pk, business_name)
     business_images = Business_Image.objects.filter(
         business=website_business_pair.business
     )
+    sales = Sale.objects.filter(business=business_pk)
     context = {
         "business": website_business_pair.business,
         "website": website_business_pair.website,
@@ -786,6 +787,7 @@ def business_page(request, webpage_pk, website_name, business_pk, business_name)
         "longitude": business_location_points[1],
         "website_business_pair": website_business_pair,
         "business_images": business_images,
+        "sales": sales,
     }
     if request.user.is_authenticated:
         context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
