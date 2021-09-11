@@ -28,13 +28,13 @@
                     <div class="portfolio-wrap" id="vip_hover">
                       <figure id="figure">
                         <img src={{website_business_pair.business.logo.url}} style="width: 400px; height:240px;" class="img-fluid" alt="">
-                        <a href={% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %} class="link-preview" title="link to {{website_business_pair.business.name}}"><i class="bx bx-link"></i></a>
+                        <a href={% url 'business-page' website_business_pair.website.id website_business_pair.website.name website_business_pair.business.id website_business_pair.business.name %} class="link-preview" title="link to {{website_business_pair.business.name}}"><i class="bx bx-link"></i></a>
                         <a href={% url 'connect_business' website.id website.name website_business_pair.business.id %}  class="link-details" title="Connect to {{website_business_pair.website.name}}"><i class="bx bx-check"></i></a>
                       </figure>
 
                       <div class="portfolio-info" id="vip_div">
-                        <h4><a href="portfolio-details.html">{{website_business_pair.business.name}}</a></h4>
-                        <p>category name</p>
+                        <h4><a href={% url 'business-page' website_business_pair.website.id website_business_pair.website.name website_business_pair.business.id website_business_pair.business.name %}>{{website_business_pair.business.name}}</a></h4>
+                        <p>{{website_business_pair.category_name}}</p>
                       </div>
                     </div>
                   </div>
@@ -43,13 +43,13 @@
                     <div class="portfolio-wrap">
                       <figure id="figure">
                         <img src={{website_business_pair.business.logo.url}} class="img-fluid" alt="">
-                        <a href={% url 'business-page' website.id website.name website_business_pair.business.id website_business_pair.business.name %} class="link-preview" title="link to {{website_business_pair.business.name}}"><i class="bx bx-link"></i></a>
+                        <a href={% url 'business-page' website_business_pair.website.id website_business_pair.website.name website_business_pair.business.id website_business_pair.business.name %} class="link-preview" title="link to {{website_business_pair.business.name}}"><i class="bx bx-link"></i></a>
                         <a href={% url 'connect_business' website.id website.name website_business_pair.business.id %}  class="link-details" title="Connect to {{website_business_pair.website.name}}"><i class="bx bx-check"></i></a>
                       </figure>
 
                       <div class="portfolio-info">
-                        <h4><a href="portfolio-details.html">{{website_business_pair.business.name}}</a></h4>
-                        <p>category name</p>
+                        <h4><a href={% url 'business-page' website_business_pair.website.id website_business_pair.website.name website_business_pair.business.id website_business_pair.business.name %}>{{website_business_pair.business.name}}</a></h4>
+                        <p>{{website_business_pair.category_name}}</p>
                       </div>
                     </div>
                   </div>
