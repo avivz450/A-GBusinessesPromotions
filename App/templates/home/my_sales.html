@@ -61,9 +61,9 @@
                     <img src={{sale.picture.url}} class="card-img-top" alt="...">
                     <div class="card-body" id="vip_card_body">
                       <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
-                      <p class="card-text-description">{{sale.description}}</p>
+                      <p class="card-text-description" style="text-align: center;">{{sale.description}}</p>
                       <a href={% url 'edit_sale' website.id website.name sale.id %} class="btn">Edit sale!</a>
-                      <p class="card-text-bottom" id="related_business_text">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
+                      <p class="card-text-bottom" id="related_business_text" style="text-align: center;">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
                     </div>
                   </div>
                 </div>
@@ -77,9 +77,9 @@
                     <img src={{sale.picture.url}} class="card-img-top" alt="...">
                     <div class="card-body" id="regular_card_body">
                       <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
-                      <p class="card-text-description">{{sale.description}}</p>
+                      <p class="card-text-description" style="text-align: center;">{{sale.description}}</p>
                       <a href={% url 'edit_sale' website.id website.name sale.id %} class="btn">Edit sale!</a>
-                      <p class="card-text-bottom" id="related_business_text">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
+                      <p class="card-text-bottom" id="related_business_text" style="text-align: center;">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
                     </div>
                   </div>
                 </div> 

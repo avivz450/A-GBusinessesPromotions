@@ -17,7 +17,18 @@
   type="text/css"
   href="{% static 'home/css/business_page.css' %}"
 />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'home/css/admin_section/sales.css' %}"
+/>
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
 
   <!-- =======================================================
   * Template Name: TheEvent - v4.3.0
@@ -96,8 +107,56 @@
       </div>
     </section><!-- End Portfolio Details Section -->
 
+
+            <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts" style="background-color:{{website.navbar_background_color}}00;padding-top: 50px;">
+      <div class="container" data-aos="fade-up">
+        <div class="row" id="row">
+
+          {% if business.facebook_link %}
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box" style="background-color: {{website.navbar_background_color}};">
+              <a href={{business.facebook_link}}><i class="bi bi-facebook" style="background-color: {{website.navbar_text_color}};"></i></a>
+              <p>Visit us on Facebook</p>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if business.instagram_link %}
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box" style="background-color: {{website.navbar_background_color}};">
+               <a href={{business.instagram_link}}><i class="bi bi-instagram" style="background-color: {{website.navbar_text_color}};"></i></a>
+              <p>Visit us on Instagram</p>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if business.youtube_link %}
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box" style="background-color: {{website.navbar_background_color}};">
+              <a href={{business.youtube_link}} ><i class="bi bi-youtube" style="background-color: {{website.navbar_text_color}};"></i></a>
+              <p>Watch us on YouTube</p>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if business.URL %}
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box" style="background-color: {{website.navbar_background_color}};">
+              <a href={{business.URL}}><i class="bi bi-globe" style="background-color: {{website.navbar_text_color}};"></i></a>
+              <p>Explore our official website</p>
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+
     <!-- ======= Gallery Section ======= -->
-    <section id="gallery" style="background-color:{{website.navbar_background_color}}00; padding-bottom:20px;">
+    <section id="gallery" style="background-color:{{website.navbar_background_color}}00; padding-bottom:20px; padding-top:0px;">
 
       <div class="container" data-aos="fade-up">
         <div class="section-header" style="margin-bottom: 0px">
@@ -116,7 +175,7 @@
 
     </section><!-- End Gallery Section -->
 
-    <!-- ======= Venue Section ======= -->
+        <!-- ======= Venue Section ======= -->
     <section id="venue" style="background-color:{{website.navbar_background_color}}00; padding-top: 0px;">
 
       <div class="container-fluid" data-aos="fade-up">
@@ -146,52 +205,64 @@
 
     </section><!-- End Venue Section -->
 
-        <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts" style="background-color:{{website.navbar_background_color}}00">
+
+
+    <section id="portfolio"  class="more-services section-bg portfolio">
       <div class="container" data-aos="fade-up">
-
-        <div class="row" id="row">
-
-          {% if business.facebook_link %}
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box" style="background-color: #8784842e;">
-              <a href={{business.facebook_link}}><i class="bi bi-facebook" style="background-color: #878484;"></i></a>
-              <p>Visit us on Facebook</p>
-            </div>
-          </div>
-          {% endif %}
-
-          {% if business.instagram_link %}
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box" style="background-color: #8784842e;">
-               <a href={{business.instagram_link}}><i class="bi bi-instagram" style="background-color: #878484;"></i></a>
-              <p>Visit us on Instagram</p>
-            </div>
-          </div>
-          {% endif %}
-
-          {% if business.youtube_link %}
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box" style="background-color: #8784842e;">
-              <a href={{business.youtube_link}} ><i class="bi bi-youtube" style="background-color: #878484;"></i></a>
-              <p>Watch us on YouTube</p>
-            </div>
-          </div>
-          {% endif %}
-
-          {% if business.URL %}
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box" style="background-color: #8784842e;">
-              <a href={{business.URL}}><i class="bi bi-globe" style="background-color: #878484;"></i></a>
-              <p>Explore our official website</p>
-            </div>
-          </div>
-          {% endif %}
-
+        <div class="section-header" style="margin-bottom: 0px">
+          <h2>Sales</h2>
         </div>
-
       </div>
-    </section><!-- End Counts Section -->
+
+          <div class="row portfolio-container" style="padding-top: 40px;">
+            {% for sale in sales %}
+              {% if sale.profile.is_vip is True %}
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0" style="
+    padding-bottom: 24px;
+    padding-top: 24px;
+    padding-left: 24px;
+    padding-right: 12px;
+">
+                  <div class="card" id="vip_user_hover">
+                    <img src={{sale.picture.url}} class="card-img-top" alt="...">
+                    <div class="card-body" id="vip_card_body" style="
+    width: 280px;
+    height: 140px;
+">
+                      <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
+                      <p class="card-text-description" style="text-align: center;">{{sale.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            {% for sale in sales %}
+              {% if sale.profile.is_vip is False %}
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0" style="
+    padding-bottom: 24px;
+    padding-top: 24px;
+    padding-left: 24px;
+    padding-right: 12px;
+">
+                  <div class="card" id="regular_user_hover">
+                    <img src={{sale.picture.url}} class="card-img-top" alt="...">
+                    <div class="card-body" id="regular_card_body" style="
+    width: 290px;
+    height: 166px;
+">
+                      <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
+                      <p class="card-text-description" style="text-align: center;">{{sale.description}}</p>
+\                    </div>
+                  </div>
+                </div> 
+              {% endif %}
+            {% endfor %}
+        </div>
+    </section><!-- End Portfolio Section -->
+
+
+
 
   </main><!-- End #main -->
 
@@ -203,6 +274,12 @@
   <script src="{% static 'home/vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static 'home/vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.jss' %}"></script>
+    <!-- Vendor JS Files -->
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
   <!-- Template Main JS File -->
   <script src="{% static 'home/js/swiper_js.js' %}"></script>
 
