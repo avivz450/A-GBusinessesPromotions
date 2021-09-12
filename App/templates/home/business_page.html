@@ -227,6 +227,8 @@
           <div class="row portfolio-container" style="padding-top: 40px;">
             {% for sale in sales %}
               {% if sale.profile.is_vip is True %}
+              {% now "Y-m-d" as todays_date %}
+                {% if todays_date < sale.expired_date|date:"Y-m-d" %}
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0" style="
     padding-bottom: 24px;
     padding-top: 24px;
@@ -241,14 +243,18 @@
 ">
                       <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
                       <p class="card-text-description" style="text-align: center;">{{sale.description}}</p>
+                      <p>Available until: {{sale.expired_date}}</p>
                     </div>
                   </div>
                 </div>
+                {% endif %}
               {% endif %}
             {% endfor %}
 
             {% for sale in sales %}
               {% if sale.profile.is_vip is False %}
+              {% now "Y-m-d" as todays_date %}
+                {% if todays_date < sale.expired_date|date:"Y-m-d" %}
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0" style="
     padding-bottom: 24px;
     padding-top: 24px;
@@ -263,9 +269,11 @@
 ">
                       <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
                       <p class="card-text-description" style="text-align: center;">{{sale.description}}</p>
-\                    </div>
+                      <p>Available until: {{sale.expired_date}}</p>
+                    </div>
                   </div>
                 </div> 
+                {% endif %}
               {% endif %}
             {% endfor %}
         </div>
