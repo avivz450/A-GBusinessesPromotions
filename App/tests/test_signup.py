@@ -8,8 +8,8 @@ from django.urls import reverse
 
 @pytest.mark.django_db
 class TestSignUp:
-    demo_webpage_url = reverse("websitepage", args=[1, "Website Demo"])
-    demo_webpage_signup_url = reverse("signup", args=[1, "Website Demo"])
+    demo_webpage_url = reverse("websitepage", args=[1, "Tel Aviv"])
+    demo_webpage_signup_url = reverse("signup", args=[1, "Tel Aviv"])
 
     @pytest.fixture
     def valid_signup_details(self):

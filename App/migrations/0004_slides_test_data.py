@@ -13,18 +13,20 @@ class Migration(migrations.Migration):
         slide_test_data = [
             (
                 1,
-                "Welcome to a website demo!",
-                "This site is designed to give you a glimpse of what your site will look like once you create it. ",
-                "App/images/SlidePictures/test_data/Website_Demo/slide1.jpg",
+                "Tel Aviv City",
+                """Located in the center of Israel, populated in diversity of people, work places,
+                memorials, hangout places, you can choose apartments in a tall building to a
+                private house.
+""",
+                "App/images/SlidePictures/test_data/Tel_Aviv/slide1.jpg",
             ),
             (
                 1,
-                "How it works?",
-                """Our goal is to advertise the businesses whose types are related to your site.
-All you need to do is create a website on our platform, and copy that URL to your original site.
-As an admin, you choose which businesses and sales will be shown on your site which is on our platform.
+                "",
+                """One of the most populated area in israel that also near to the beach,
+                attracts a lot of tourists every year and a symbol to tolerance.
 """,
-                "App/images/SlidePictures/test_data/Website_Demo/slide2.png",
+                "App/images/SlidePictures/test_data/Tel_Aviv/slide2.jpg",
             ),
             (
                 2,
@@ -171,23 +173,6 @@ As an admin, you choose which businesses and sales will be shown on your site wh
                 so here you will be able to find all the good tnigs that made from milk.
 """,
                 "App/images/SlidePictures/test_data/Dairy/slide2.jpg",
-            ),
-            (
-                10,
-                "Tel Aviv City",
-                """Located in the center of Israel, populated in diversity of people, work places,
-                memorials, hangout places, you can choose apartments in a tall building to a
-                private house.
-""",
-                "App/images/SlidePictures/test_data/Tel_Aviv/slide1.jpg",
-            ),
-            (
-                10,
-                "",
-                """One of the most populated area in israel that also near to the beach,
-                attracts a lot of tourists every year and a symbol to tolerance.
-""",
-                "App/images/SlidePictures/test_data/Tel_Aviv/slide2.jpg",
             ),
         ]
 

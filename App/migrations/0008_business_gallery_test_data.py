@@ -11,66 +11,21 @@ class Migration(migrations.Migration):
         from django.shortcuts import get_object_or_404
 
         business_image_test_data = [
-            (
-                1,
-                "App/images/BusinessesGallery/demo_business_1_1.png",
-            ),
-            (
-                1,
-                "App/images/BusinessesGallery/demo_business_1_2.png",
-            ),
-            (
-                1,
-                "App/images/BusinessesGallery/demo_business_1_3.png",
-            ),
-            (
-                1,
-                "App/images/BusinessesGallery/demo_business_1_4.png",
-            ),
-            (
-                1,
-                "App/images/BusinessesGallery/demo_business_1_5.png",
-            ),
-            (
-                2,
-                "App/images/BusinessesGallery/demo_business_2_1.png",
-            ),
-            (
-                2,
-                "App/images/BusinessesGallery/demo_business_2_2.png",
-            ),
-            (
-                2,
-                "App/images/BusinessesGallery/demo_business_2_3.png",
-            ),
-            (
-                2,
-                "App/images/BusinessesGallery/demo_business_2_4.png",
-            ),
-            (
-                2,
-                "App/images/BusinessesGallery/demo_business_2_5.png",
-            ),
-            (
-                3,
-                "App/images/BusinessesGallery/demo_business_3_1.png",
-            ),
-            (
-                3,
-                "App/images/BusinessesGallery/demo_business_3_2.png",
-            ),
-            (
-                3,
-                "App/images/BusinessesGallery/demo_business_3_3.png",
-            ),
-            (
-                3,
-                "App/images/BusinessesGallery/demo_business_3_4.png",
-            ),
-            (
-                3,
-                "App/images/BusinessesGallery/demo_business_3_5.png",
-            ),
+            (1, "App/images/BusinessesGallery/matt_does_fitness_1.jfif"),
+            (1, "App/images/BusinessesGallery/matt_does_fitness_2.jfif"),
+            (1, "App/images/BusinessesGallery/matt_does_fitness_3.jfif"),
+            (1, "App/images/BusinessesGallery/matt_does_fitness_4.jfif"),
+            (1, "App/images/BusinessesGallery/matt_does_fitness_5.jfif"),
+            (2, "App/images/BusinessesGallery/space_florentin_1.jfif"),
+            (2, "App/images/BusinessesGallery/space_florentin_2.jfif"),
+            (2, "App/images/BusinessesGallery/space_florentin_3.jfif"),
+            (2, "App/images/BusinessesGallery/space_florentin_4.jpg"),
+            (2, "App/images/BusinessesGallery/space_florentin_5.jfif"),
+            (3, "App/images/BusinessesGallery/lake_tlv_1.png"),
+            (3, "App/images/BusinessesGallery/lake_tlv_2.jpg"),
+            (3, "App/images/BusinessesGallery/lake_tlv_3.jpg"),
+            (3, "App/images/BusinessesGallery/lake_tlv_4.jfif"),
+            (3, "App/images/BusinessesGallery/lake_tlv_5.jfif"),
             (
                 4,
                 "App/images/BusinessesGallery/vegan_business_1_1.jpg",
@@ -516,21 +471,6 @@ class Migration(migrations.Migration):
             (26, "App/images/BusinessesGallery/coffee_house_3.jfif"),
             (26, "App/images/BusinessesGallery/coffee_house_4.jfif"),
             (26, "App/images/BusinessesGallery/coffee_house_5.jfif"),
-            (27, "App/images/BusinessesGallery/matt_does_fitness_1.jfif"),
-            (27, "App/images/BusinessesGallery/matt_does_fitness_2.jfif"),
-            (27, "App/images/BusinessesGallery/matt_does_fitness_3.jfif"),
-            (27, "App/images/BusinessesGallery/matt_does_fitness_4.jfif"),
-            (27, "App/images/BusinessesGallery/matt_does_fitness_5.jfif"),
-            (28, "App/images/BusinessesGallery/space_florentin_1.jfif"),
-            (28, "App/images/BusinessesGallery/space_florentin_2.jfif"),
-            (28, "App/images/BusinessesGallery/space_florentin_3.jfif"),
-            (28, "App/images/BusinessesGallery/space_florentin_4.jpg"),
-            (28, "App/images/BusinessesGallery/space_florentin_5.jfif"),
-            (29, "App/images/BusinessesGallery/lake_tlv_1.png"),
-            (29, "App/images/BusinessesGallery/lake_tlv_2.jpg"),
-            (29, "App/images/BusinessesGallery/lake_tlv_3.jpg"),
-            (29, "App/images/BusinessesGallery/lake_tlv_4.jfif"),
-            (29, "App/images/BusinessesGallery/lake_tlv_5.jfif"),
         ]
 
         with transaction.atomic():
