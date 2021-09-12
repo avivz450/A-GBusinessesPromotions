@@ -78,7 +78,9 @@
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper-container">
+            <div class="portfolio-details-slider swiper-container" style="
+    margin-top: 0px;
+">
                 <div class="swiper-slide">
                   <img id="main_picture" src={{business.main_picture.url}} alt="">
                 </div>
@@ -115,9 +117,11 @@
 
           {% if business.facebook_link %}
           <div class="col-lg-3 col-md-6">
-            <div class="count-box" style="background-color: {{website.navbar_background_color}};">
+            <div class="count-box" style="background-color: {{website.navbar_background_color}};margin-top: 0px;">
               <a href={{business.facebook_link}}><i class="bi bi-facebook" style="background-color: {{website.navbar_text_color}};"></i></a>
-              <p>Visit us on Facebook</p>
+              <p style="
+    color:  {{website.navbar_text_color}};
+">Visit us on Facebook</p>
             </div>
           </div>
           {% endif %}
@@ -126,7 +130,9 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box" style="background-color: {{website.navbar_background_color}};">
                <a href={{business.instagram_link}}><i class="bi bi-instagram" style="background-color: {{website.navbar_text_color}};"></i></a>
-              <p>Visit us on Instagram</p>
+              <p style="
+    color:  {{website.navbar_text_color}};
+">Visit us on Instagram</p>
             </div>
           </div>
           {% endif %}
@@ -135,7 +141,9 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box" style="background-color: {{website.navbar_background_color}};">
               <a href={{business.youtube_link}} ><i class="bi bi-youtube" style="background-color: {{website.navbar_text_color}};"></i></a>
-              <p>Watch us on YouTube</p>
+              <p style="
+    color:  {{website.navbar_text_color}};
+">Watch us on YouTube</p>
             </div>
           </div>
           {% endif %}
@@ -144,7 +152,9 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box" style="background-color: {{website.navbar_background_color}};">
               <a href={{business.URL}}><i class="bi bi-globe" style="background-color: {{website.navbar_text_color}};"></i></a>
-              <p>Explore our official website</p>
+              <p style="
+    color:  {{website.navbar_text_color}};
+">Explore our official website</p>
             </div>
           </div>
           {% endif %}
@@ -168,7 +178,7 @@
       <div class="gallery-slider swiper-container">
         <div class="swiper-wrapper align-items-center">
         {% for image in business_images %}
-          <div class="swiper-slide"><img src={{image.image.url}} class="img-fluid" alt=""></div>
+          <div class="swiper-slide" ><img src={{image.image.url}} class="img-fluid" alt=""></div>
         {% endfor %}
         </div>
       </div>
