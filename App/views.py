@@ -423,7 +423,7 @@ def edit_profile(request, website_pk, website_name, profile_pk):
             context["is_profile_admin"] = True
         return render(request, "home/edit_profile.html", context)
 
-import pdb
+
 def new_business(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     is_profile_admin = False
@@ -1283,9 +1283,7 @@ def my_businesses(request, pk, website_name):
         context = {
             "title": "My businesses",
             "website": website,
-            "website_profile_pair": Website_Profile.get_website_profile_pair(
-                request.user, website
-            ),
+            "website_profile_pair": website_profile_pair,
             "user_websites_businesses_dictionary_keys": user_website_stripwebsite_dictionary.items(),
             "user_websites_businesses_dictionary": user_websites_businesses_dictionary.values(),
             "business_enum": Website_Business.BusinessStatus.choices,
@@ -1344,12 +1342,123 @@ def contact_us(request, pk, website_name):
                 )
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
+    if request.user.is_authenticated:
+        logged_in_profile = Profile.objects.filter(user=request.user).first()
+        website_profile_pair = Website_Profile.objects.filter(
+            profile=logged_in_profile, is_admin=True
+        )
+        if not website_profile_pair:
+            context["is_profile_admin"] = False
+        else:
+            context["is_profile_admin"] = True
     return render(request, "home/contact_us.html", context)
 
 
 def successView(request):
     return HttpResponse("Success! Thank you for your message.")
 
+
+def my_malls(request, pk, website_name):
+    website = get_object_or_404(Website, id=pk)
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        logged_in_profile = Profile.objects.filter(user=request.user).first()
+        website_profile_pair = Website_Profile.objects.filter(
+            profile=logged_in_profile, is_admin=True
+        )
+        admin_website_profile_pairs = Website_Profile.objects.filter(profile=logged_in_profile)
+        context = {
+            "website": website,
+            "website_profile_pair": Website_Profile.get_website_profile_pair(
+                request.user, website
+            ),
+            "admin_website_profile_pairs": admin_website_profile_pairs,
+        }
+        if not website_profile_pair:
+            context["is_profile_admin"] = False
+        else:
+            context["is_profile_admin"] = True
+
+    return render(request, "home/my_malls.html", context)
+
+
+def edit_mall(request, website_pk, website_name, mall_pk):
+    website = get_object_or_404(Website, id=website_pk)
+    mall_to_edit = get_object_or_404(Website, id=mall_pk)
+    logged_in_profile = Profile.objects.filter(user=request.user).first()
+    website_profile_pair = Website_Profile.objects.filter(
+            profile=logged_in_profile, is_admin=True, website=website
+        )
+    context = {}
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    elif not website_profile_pair:
+        messages.error(
+            request,
+            {
+                "title": "ERROR: ",
+                "message_content": "You don't have permission to edit this mall.",
+            },
+        )
+        context = {
+            "title": "Welcome!",
+            "website": website,
+            "website_profile_pair": Website_Profile.get_website_profile_pair(
+                request.user, website
+            ),
+            "slideList": Slide.objects.filter(website=website),
+        }
+        if not website_profile_pair:
+            context["is_profile_admin"] = False
+        else:
+            context["is_profile_admin"] = True
+        return render(
+            request,
+            "home/websitepage.html",
+            context,
+        )
+    else:
+        if request.method == "GET":
+            form = WebsiteForm(instance=mall_to_edit)
+        else:
+            form = WebsiteForm(
+                request.POST,
+                request.FILES,
+                instance=mall_to_edit,
+            )
+            if form.is_valid():
+                form.save()
+                messages.success(
+                    request,
+                    {
+                        "title": "SUCCESS: ",
+                        "message_content": mall_to_edit.name + " has updated successfuly.",
+                    },
+                )
+                slideList = Slide.objects.filter(website=website)
+                context = {
+                    "website": website,
+                    "slideList": slideList,
+                }
+                if website_profile_pair:
+                    context["is_profile_admin"] = True
+                return render(request, "home/websitepage.html", context)
+        context = {
+            "form": form,
+            "title": "Edit " + mall_to_edit.name,
+            "website": website,
+            "website_profile_pair": Website_Profile.get_website_profile_pair(
+                request.user, website
+            ),
+            "mall_to_edit": mall_to_edit,
+        }
+        if website_profile_pair:
+            context["is_profile_admin"] = True
+
+        return render(request, "home/edit_mall.html", context)
 
 def my_sales(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
