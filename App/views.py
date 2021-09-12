@@ -626,7 +626,7 @@ def edit_business(request, website_pk, website_name, business_pk):
                 form.save()
         return render(
             request,
-            "home/edit_object.html",
+            "home/edit_business.html",
             {
                 "title": "Edit " + business.name,
                 "business_name": business.name,
@@ -855,7 +855,7 @@ def edit_sale(request, website_pk, website_name, sale_pk):
                 form.save()
         return render(
             request,
-            "home/edit_object.html",
+            "home/edit_sale.html",
             {
                 "title": "Edit " + sale.title,
                 "business_name": sale.title,
@@ -1372,7 +1372,7 @@ def my_malls(request, pk, website_name):
 
     return render(request, "home/my_malls.html", context)
 
-
+import pdb
 def edit_mall(request, website_pk, website_name, mall_pk):
     website = get_object_or_404(Website, id=website_pk)
     mall_to_edit = get_object_or_404(Website, id=mall_pk)
@@ -1421,7 +1421,7 @@ def edit_mall(request, website_pk, website_name, mall_pk):
                 instance=mall_to_edit,
             )
             if form.is_valid():
-                form.save()
+                new_mall = form.save()
                 messages.success(
                     request,
                     {
@@ -1437,6 +1437,8 @@ def edit_mall(request, website_pk, website_name, mall_pk):
                 }
                 if website_profile_pair:
                     context["is_profile_admin"] = True
+                if new_mall.id == website.id:
+                    context["website"] = new_mall
                 return render(request, "home/websitepage.html", context)
         context = {
             "form": form,
