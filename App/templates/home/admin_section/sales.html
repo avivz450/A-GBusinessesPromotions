@@ -24,6 +24,11 @@
   .section-title h2::after {
     background: {{website.navbar_text_color}};
   }
+
+  .card-text-description{
+    height: 48px;
+    text-align: center;
+  }
 </style>
 
 <body style="background-color:{{website.navbar_background_color}}30">
@@ -58,7 +63,7 @@
                     <img src={{sale.picture.url}} class="card-img-top" alt="...">
                     <div class="card-body" id="vip_card_body">
                       <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
-                      <p class="card-text">{{sale.description}}</p>
+                      <p class="card-text-description">{{sale.description}}</p>
                       <a href="{% url 'change_sale_status' website.id website.name sale.id "AP" activated_filter%}" class="btn">Approve</a>
                       <a href="{% url 'change_sale_status' website.id website.name sale.id "DA" activated_filter%}" class="btn">Disapprove</a>
                       <p class="card-text" id="related_business_text">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
@@ -75,7 +80,7 @@
                     <img src={{sale.picture.url}} class="card-img-top" alt="...">
                     <div class="card-body" id="regular_card_body">
                       <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
-                      <p class="card-text">{{sale.description}}</p>
+                      <p class="card-text-description">{{sale.description}}</p>
                       <a href="{% url 'change_sale_status' website.id website.name sale.id "AP" activated_filter%}" class="btn">Approve</a>
                       <a href="{% url 'change_sale_status' website.id website.name sale.id "DA" activated_filter%}" class="btn">Disapprove</a>
                       <p class="card-text" id="related_business_text">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
