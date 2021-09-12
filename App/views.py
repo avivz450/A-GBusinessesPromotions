@@ -293,6 +293,7 @@ def sales(request, pk, website_name):
 
 def signup(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
+    is_profile_admin = False
     if request.method == "POST":
         form = SignUpForm(request.POST, logged_in_user=None)
         if form.is_valid():
@@ -311,10 +312,8 @@ def signup(request, pk, website_name):
             website_profile_pair = Website_Profile.objects.filter(
                 profile=logged_in_profile, is_admin=True
             )
-            if not website_profile_pair:
-                context["is_profile_admin"] = False
-            else:
-                context["is_profile_admin"] = True
+            if website_profile_pair:
+                is_profile_admin = True
             messages.info(
                 request,
                 {
@@ -332,6 +331,7 @@ def signup(request, pk, website_name):
                         request.user, website
                     ),
                     "slideList": Slide.objects.filter(website=website),
+                    "is_profile_admin": is_profile_admin,
                 },
             )
         else:
@@ -343,6 +343,7 @@ def signup(request, pk, website_name):
             "form": form,
             "title": "Sign Up",
             "website": website,
+            "is_profile_admin": is_profile_admin,
         },
     )
 
@@ -445,7 +446,6 @@ def new_business(request, pk, website_name):
             if request.method == "POST":
                 category_form = UserCategoryForm(request.POST, website=website)
                 business_form = BusinessForm(request.POST, request.FILES)
-                pdb.set_trace()
                 if business_form.is_valid() and category_form.is_valid():
                     new_business = business_form.save(commit=False)
                     new_business.profile = logged_in_profile
@@ -480,7 +480,7 @@ def new_business(request, pk, website_name):
                         "website_profile_pair": Website_Profile.get_website_profile_pair(
                             request.user, website
                         ),
-                        "is_profile_admin": is_profile_admin
+                        "is_profile_admin": is_profile_admin,
                     },
                 )
         else:
@@ -502,7 +502,7 @@ def new_business(request, pk, website_name):
                     request.user, website
                 ),
                 "slideList": Slide.objects.filter(website=website),
-                "is_profile_admin": is_profile_admin
+                "is_profile_admin": is_profile_admin,
             },
         )
 
@@ -517,13 +517,13 @@ def business_additional_pictures(
     if not request.user.is_authenticated:
         return redirect("login", website.id, website.name)
     else:
-        is_profile_admin= False
+        is_profile_admin = False
         logged_in_profile = Profile.objects.filter(user=request.user).first()
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
         if website_profile_pair:
-            is_profile_admin=True
+            is_profile_admin = True
         logged_in_profile = Profile.objects.filter(user=request.user).first()
         if request.method == "POST":
             for i in range(additional_pictures):
@@ -563,7 +563,7 @@ def business_additional_pictures(
                         request.user, website
                     ),
                     "slideList": Slide.objects.filter(website=website),
-                    "is_profile_admin": True
+                    "is_profile_admin": True,
                 },
             )
         else:
@@ -580,7 +580,7 @@ def business_additional_pictures(
                     "website_profile_pair": Website_Profile.get_website_profile_pair(
                         request.user, website
                     ),
-                    "is_profile_admin": is_profile_admin
+                    "is_profile_admin": is_profile_admin,
                 },
             )
 
@@ -588,7 +588,7 @@ def business_additional_pictures(
 def edit_business(request, website_pk, website_name, business_pk):
     website = get_object_or_404(Website, id=website_pk)
     business = get_object_or_404(Business, id=business_pk)
-
+    is_profile_admin = False
     if not request.user.is_authenticated:
         return redirect("login", website.id, website.name)
     elif business.profile.user.id != request.user.id:
@@ -596,10 +596,8 @@ def edit_business(request, website_pk, website_name, business_pk):
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
-            context["is_profile_admin"] = True
+        if website_profile_pair:
+            is_profile_admin = True
         messages.error(
             request,
             {
@@ -617,6 +615,7 @@ def edit_business(request, website_pk, website_name, business_pk):
                     request.user, website
                 ),
                 "slideList": Slide.objects.filter(website=website),
+                "is_profile_admin": is_profile_admin,
             },
         )
     else:
@@ -624,10 +623,8 @@ def edit_business(request, website_pk, website_name, business_pk):
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
-            context["is_profile_admin"] = True
+        if website_profile_pair:
+            is_profile_admin = True
         if request.method == "GET":
             form = BusinessForm(instance=business)
         else:
@@ -645,6 +642,7 @@ def edit_business(request, website_pk, website_name, business_pk):
                 "website_profile_pair": Website_Profile.get_website_profile_pair(
                     request.user, website
                 ),
+                "is_profile_admin": is_profile_admin,
             },
         )
 
@@ -781,7 +779,7 @@ def new_sale(request, pk, website_name):
                     "website_profile_pair": Website_Profile.get_website_profile_pair(
                         request.user, website
                     ),
-                    "is_profile_admin": is_profile_admin
+                    "is_profile_admin": is_profile_admin,
                 },
             )
         else:
@@ -802,7 +800,7 @@ def new_sale(request, pk, website_name):
                         request.user, website
                     ),
                     "slideList": Slide.objects.filter(website=website),
-                    "is_profile_admin": is_profile_admin
+                    "is_profile_admin": is_profile_admin,
                 },
             )
 
@@ -810,6 +808,7 @@ def new_sale(request, pk, website_name):
 def edit_sale(request, website_pk, website_name, sale_pk):
     website = get_object_or_404(Website, id=website_pk)
     sale = get_object_or_404(Sale, id=sale_pk)
+    is_profile_admin = False
 
     if not request.user.is_authenticated:
         return redirect("login", website.id, website.name)
@@ -818,10 +817,8 @@ def edit_sale(request, website_pk, website_name, sale_pk):
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
-            context["is_profile_admin"] = True
+        if website_profile_pair:
+            is_profile_admin = True
         messages.error(
             request,
             {
@@ -839,6 +836,7 @@ def edit_sale(request, website_pk, website_name, sale_pk):
                     request.user, website
                 ),
                 "slideList": Slide.objects.filter(website=website),
+                "is_profile_admin": is_profile_admin,
             },
         )
     else:
@@ -846,10 +844,8 @@ def edit_sale(request, website_pk, website_name, sale_pk):
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
-            context["is_profile_admin"] = True
+        if website_profile_pair:
+            is_profile_admin = True
         if request.method == "GET":
             form = SaleForm(
                 instance=sale, logged_in_user=request.user.id, website=website
@@ -875,11 +871,13 @@ def edit_sale(request, website_pk, website_name, sale_pk):
                 "website_profile_pair": Website_Profile.get_website_profile_pair(
                     request.user, website
                 ),
+                "is_profile_admin": is_profile_admin,
             },
         )
 
 
 def business_page(request, webpage_pk, website_name, business_pk, business_name):
+    is_profile_admin = False
     website_business_pair = Website_Business.objects.filter(
         website=webpage_pk, business=business_pk
     ).first()
@@ -896,16 +894,15 @@ def business_page(request, webpage_pk, website_name, business_pk, business_name)
         "website_business_pair": website_business_pair,
         "business_images": business_images,
         "sales": sales,
+        "is_profile_admin": is_profile_admin,
     }
     if request.user.is_authenticated:
         logged_in_profile = Profile.objects.filter(user=request.user).first()
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
-            context["is_profile_admin"] = True
+        if website_profile_pair:
+            context["is_profile_admin"] = is_profile_admin
         context["website_profile_pair"] = Website_Profile.get_website_profile_pair(
             request.user, website_business_pair.website
         )
@@ -966,7 +963,7 @@ class RemoveNotification(View):
 
 def admin_businesses(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
-
+    is_profile_admin = False
     if not request.user.is_authenticated:
         return redirect("login", website.id, website.name)
     else:
@@ -974,10 +971,8 @@ def admin_businesses(request, pk, website_name):
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
-            context["is_profile_admin"] = True
+        if website_profile_pair:
+            is_profile_admin = True
         return render(
             request,
             "home/admin_section/businesses.html",
@@ -990,6 +985,7 @@ def admin_businesses(request, pk, website_name):
                 "website_business_pairs": Website_Business.objects.filter(
                     website=website
                 ),
+                "is_profile_admin": is_profile_admin,
             },
         )
 
@@ -1023,6 +1019,7 @@ def change_business_status(request, pk, website_name, business_id, business_new_
 
 def admin_sales(request, pk, website_name, activated_filter):
     website = get_object_or_404(Website, id=pk)
+    is_profile_admin = False
 
     if not request.user.is_authenticated:
         return redirect("login", website.id, website.name)
@@ -1031,10 +1028,8 @@ def admin_sales(request, pk, website_name, activated_filter):
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
-            context["is_profile_admin"] = True
+        if website_profile_pair:
+            is_profile_admin = True
         website_business_pairs = Website_Business.objects.filter(website=website)
         related_sales_to_website = []
 
@@ -1072,6 +1067,7 @@ def admin_sales(request, pk, website_name, activated_filter):
                 ),
                 "sales": related_sales_to_website,
                 "activated_filter": activated_filter,
+                "is_profile_admin": is_profile_admin,
             },
         )
 
@@ -1155,9 +1151,7 @@ def connect_businesses_page(request, pk, website_name):
             "user_website_business_pairs": user_website_business_pairs,
             "websites_to_connect_from": websites_to_connect_from,
         }
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
+        if website_profile_pair:
             context["is_profile_admin"] = True
         return render(
             request,
@@ -1169,6 +1163,7 @@ def connect_businesses_page(request, pk, website_name):
 def connect_business(request, pk, website_name, business_pk):
     website = get_object_or_404(Website, id=pk)
     business_to_connect = get_object_or_404(Business, id=business_pk)
+    is_profile_admin = False
 
     if not request.user.is_authenticated:
         return redirect("login", website.id, website.name)
@@ -1177,10 +1172,8 @@ def connect_business(request, pk, website_name, business_pk):
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
-            context["is_profile_admin"] = True
+        if website_profile_pair:
+            is_profile_admin = True
         if request.method == "POST":
             category_form = UserCategoryForm(request.POST, website=website)
             business_category = Business_Category.objects.filter(
@@ -1227,6 +1220,7 @@ def connect_business(request, pk, website_name, business_pk):
                             request.user, website
                         ),
                         "slideList": Slide.objects.filter(website=website),
+                        "is_profile_admin": is_profile_admin,
                     },
                 )
         else:
@@ -1368,7 +1362,9 @@ def my_malls(request, pk, website_name):
         website_profile_pair = Website_Profile.objects.filter(
             profile=logged_in_profile, is_admin=True
         )
-        admin_website_profile_pairs = Website_Profile.objects.filter(profile=logged_in_profile)
+        admin_website_profile_pairs = Website_Profile.objects.filter(
+            profile=logged_in_profile
+        )
         context = {
             "website": website,
             "website_profile_pair": Website_Profile.get_website_profile_pair(
@@ -1389,8 +1385,8 @@ def edit_mall(request, website_pk, website_name, mall_pk):
     mall_to_edit = get_object_or_404(Website, id=mall_pk)
     logged_in_profile = Profile.objects.filter(user=request.user).first()
     website_profile_pair = Website_Profile.objects.filter(
-            profile=logged_in_profile, is_admin=True, website=website
-        )
+        profile=logged_in_profile, is_admin=True, website=website
+    )
     context = {}
 
     if not request.user.is_authenticated:
@@ -1435,7 +1431,8 @@ def edit_mall(request, website_pk, website_name, mall_pk):
                     request,
                     {
                         "title": "SUCCESS: ",
-                        "message_content": mall_to_edit.name + " has updated successfuly.",
+                        "message_content": mall_to_edit.name
+                        + " has updated successfuly.",
                     },
                 )
                 slideList = Slide.objects.filter(website=website)
@@ -1459,6 +1456,7 @@ def edit_mall(request, website_pk, website_name, mall_pk):
             context["is_profile_admin"] = True
 
         return render(request, "home/edit_mall.html", context)
+
 
 def my_sales(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
