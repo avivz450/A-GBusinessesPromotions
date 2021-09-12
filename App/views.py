@@ -30,7 +30,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-
+import pdb
 
 def websitepage(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
@@ -48,7 +48,9 @@ def websitepage(request, pk, website_name):
             logout(request)
         else:
             context["website_profile_pair"] = website_profile_pair
-            context["is_profile_admin"] = True
+            if (website_profile_pair.is_admin is True):
+                context["is_profile_admin"] = True                
+
 
     return render(request, "home/websitepage.html", context)
 
