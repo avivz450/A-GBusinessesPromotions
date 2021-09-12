@@ -117,7 +117,13 @@ class SlideForm(forms.ModelForm):
 class SaleForm(forms.ModelForm):
     class Meta:
         model = Sale
-        fields = ("title", "business", "description", "picture")
+        fields = (
+            "title",
+            "business",
+            "description",
+            "picture",
+            "expired_date",
+        )
 
     def __init__(self, *args, **kwargs):
         logged_in_user = kwargs.pop("logged_in_user", None)
