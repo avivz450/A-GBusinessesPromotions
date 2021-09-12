@@ -48,7 +48,7 @@ def websitepage(request, pk, website_name):
             logout(request)
         else:
             context["website_profile_pair"] = website_profile_pair
-            context["is_profile_admin"] = True                
+            context["is_profile_admin"] = True
 
     return render(request, "home/websitepage.html", context)
 
@@ -1286,6 +1286,9 @@ def my_businesses(request, pk, website_name):
         )
 
 
+import pdb
+
+
 def contact_us(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     context = {
@@ -1372,7 +1375,10 @@ def my_malls(request, pk, website_name):
 
     return render(request, "home/my_malls.html", context)
 
+
 import pdb
+
+
 def edit_mall(request, website_pk, website_name, mall_pk):
     website = get_object_or_404(Website, id=website_pk)
     mall_to_edit = get_object_or_404(Website, id=mall_pk)
