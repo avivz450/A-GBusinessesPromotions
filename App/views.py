@@ -47,14 +47,6 @@ def websitepage(request, pk, website_name):
             logout(request)
         else:
             context["website_profile_pair"] = website_profile_pair
-
-        logged_in_profile = Profile.objects.filter(user=request.user).first()
-        website_profile_pair = Website_Profile.objects.filter(
-            profile=logged_in_profile, is_admin=True
-        )
-        if not website_profile_pair:
-            context["is_profile_admin"] = False
-        else:
             context["is_profile_admin"] = True
 
     return render(request, "home/websitepage.html", context)
