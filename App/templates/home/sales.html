@@ -57,33 +57,41 @@
           <div class="row portfolio-container">
             {% for sale in sales %}
               {% if sale.profile.is_vip is True %}
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0">
-                  <div class="card" id="vip_user_hover">
-                    <img src={{sale.picture.url}} class="card-img-top" alt="...">
-                    <div class="card-body" id="vip_card_body">
-                      <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
-                      <p class="card-text-description">{{sale.description}}</p>
-                      <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %} class="btn">Go to business page!</a>
-                      <p class="card-text-bottom" id="related_business_text" style="text-align: center;">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
+                {% now "Y-m-d" as todays_date %}
+                {% if todays_date < sale.expired_date|date:"Y-m-d" %}
+                  <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0">
+                    <div class="card" id="vip_user_hover">
+                      <img src={{sale.picture.url}} class="card-img-top" alt="...">
+                      <div class="card-body" id="vip_card_body">
+                        <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
+                        <p class="card-text-description">{{sale.description}}</p>
+                        <p>Available until: {{sale.expired_date}}</p>
+                        <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %} class="btn">Go to business page!</a>
+                        <p class="card-text-bottom" id="related_business_text" style="text-align: center;">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                {% endif %}
               {% endif %}
             {% endfor %}
 
             {% for sale in sales %}
               {% if sale.profile.is_vip is False %}
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0">
-                  <div class="card" id="regular_user_hover">
-                    <img src={{sale.picture.url}} class="card-img-top" alt="...">
-                    <div class="card-body" id="regular_card_body">
-                      <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
-                      <p class="card-text-description">{{sale.description}}</p>
-                      <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %} class="btn">Go to business page!</a>
-                      <p class="card-text-bottom" id="related_business_text" style="text-align: center;">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
+                {% now "Y-m-d" as todays_date %}
+                {% if todays_date < sale.expired_date|date:"Y-m-d" %}
+                  <div class="col-lg-3 col-md-6 d-flex align-items-stretch filter-app mb-5 mb-lg-0">
+                    <div class="card" id="regular_user_hover">
+                      <img src={{sale.picture.url}} class="card-img-top" alt="...">
+                      <div class="card-body" id="regular_card_body">
+                        <h5 class="card-title"><a href="">{{sale.title}}</a></h5>
+                        <p class="card-text-description">{{sale.description}}</p>
+                        <p>Available until: {{sale.expired_date}} {% now "M. d, Y" %}</p>
+                        <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %} class="btn">Go to business page!</a>
+                        <p class="card-text-bottom" id="related_business_text" style="text-align: center;">This sale is related to <a href={% url 'business-page' website.id website.name sale.business.id sale.business.name %}>{{sale.business.name}}</a> business</p>
+                      </div>
                     </div>
-                  </div>
-                </div> 
+                  </div> 
+                {% endif %}
               {% endif %}
             {% endfor %}
         </div>

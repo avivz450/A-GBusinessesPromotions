@@ -243,6 +243,9 @@ class Sale(models.Model):
         choices=SaleStatus.choices,
         default=SaleStatus.PENDING,
     )
+    expired_date = models.DateField(
+        null=True, blank=True, auto_now=False, auto_now_add=False
+    )  # forms.DateTimeField(input_formats=["%m/%d/%Y %H:%M:%S"])
 
     def __str__(self):
         return "{self.title}".format(self=self)

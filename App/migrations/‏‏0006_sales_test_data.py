@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 "100 nis",
                 "App/images/SalesPictures/lake_tlv_1.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -26,6 +27,7 @@ class Migration(migrations.Migration):
                 "1,000 nis until the end of the year",
                 "App/images/SalesPictures/lake_tlv_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -34,6 +36,7 @@ class Migration(migrations.Migration):
                 "And other various diescounts on our oils!",
                 "App/images/SalesPictures/vegan_sale_2.png",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -42,6 +45,7 @@ class Migration(migrations.Migration):
                 "Reservations can be made until Wednesday at 16:00",
                 "App/images/SalesPictures/vegan_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -50,6 +54,7 @@ class Migration(migrations.Migration):
                 "On the weeekends only!",
                 "App/images/SalesPictures/coffee_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -58,6 +63,7 @@ class Migration(migrations.Migration):
                 "On the weeekends only!",
                 "App/images/SalesPictures/coffee_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -66,6 +72,7 @@ class Migration(migrations.Migration):
                 "30% discount when buying 200 grams or more",
                 "App/images/SalesPictures/coffee_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -74,6 +81,7 @@ class Migration(migrations.Migration):
                 "1 + 1 on the small size",
                 "App/images/SalesPictures/coffee_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -82,6 +90,7 @@ class Migration(migrations.Migration):
                 "10% discount",
                 "App/images/SalesPictures/coffee_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -90,6 +99,7 @@ class Migration(migrations.Migration):
                 "Comes with a free fpaming cup",
                 "App/images/SalesPictures/coffee_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -98,6 +108,7 @@ class Migration(migrations.Migration):
                 "Comes with 5 years of free fixing",
                 "App/images/SalesPictures/coffee_sale_7.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -106,6 +117,7 @@ class Migration(migrations.Migration):
                 "30% discount only for a week!!",
                 "App/images/SalesPictures/coffee_sale_8.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -114,6 +126,7 @@ class Migration(migrations.Migration):
                 "Comes with a free cups holder",
                 "App/images/SalesPictures/coffee_sale_9.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -122,6 +135,7 @@ class Migration(migrations.Migration):
                 "10% discount untill the end of the year",
                 "App/images/SalesPictures/coffee_sale_10.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -130,6 +144,7 @@ class Migration(migrations.Migration):
                 "Comes with 5 different knifes only for 2 weeks",
                 "App/images/SalesPictures/ninja_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -138,6 +153,7 @@ class Migration(migrations.Migration):
                 "2 years guarantee",
                 "App/images/SalesPictures/ninja_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -146,6 +162,7 @@ class Migration(migrations.Migration):
                 "15% discount for 1 week only!",
                 "App/images/SalesPictures/ninja_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -154,6 +171,7 @@ class Migration(migrations.Migration):
                 "20% off when buying ninja blender",
                 "App/images/SalesPictures/ninja_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -162,6 +180,7 @@ class Migration(migrations.Migration):
                 "10% off only in Sunday",
                 "App/images/SalesPictures/ninja_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -170,6 +189,7 @@ class Migration(migrations.Migration):
                 "Buy 2 KG and get 20% discount",
                 "App/images/SalesPictures/butcher_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -178,6 +198,7 @@ class Migration(migrations.Migration):
                 "Buy 1 KG and get 50% off the chicken breast",
                 "App/images/SalesPictures/butcher_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -186,6 +207,7 @@ class Migration(migrations.Migration):
                 "200 nis only in Friday!",
                 "App/images/SalesPictures/butcher_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -194,6 +216,7 @@ class Migration(migrations.Migration):
                 "buy 2 KG take 1 KG or free",
                 "App/images/SalesPictures/butcher_sale_7.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -202,6 +225,7 @@ class Migration(migrations.Migration):
                 "10% discount",
                 "App/images/SalesPictures/butcher_sale_8.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -210,6 +234,7 @@ class Migration(migrations.Migration):
                 "Buy 5 get 1 fo free",
                 "App/images/SalesPictures/candies_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -218,6 +243,7 @@ class Migration(migrations.Migration):
                 "20% discount on the family size pack",
                 "App/images/SalesPictures/candies_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -226,6 +252,7 @@ class Migration(migrations.Migration):
                 "15% discount",
                 "App/images/SalesPictures/candies_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -234,6 +261,7 @@ class Migration(migrations.Migration):
                 "Buy 10 packs get 2 for free",
                 "App/images/SalesPictures/candies_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -242,6 +270,7 @@ class Migration(migrations.Migration):
                 "20% discount on the family size pack",
                 "App/images/SalesPictures/candies_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -250,6 +279,7 @@ class Migration(migrations.Migration):
                 "Buy 4 and get bubble head for free",
                 "App/images/SalesPictures/candies_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -258,6 +288,7 @@ class Migration(migrations.Migration):
                 "10% discount on Mondays",
                 "App/images/SalesPictures/candies_sale_7.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 19,
@@ -266,6 +297,7 @@ class Migration(migrations.Migration):
                 "300$ for only two weeks",
                 "App/images/SalesPictures/fitness_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 19,
@@ -274,6 +306,7 @@ class Migration(migrations.Migration):
                 "In 40 nis only for this mounth",
                 "App/images/SalesPictures/fitness_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 19,
@@ -282,6 +315,7 @@ class Migration(migrations.Migration):
                 "In 25 nis only for this mounth",
                 "App/images/SalesPictures/fitness_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 19,
@@ -290,6 +324,7 @@ class Migration(migrations.Migration):
                 "Free delivery until the end of the year",
                 "App/images/SalesPictures/fitness_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 19,
@@ -298,6 +333,7 @@ class Migration(migrations.Migration):
                 "10% discount and free shipment only for 2 weeks",
                 "App/images/SalesPictures/fitness_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 19,
@@ -306,6 +342,7 @@ class Migration(migrations.Migration):
                 "10 nis per 1 KG only for this week",
                 "App/images/SalesPictures/fitness_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -314,6 +351,7 @@ class Migration(migrations.Migration):
                 "25% discount when buying over 220 nis",
                 "App/images/SalesPictures/myprotein_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -322,6 +360,7 @@ class Migration(migrations.Migration):
                 "1 + 1 only for this week",
                 "App/images/SalesPictures/myprotein_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -330,6 +369,7 @@ class Migration(migrations.Migration):
                 "15% discount for this mounth",
                 "App/images/SalesPictures/myprotein_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -338,6 +378,7 @@ class Migration(migrations.Migration):
                 "1 + 1 only for this week",
                 "App/images/SalesPictures/myprotein_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -346,6 +387,7 @@ class Migration(migrations.Migration):
                 "Buy 2 get 1 for free",
                 "App/images/SalesPictures/myprotein_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -354,6 +396,7 @@ class Migration(migrations.Migration):
                 "30% discount",
                 "App/images/SalesPictures/myprotein_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -362,6 +405,7 @@ class Migration(migrations.Migration):
                 "Buy 6 and get 20% off",
                 "App/images/SalesPictures/myprotein_sale_7.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -370,6 +414,7 @@ class Migration(migrations.Migration):
                 "10% discount",
                 "App/images/SalesPictures/crafting_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -378,6 +423,7 @@ class Migration(migrations.Migration):
                 "Buy 2 get 1 for free",
                 "App/images/SalesPictures/crafting_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -386,6 +432,7 @@ class Migration(migrations.Migration):
                 "Buy the big set and get free small canvas",
                 "App/images/SalesPictures/crafting_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -394,6 +441,7 @@ class Migration(migrations.Migration):
                 "20% discount",
                 "App/images/SalesPictures/crafting_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -402,6 +450,7 @@ class Migration(migrations.Migration):
                 "1 + 1 for 2 weeks only",
                 "App/images/SalesPictures/crafting_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -410,6 +459,7 @@ class Migration(migrations.Migration):
                 "Buy 3 and the 4th one is free",
                 "App/images/SalesPictures/crafting_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -418,6 +468,7 @@ class Migration(migrations.Migration):
                 "15% when buying 1 KG or more",
                 "App/images/SalesPictures/chocolate_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -426,6 +477,7 @@ class Migration(migrations.Migration):
                 "Buy 3 and get 1 for free",
                 "App/images/SalesPictures/chocolate_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -434,6 +486,7 @@ class Migration(migrations.Migration):
                 "20% discount on the large box",
                 "App/images/SalesPictures/chocolate_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -442,6 +495,7 @@ class Migration(migrations.Migration):
                 "Buy 10 get 2 for free",
                 "App/images/SalesPictures/chocolate_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -450,6 +504,7 @@ class Migration(migrations.Migration):
                 "30% discount only this week",
                 "App/images/SalesPictures/chocolate_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -458,6 +513,7 @@ class Migration(migrations.Migration):
                 "15 % discount on valentine's day",
                 "App/images/SalesPictures/chocolate_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -466,6 +522,7 @@ class Migration(migrations.Migration):
                 "15% discount when buying the large size",
                 "App/images/SalesPictures/chocolate_sale_7.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -474,6 +531,7 @@ class Migration(migrations.Migration):
                 "20%discount on Sunday's",
                 "App/images/SalesPictures/chocolate_sale_8.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -482,6 +540,7 @@ class Migration(migrations.Migration):
                 "10% off",
                 "App/images/SalesPictures/chocolate_sale_9.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 18,
@@ -490,6 +549,7 @@ class Migration(migrations.Migration):
                 "20% discount when buying 2 liters or more",
                 "App/images/SalesPictures/dairy_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 18,
@@ -498,6 +558,7 @@ class Migration(migrations.Migration):
                 "1 + 1 on the small size",
                 "App/images/SalesPictures/dairy_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 18,
@@ -506,6 +567,7 @@ class Migration(migrations.Migration):
                 "10% discount on weekends",
                 "App/images/SalesPictures/dairy_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 18,
@@ -514,6 +576,7 @@ class Migration(migrations.Migration):
                 "10% discount on weekends",
                 "App/images/SalesPictures/dairy_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 18,
@@ -522,6 +585,7 @@ class Migration(migrations.Migration):
                 "Buy 2 get 1 for free",
                 "App/images/SalesPictures/dairy_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 18,
@@ -530,6 +594,7 @@ class Migration(migrations.Migration):
                 "10% discount",
                 "App/images/SalesPictures/dairy_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 18,
@@ -538,6 +603,7 @@ class Migration(migrations.Migration):
                 "Buy 2 KG and get half kG for free",
                 "App/images/SalesPictures/dairy_sale_7.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 18,
@@ -546,6 +612,7 @@ class Migration(migrations.Migration):
                 "Buy the 2 KG pack and get 20% off",
                 "App/images/SalesPictures/dairy_sale_8.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 10,
@@ -554,6 +621,7 @@ class Migration(migrations.Migration):
                 "20% discount after 4pm",
                 "App/images/SalesPictures/butcher_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 10,
@@ -562,6 +630,7 @@ class Migration(migrations.Migration):
                 "15% discount after 4pm",
                 "App/images/SalesPictures/butcher_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 10,
@@ -570,6 +639,7 @@ class Migration(migrations.Migration):
                 "Buy 1 KG and get 10% discount",
                 "App/images/SalesPictures/butcher_sale_6.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -578,6 +648,7 @@ class Migration(migrations.Migration):
                 "15% discount only on weekends",
                 "App/images/SalesPictures/knife_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -586,6 +657,7 @@ class Migration(migrations.Migration):
                 "10% discount only on weekends",
                 "App/images/SalesPictures/knife_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -594,6 +666,7 @@ class Migration(migrations.Migration):
                 "20% discount on the holyday's",
                 "App/images/SalesPictures/knife_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -602,6 +675,7 @@ class Migration(migrations.Migration):
                 "10 discount",
                 "App/images/SalesPictures/knife_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -610,6 +684,7 @@ class Migration(migrations.Migration):
                 """10% discount""",
                 "App/images/SalesPictures/grill_sale_1.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -618,6 +693,7 @@ class Migration(migrations.Migration):
                 "Buy 1 and get 5 KG charcoal for free",
                 "App/images/SalesPictures/grill_sale_2.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -626,6 +702,7 @@ class Migration(migrations.Migration):
                 """Buy 1 and get free 2 KG charcoal""",
                 "App/images/SalesPictures/grill_sale_3.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -634,6 +711,7 @@ class Migration(migrations.Migration):
                 "20% discount only for this weekend",
                 "App/images/SalesPictures/grill_sale_4.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 20,
@@ -642,6 +720,7 @@ class Migration(migrations.Migration):
                 "25% discount ",
                 "App/images/SalesPictures/grill_sale_5.jpg",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -650,6 +729,7 @@ class Migration(migrations.Migration):
                 "10% on Mondays",
                 "App/images/SalesPictures/shoe_store_1.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -658,6 +738,7 @@ class Migration(migrations.Migration):
                 "25% discount for the second per",
                 "App/images/SalesPictures/shoe_store_3.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -666,6 +747,7 @@ class Migration(migrations.Migration):
                 "80% discount when buying above 400 NIS",
                 "App/images/SalesPictures/shoe_store_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -674,6 +756,7 @@ class Migration(migrations.Migration):
                 "1+1 for the all week",
                 "App/images/SalesPictures/shoe_store_4.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -682,6 +765,7 @@ class Migration(migrations.Migration):
                 "10% discount on gym set's",
                 "App/images/SalesPictures/sports_wear_1.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -690,6 +774,7 @@ class Migration(migrations.Migration):
                 "20% discount on football set's",
                 "App/images/SalesPictures/sports_wear_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -698,6 +783,7 @@ class Migration(migrations.Migration):
                 "25% discount",
                 "App/images/SalesPictures/sports_wear_3.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 21,
@@ -706,6 +792,7 @@ class Migration(migrations.Migration):
                 "10% off for one week",
                 "App/images/SalesPictures/sports_wear_4.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 16,
@@ -714,6 +801,7 @@ class Migration(migrations.Migration):
                 "10% discount",
                 "App/images/SalesPictures/sports_equipment_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 16,
@@ -722,6 +810,7 @@ class Migration(migrations.Migration):
                 "Buy 4 and get 1 for free",
                 "App/images/SalesPictures/sports_equipment_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 16,
@@ -730,6 +819,7 @@ class Migration(migrations.Migration):
                 "25% discount on the X series",
                 "App/images/SalesPictures/sports_equipment_3.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 16,
@@ -738,6 +828,7 @@ class Migration(migrations.Migration):
                 "Buy 3 and the 4th on is free",
                 "App/images/SalesPictures/sports_equipment_4.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -746,6 +837,7 @@ class Migration(migrations.Migration):
                 "Set of 6 in price of 4!!",
                 "App/images/SalesPictures/climbing_store_1.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -754,6 +846,7 @@ class Migration(migrations.Migration):
                 "50% discount ",
                 "App/images/SalesPictures/climbing_store_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -762,6 +855,7 @@ class Migration(migrations.Migration):
                 "25% discount for the all weekend",
                 "App/images/SalesPictures/climbing_store_3.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -770,6 +864,7 @@ class Migration(migrations.Migration):
                 "10% discount for members",
                 "App/images/SalesPictures/climbing_store_4.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 15,
@@ -778,6 +873,7 @@ class Migration(migrations.Migration):
                 "10% discount for members",
                 "App/images/SalesPictures/climbing_store_5.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -786,6 +882,7 @@ class Migration(migrations.Migration):
                 "10% discount for new members",
                 "App/images/SalesPictures/diving_store_1.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -794,6 +891,7 @@ class Migration(migrations.Migration):
                 "25% discount untill the end of the year!",
                 "App/images/SalesPictures/diving_store_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -802,6 +900,7 @@ class Migration(migrations.Migration):
                 "10% discount",
                 "App/images/SalesPictures/diving_store_3.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -810,6 +909,7 @@ class Migration(migrations.Migration):
                 "10% discount when buying above 400 nis",
                 "App/images/SalesPictures/diving_store_4.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -818,6 +918,7 @@ class Migration(migrations.Migration):
                 "40% discount",
                 "App/images/SalesPictures/diving_store_5.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 16,
@@ -826,6 +927,7 @@ class Migration(migrations.Migration):
                 "20% on monday's",
                 "App/images/SalesPictures/bones_restaurant_1.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 16,
@@ -834,6 +936,7 @@ class Migration(migrations.Migration):
                 "Free Starter when order nore than 200 nis",
                 "App/images/SalesPictures/bones_restaurant_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 16,
@@ -842,6 +945,7 @@ class Migration(migrations.Migration):
                 "35% discount on Wednesday's",
                 "App/images/SalesPictures/bones_restaurant_3.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 16,
@@ -850,6 +954,7 @@ class Migration(migrations.Migration):
                 "Main dish and a side in 65 nis between 12:00-17:00",
                 "App/images/SalesPictures/bones_restaurant_4.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -858,6 +963,7 @@ class Migration(migrations.Migration):
                 "In 10 nis only!!",
                 "App/images/SalesPictures/coffee_house_1.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -866,6 +972,7 @@ class Migration(migrations.Migration):
                 "In 25 nis only!!!",
                 "App/images/SalesPictures/coffee_house_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -874,6 +981,7 @@ class Migration(migrations.Migration):
                 "Buy 3 coffee and get 1 for 50% discount",
                 "App/images/SalesPictures/coffee_house_3.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 14,
@@ -882,6 +990,7 @@ class Migration(migrations.Migration):
                 "Buy main dish and get free coffee",
                 "App/images/SalesPictures/coffee_house_4.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -890,6 +999,7 @@ class Migration(migrations.Migration):
                 "15% discount on monday's training",
                 "App/images/SalesPictures/matt_does_fitness_1.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -898,6 +1008,7 @@ class Migration(migrations.Migration):
                 "20% discount of 10 persons group",
                 "App/images/SalesPictures/matt_does_fitness_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -906,6 +1017,7 @@ class Migration(migrations.Migration):
                 "30 nis",
                 "App/images/SalesPictures/space_florentin_1.png",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
             (
                 22,
@@ -914,6 +1026,7 @@ class Migration(migrations.Migration):
                 "99 nis per month for new members",
                 "App/images/SalesPictures/space_florentin_2.jfif",
                 Sale.SaleStatus.APPROVED,
+                "2021-10-13",
             ),
         ]
 
@@ -925,6 +1038,7 @@ class Migration(migrations.Migration):
                 description,
                 picture,
                 is_confirmed,
+                expired_date,
             ) in sales_test_data:
                 sale = Sale(
                     profile=get_object_or_404(Profile, pk=profile_id),
@@ -933,6 +1047,7 @@ class Migration(migrations.Migration):
                     picture=picture,
                     description=description,
                     is_confirmed=is_confirmed,
+                    expired_date=expired_date,
                 )
                 sale.save()
 
