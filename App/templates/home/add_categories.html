@@ -52,6 +52,7 @@
 
         <!-- Login Form -->
         <form enctype="multipart/form-data" method="post">
+          <h4 style='font-family: "Poppins", sans-serif;'>Please enter categories for this website</h4>
           {% csrf_token %} 
           {% for form in category_form_list %}
             {{ form | crispy }}

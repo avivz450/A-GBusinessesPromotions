@@ -36,6 +36,9 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
 	 </head>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
 
 <body>
 
@@ -53,7 +56,7 @@
         <!-- Login Form -->
         <form enctype="multipart/form-data" method="post">
           {% for form in slide_form_list%}
-          <h5>Please enter the details of slide number {{ forloop.counter }}</h5>
+          <h4 style='font-family: "Poppins", sans-serif;'>Please enter the details of slide number {{ forloop.counter }}</h4>
             {% csrf_token %} 
             {{ form.media }}
             {{ form | crispy }}
