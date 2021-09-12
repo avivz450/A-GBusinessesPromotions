@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
         categories_test_data = [
             (
                 1,
-                "demo",
+                "store",
             ),
             (
                 2,

@@ -12,9 +12,9 @@ class Migration(migrations.Migration):
 
         website_test_data = [
             (
-                "Website Demo",
-                "App/images/WebsitesLogos/test_data/Website_Demo/favicon.ico",
-                "App/images/WebsitesLogos/test_data/Website_Demo/AG_Logo.png",
+                "Tel Aviv",
+                "App/images/WebsitesLogos/test_data/Tel_Aviv/favicon.ico",
+                "App/images/WebsitesLogos/test_data/Tel_Aviv/Tel_Aviv_Logo.png",
                 2,
                 "#fff",
                 "#4f5a62",
@@ -121,19 +121,6 @@ class Migration(migrations.Migration):
                 "App/images/WebsitesLogos/test_data/Dairy/Dairy_Logo.png",
                 2,
                 "#FEFFC8",
-                "#4f5a62",
-                "#3498db",
-                "#fff",
-                "#0009FF",
-                22,
-                True,
-            ),
-            (
-                "Tel Aviv",
-                "App/images/WebsitesLogos/test_data/Tel_Aviv/favicon.ico",
-                "App/images/WebsitesLogos/test_data/Tel_Aviv/Tel_Aviv_Logo.png",
-                2,
-                "#fff",
                 "#4f5a62",
                 "#3498db",
                 "#fff",
