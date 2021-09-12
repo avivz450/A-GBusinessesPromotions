@@ -29,7 +29,7 @@ Premium users will have additional benefits.
 7. Host the website in AWS + edit our URLs. (V)
 8. Registration and login. (V)
 9. User notification. (V)
-10. Edit admin section.
+10. Edit admin section. (V)
 11. Add website. (V)
 
 ## Nice to have features
