@@ -60,7 +60,7 @@
                   </figure>
 
                   <div class="portfolio-info">
-                    <h4><a href="portfolio-details.html">{{user_website_business_pair.business.name}}</a></h4>
+                    <h4><a href={% url 'business-page' user_website_business_pair.website.id user_website_business_pair.website.name user_website_business_pair.business.id user_website_business_pair.business.name%}>{{user_website_business_pair.business.name}}</a></h4>
                     {%for value, label in business_enum%}
                       {% if value == user_website_business_pair.is_confirmed%}
                       <p>{{ label }}</p>
@@ -89,7 +89,7 @@
                   </figure>
 
                   <div class="portfolio-info" id="no_vip_div">
-                    <h4><a href="portfolio-details.html">{{user_website_business_pair.business.name}}</a></h4>
+                    <h4><a href={% url 'business-page' user_website_business_pair.website.id user_website_business_pair.website.name user_website_business_pair.business.id user_website_business_pair.business.name%}>{{user_website_business_pair.business.name}}</a></h4>
                     {%for value, label in business_enum%}
                       {% if value == user_website_business_pair.is_confirmed%}
                       <p>{{ label }}</p>

@@ -7,7 +7,7 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'home/css/admin_section/businesses.css' %}"
+  href="{% static 'home/css/my_malls.css' %}"
 />
 
 <style>
@@ -40,7 +40,7 @@
               </figure>
 
               <div class="portfolio-info"  id="no_vip_div">
-                <h4><a href={% url 'edit_mall' website.id website.name admin_website_profile_pair.website.id %}>Edit "{{admin_website_profile_pair.website.name}}"</a></h4>
+                <h4><a href={% url 'edit_mall' admin_website_profile_pair.website.id admin_website_profile_pair.website.name admin_website_profile_pair.website.id %}>Edit "{{admin_website_profile_pair.website.name}}"</a></h4>
               </div>
             </div>
           </div>

@@ -1383,11 +1383,13 @@ def my_malls(request, pk, website_name):
 def edit_mall(request, website_pk, website_name, mall_pk):
     website = get_object_or_404(Website, id=website_pk)
     mall_to_edit = get_object_or_404(Website, id=mall_pk)
-    logged_in_profile = Profile.objects.filter(user=request.user).first()
-    website_profile_pair = Website_Profile.objects.filter(
-        profile=logged_in_profile, is_admin=True, website=website
-    )
     context = {}
+
+    if request.user.is_authenticated:
+        logged_in_profile = Profile.objects.filter(user=request.user).first()
+        website_profile_pair = Website_Profile.objects.filter(
+            profile=logged_in_profile, is_admin=True, website=website
+        )
 
     if not request.user.is_authenticated:
         return redirect("login", website.id, website.name)
