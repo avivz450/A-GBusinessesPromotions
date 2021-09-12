@@ -49,7 +49,7 @@
             <li><a href={% url 'edit_profile' website.id website.name user.id %} style="color:{{website.navbar_text_color}}"
               onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>Edit profile</a></li>
             {% if is_profile_admin is True %}
-            <li><a href=# style="color:{{website.navbar_text_color}}"
+            <li><a href={% url 'my_malls' website.id website.name%} style="color:{{website.navbar_text_color}}"
               onmouseover="this.style.color = '{{website.navbar_hover_text_color}}'"; onmouseout="this.style.color='{{website.navbar_text_color}}'";>My malls</a></li>
             {% endif %}
             <li><a href={% url 'my_businesses' website.id website.name%} style="color:{{website.navbar_text_color}}"

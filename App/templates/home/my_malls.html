@@ -1,0 +1,68 @@
+{% extends "home/base.html" %} {% load static %} {% block content %}
+
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'home/css/admin_section/businesses.css' %}"
+/>
+
+<style>
+  .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+    color: {{website.navbar_background_color}};
+    background: {{website.navbar_text_color}};
+  }
+
+  .section-title h2::after {
+    background: {{website.navbar_text_color}};
+  }
+</style>
+
+<body>
+  <main>
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 id="h2_businesses"> {{user.username}}'s malls </h2>
+        </div>
+
+        <div class="row portfolio-container">
+        {% for admin_website_profile_pair in admin_website_profile_pairs %}
+            <div class="col-lg-4 col-md-6 portfolio-item filter-* wow fadeInUp">
+            <div class="portfolio-wrap"  id="no_vip_hover" style="background-color:{{website.navbar_background_color}}30">
+              <figure id="figure">
+                <img src={{admin_website_profile_pair.website.logo.url}} class="img-fluid" alt="" id="business_logo">
+              </figure>
+
+              <div class="portfolio-info"  id="no_vip_div">
+                <h4><a href={% url 'edit_mall' website.id website.name admin_website_profile_pair.website.id %}>Edit "{{admin_website_profile_pair.website.name}}"</a></h4>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+{% endblock content %}
