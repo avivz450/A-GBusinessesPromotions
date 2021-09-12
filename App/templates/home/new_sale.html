@@ -36,7 +36,27 @@
 
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+    <style>
+      .form-control:focus {
+        border-color: {{website.navbar_text_color}};
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem {{website.navbar_text_color}}30;
+      }
 
+      .input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+        background-color: #fff;
+        border: 2px solid {{website.navbar_text_color}};
+      }
+      .input[type=number]:focus, input[type=url]:focus, input[type=tel]:focus {
+        background-color: #fff;
+        border: 2px solid {{website.navbar_text_color}};
+      }
+
+      #id_business:focus, #id_description:focus, #id_expired_date:focus, #id_title:focus {
+        background-color: #fff;
+        border: 2px solid {{website.navbar_text_color}};
+      }
+      </style>
 	 </head>
 
 
@@ -53,7 +73,7 @@
           {% csrf_token %} 
           {{ form.media }}
           {{ form | crispy }}
-          <input type="submit" class="fadeIn fourth" value="Continue">
+          <input type="submit" class="fadeIn fourth" value="Continue" style="background-color:{{website.navbar_text_color}}">
         </form>
       </div>
     </div>

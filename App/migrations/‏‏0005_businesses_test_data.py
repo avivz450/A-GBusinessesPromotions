@@ -90,7 +90,7 @@ class Migration(migrations.Migration):
             (
                 21,
                 "BOCHI cafe",
-                "App/images/BusinessesLogos/vegan_business_2_logo.jpg",
+                "App/images/BusinessesLogos/vegan_business_2_logo.png",
                 """A house of veganism.
                 Animal rehabilitation and ecology.
                 At BOCHI cafe you can enjoy 100% vegan food, fair trade coffee and environmental protection.
@@ -101,7 +101,7 @@ class Migration(migrations.Migration):
                 "",
                 "",
                 Website_Business.BusinessStatus.PENDING,
-                "App/images/BusinessesMainPictures/vegan_business_2.jpg",
+                "App/images/BusinessesMainPictures/vegan_business_2.png",
                 "09:00:00",
                 "18:00:00",
                 "+972501234567",
