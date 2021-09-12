@@ -78,7 +78,9 @@
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper-container">
+            <div class="portfolio-details-slider swiper-container" style="
+    margin-top: 0px;
+">
                 <div class="swiper-slide">
                   <img id="main_picture" src={{business.main_picture.url}} alt="">
                 </div>
@@ -176,7 +178,7 @@
       <div class="gallery-slider swiper-container">
         <div class="swiper-wrapper align-items-center">
         {% for image in business_images %}
-          <div class="swiper-slide"><img src={{image.image.url}} class="img-fluid" alt=""></div>
+          <div class="swiper-slide" ><img src={{image.image.url}} class="img-fluid" alt=""></div>
         {% endfor %}
         </div>
       </div>
