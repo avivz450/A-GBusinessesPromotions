@@ -7,6 +7,11 @@
 + Edit sales of user :
     + Once user pressed on "My Sales", in any site, he will see all the sales that the user created in any site, including the status.
     + After the user pressed on "Edit" on a certain sale, he will be reffered to edit that sale in the relevant website.
++ Edit malls of user :
+    + Once user pressed on "My Malls", in any site, he will see all the malls that the user is admin of them.
+    + After the user pressed on "Edit" on a certain mall, he will be reffered to edit that mall in the relevant website.
++ Add the sales of a certain business in the business page
++ Add expire date of sales
 + Add categories of businesses
 + Add contact us page including sending an email to all website admins once pressing submit
 + Styling: explore businesses
@@ -23,11 +28,10 @@
 
 ## Plans
 ### Must have (by priority):
-+ DNS
-+ Add about us page
-+ Filter businesses in 'Connect businesses' feature
 
 ### Nice to have (by priority):
++ Add about us page
++ Filter businesses in 'Connect businesses' feature
 + Add "ask to connect to my site"
 + Add "navigate to business feature (with google API)"
 + Add reviews to businesses
@@ -35,6 +39,3 @@
  + Add block profiles option to the admin section (is block handle)
  + Add block user page
 + Paging
-
-## Plans
-+ Presentation day - suggestions (recording in advance?)
