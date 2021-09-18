@@ -1,5 +1,5 @@
 
-# August Features Progress
+# August-September Features Progress
 ## New features from last meeting
 + Edit businesses of user :
     + Once user pressed on "My Businesses", in any site, he will see all the businesses that the user created in any site, including the status.
