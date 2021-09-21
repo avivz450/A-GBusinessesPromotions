@@ -20,8 +20,10 @@
               <div class="carousel-content" style="color:{{website.sliders_carsoul_color}}">
                 <h2 class="animate__animated animate__fadeInDown" style="color:{{website.sliders_text_color}}">{{slide.title}}</h2>
                 <p class="animate__animated animate__fadeInUp" style="color:{{website.sliders_text_color}}">{{slide.description}}</p>
-                <a href={% url 'businesses' website.id website.name%} class="btn-get-started animate__animated animate__fadeInUp scrollto hoverable" onmouseover="this.style.backgroundColor = '{{website.sliders_carsoul_color}}'";
-                onmouseout="this.style.backgroundColor='transparent'"; style="border:1px solid {{website.sliders_carsoul_color}}; color:{{website.sliders_text_color}}">Get Started</a>
+                {% if is_profile_admin is True %}
+                <a href={% url 'edit_slide' website.id website.name slide.id%} class="btn-get-started animate__animated animate__fadeInUp scrollto hoverable" onmouseover="this.style.backgroundColor = '{{website.sliders_carsoul_color}}'";
+                onmouseout="this.style.backgroundColor='transparent'"; style="border:1px solid {{website.sliders_carsoul_color}}; color:{{website.sliders_text_color}}">Edit Slide</a>
+                {% endif %}
               </div>
             </div>
           </div>
