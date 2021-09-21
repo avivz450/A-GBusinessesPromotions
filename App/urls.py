@@ -92,6 +92,11 @@ urlpatterns = (
             name="edit_sale",
         ),
         path(
+            "websites/<int:website_pk>_<str:website_name>/edit_slide/<int:slide_pk>/",
+            views.edit_slide,
+            name="edit_slide",
+        ),
+        path(
             "websites/<int:pk>_<str:website_name>/premium/",
             views.premium,
             name="premium",

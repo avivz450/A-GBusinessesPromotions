@@ -30,12 +30,11 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-import pdb
+
 
 def websitepage(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     slideList = Slide.objects.filter(website=website)
-    is_profile_admin = False
     context = {
         "website": website,
         "slideList": slideList,
@@ -48,9 +47,8 @@ def websitepage(request, pk, website_name):
             logout(request)
         else:
             context["website_profile_pair"] = website_profile_pair
-            if (website_profile_pair.is_admin is True):
-                context["is_profile_admin"] = True                
-
+            if website_profile_pair.is_admin is True:
+                context["is_profile_admin"] = True
 
     return render(request, "home/websitepage.html", context)
 
@@ -626,6 +624,25 @@ def edit_business(request, website_pk, website_name, business_pk):
             form = BusinessForm(request.POST, request.FILES, instance=business)
             if form.is_valid():
                 form.save()
+                messages.success(
+                    request,
+                    {
+                        "title": "SUCCESS: ",
+                        "message_content": "Your business has been updated",
+                    },
+                )
+                return render(
+                    request,
+                    "home/websitepage.html",
+                    {
+                        "title": "Welcome!",
+                        "website": website,
+                        "website_profile_pair": Website_Profile.get_website_profile_pair(
+                            request.user, website
+                        ),
+                        "slideList": Slide.objects.filter(website=website),
+                    },
+                )
         return render(
             request,
             "home/edit_business.html",
@@ -855,12 +872,112 @@ def edit_sale(request, website_pk, website_name, sale_pk):
             )
             if form.is_valid():
                 form.save()
+                messages.success(
+                    request,
+                    {
+                        "title": "SUCCESS: ",
+                        "message_content": "Your sale has been updated",
+                    },
+                )
+                return render(
+                    request,
+                    "home/websitepage.html",
+                    {
+                        "title": "Welcome!",
+                        "website": website,
+                        "website_profile_pair": Website_Profile.get_website_profile_pair(
+                            request.user, website
+                        ),
+                        "slideList": Slide.objects.filter(website=website),
+                        "is_profile_admin": is_profile_admin,
+                    },
+                )
         return render(
             request,
             "home/edit_sale.html",
             {
                 "title": "Edit " + sale.title,
                 "business_name": sale.title,
+                "form": form,
+                "website": website,
+                "website_profile_pair": Website_Profile.get_website_profile_pair(
+                    request.user, website
+                ),
+                "is_profile_admin": is_profile_admin,
+            },
+        )
+
+
+def edit_slide(request, website_pk, website_name, slide_pk):
+    website = get_object_or_404(Website, id=website_pk)
+    slide = get_object_or_404(Slide, id=slide_pk)
+    is_profile_admin = False
+
+    if not request.user.is_authenticated:
+        return redirect("login", website.id, website.name)
+    else:
+        logged_in_profile = Profile.objects.filter(user=request.user).first()
+        website_profile_pair = Website_Profile.objects.filter(
+            profile=logged_in_profile, is_admin=True
+        )
+        if website_profile_pair:
+            is_profile_admin = True
+        else:
+            messages.error(
+                request,
+                {
+                    "title": "ERROR: ",
+                    "message_content": "You don't have permission to edit this slide",
+                },
+            )
+            return render(
+                request,
+                "home/websitepage.html",
+                {
+                    "title": "Welcome!",
+                    "website": website,
+                    "website_profile_pair": Website_Profile.get_website_profile_pair(
+                        request.user, website
+                    ),
+                    "slideList": Slide.objects.filter(website=website),
+                    "is_profile_admin": is_profile_admin,
+                },
+            )
+        if request.method == "GET":
+            form = SlideForm(instance=slide)
+        else:
+            form = SlideForm(
+                request.POST,
+                request.FILES,
+                instance=slide,
+            )
+            if form.is_valid():
+                form.save()
+                messages.success(
+                    request,
+                    {
+                        "title": "SUCCESS: ",
+                        "message_content": "This slide has been updated",
+                    },
+                )
+                return render(
+                    request,
+                    "home/websitepage.html",
+                    {
+                        "title": "Welcome!",
+                        "website": website,
+                        "website_profile_pair": Website_Profile.get_website_profile_pair(
+                            request.user, website
+                        ),
+                        "slideList": Slide.objects.filter(website=website),
+                        "is_profile_admin": is_profile_admin,
+                    },
+                )
+        return render(
+            request,
+            "home/edit_slide.html",
+            {
+                "title": "Edit Slide",
                 "form": form,
                 "website": website,
                 "website_profile_pair": Website_Profile.get_website_profile_pair(
@@ -1288,9 +1405,6 @@ def my_businesses(request, pk, website_name):
         )
 
 
-import pdb
-
-
 def contact_us(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     context = {
@@ -1376,9 +1490,6 @@ def my_malls(request, pk, website_name):
             context["is_profile_admin"] = True
 
     return render(request, "home/my_malls.html", context)
-
-
-import pdb
 
 
 def edit_mall(request, website_pk, website_name, mall_pk):
