@@ -21,8 +21,14 @@ class Migration(migrations.Migration):
                 "https://youtube.com/user/MattDoesFitness",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/matt_does_fitness.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Shlomo Ibn Gabirol 96, Tel Aviv-Yafo",
@@ -40,8 +46,14 @@ class Migration(migrations.Migration):
                 "https://youtube.com/user/SpaceFlorentin",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/space_florentin.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Shalma Rd 45, Tel Aviv-Yafo",
@@ -59,8 +71,14 @@ class Migration(migrations.Migration):
                 "https://youtube.com/user/LakeTLV",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/lake_tlv.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "פארק דרום פארק מנחם בגין, Tel Aviv-Yafo",
@@ -78,8 +96,14 @@ class Migration(migrations.Migration):
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/vegan_business_1.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Derech Menachem Begin, Tel Aviv-Yafo",
@@ -102,8 +126,14 @@ class Migration(migrations.Migration):
                 "",
                 Website_Business.BusinessStatus.PENDING,
                 "App/images/BusinessesMainPictures/vegan_business_2.png",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Derech Menachem Begin, Tel Aviv-Yafo",
@@ -125,8 +155,14 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/vegan_business_3.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Derech Menachem Begin, Tel Aviv-Yafo",
@@ -146,8 +182,14 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/caffe_botique.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Sarona Market, Tel Aviv-Yafo",
@@ -165,8 +207,15 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/ninja.jpg",
-                "09:00:00",
-                "18:00:00",
+                """
+                    Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Derech Menachem Begin, Tel Aviv-Yafo",
@@ -184,8 +233,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/TheBigButcher",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/buthcer.jfif",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Marzouk and Azar 10, Tel Aviv-Yafo",
@@ -204,8 +259,14 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/candies.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Derech Menachem Begin, Tel Aviv-Yafo",
@@ -224,8 +285,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/IronMuscle",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/weights.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "HaYarkon 165, Tel Aviv-Yafo",
@@ -243,8 +310,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/MyProtein",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/protein.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "King George St 47, Tel Aviv-Yafo",
@@ -263,8 +336,14 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/crafting.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Nahalat Binyamin 83, Tel Aviv-Yafo",
@@ -284,8 +363,14 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/chocolate.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Sarona Market, Tel Aviv-Yafo",
@@ -305,8 +390,14 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/dairy.jfif",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Shlomo Ibn Gabirol 96, Tel Aviv-Yafo",
@@ -324,8 +415,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/TheOldFisherman",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/fish.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Sderot Yerushalayim 9, Tel Aviv-Yafo",
@@ -344,8 +441,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/KnifeMaster",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/dairy.jfif",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Sarona Market, Tel Aviv-Yafo",
@@ -364,8 +467,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/HouseOfGrill",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/grill.jfif",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Allenby 110, Tel Aviv-Yafo",
@@ -384,8 +493,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/ShoeStore",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/shoe_store.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Zamenhof 2, Tel Aviv-Yafo",
@@ -404,8 +519,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/SportsWear",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/sports_wear.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Yehoshua Hatalmi 16, Tel Aviv-Yafo",
@@ -423,8 +544,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/SportsEquipment",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/sports_equipment.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Allenby St 113, Tel Aviv-Yafo",
@@ -443,8 +570,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/ClimbingStore",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/climbing_store.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Derech Qibbutz 26, Tel Aviv-Yafo",
@@ -463,8 +596,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/DivingStore",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/diving_store.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "HaPatish 10, Tel Aviv-Yafo",
@@ -483,8 +622,14 @@ In the store you can find products that provide natural
                 "https://youtube.com/c/Bones",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/bones_restaurant.jpg",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Shlomo Ibn Gabirol St 118, Tel Aviv-Yafo",
@@ -503,8 +648,14 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/coffee_machine.jfif",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Pinsker St 72, Tel Aviv-Yafo",
@@ -523,8 +674,14 @@ In the store you can find products that provide natural
                 "",
                 Website_Business.BusinessStatus.APPROVED,
                 "App/images/BusinessesMainPictures/coffee_house.jfif",
-                "09:00:00",
-                "18:00:00",
+                """ Sun: 9 a.m. - 6 p.m.
+                    Mon: 9 a.m. - 6 p.m.
+                    Tue: 9 a.m. - 6 p.m.
+                    Wed: 9 a.m. - 6 p.m.
+                    Thu: 9 a.m. - 6 p.m.
+                    Fri: 9 a.m. - 3 p.m.
+                    Sat: close
+""",
                 "+972501234567",
                 5,
                 "Dizengoff Square 4, Tel Aviv-Yafo",
@@ -545,8 +702,7 @@ In the store you can find products that provide natural
                 youtube_link,
                 is_confirmed,
                 main_picture,
-                from_hour,
-                to_hour,
+                hours,
                 phone_number,
                 number_of_additional_pictures,
                 location,
@@ -564,8 +720,7 @@ In the store you can find products that provide natural
                     instagram_link=instagram_link,
                     youtube_link=youtube_link,
                     main_picture=main_picture,
-                    from_hour=from_hour,
-                    to_hour=to_hour,
+                    hours=hours,
                     phone_number=phone_number,
                     number_of_additional_pictures=number_of_additional_pictures,
                     location=location,
