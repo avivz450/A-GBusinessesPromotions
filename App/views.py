@@ -30,6 +30,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from datetime import date
 
 
 def websitepage(request, pk, website_name):
@@ -257,6 +258,11 @@ def businesses(request, pk, website_name):
 def sales(request, pk, website_name):
     website = get_object_or_404(Website, id=pk)
     sales = website.get_website_approved_sales()
+    for sale in sales:
+        today = date.today()
+        if today > sale.expired_date:
+            sale.delete()
+
     context = {
         "sales": sales,
         "website": website,
