@@ -1,12 +1,6 @@
 
 # August-September Features Progress
 ## New features from last meeting
-+ Edit businesses of user :
-    + Once user pressed on "My Businesses", in any site, he will see all the businesses that the user created in any site, including the status.
-    + After the user pressed on "Edit" on a certain business, he will be reffered to edit that business in the relevant website.
-+ Edit sales of user :
-    + Once user pressed on "My Sales", in any site, he will see all the sales that the user created in any site, including the status.
-    + After the user pressed on "Edit" on a certain sale, he will be reffered to edit that sale in the relevant website.
 + Edit malls of user :
     + Once user pressed on "My Malls", in any site, he will see all the malls that the user is admin of them.
     + After the user pressed on "Edit" on a certain mall, he will be reffered to edit that mall in the relevant website.
