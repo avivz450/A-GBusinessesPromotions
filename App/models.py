@@ -114,7 +114,7 @@ class Business(models.Model):
     number_of_additional_pictures = models.IntegerField(
         default=1, validators=[MinValueValidator(5), MaxValueValidator(10)]
     )
-    hours = models.TextField(null=True, blank=True, max_length=100)
+    hours = models.TextField(null=True, blank=True, max_length=300)
     phone_number = PhoneNumberField(null=True, blank=True)
     location = models.CharField(max_length=255, null=True, blank=True)
     location_points = PlainLocationField(
